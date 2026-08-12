@@ -1,0 +1,13 @@
+"Fitness Trait","env","Evolvability","Respondability","Angle Degrees","Cosine Alignment"
+"Fitness","mli",0.17818,0.28275,50.93882,0.63015
+"Fitness","mlp",0.2888,0.47886,52.90842,0.60309
+"Fitness","thi",0.21625,0.65723,70.79027,0.32903
+"Fitness","thp",0.24909,0.78018,71.38131,0.31927
+"Survival","mli",0.29752,0.50996,54.30815,0.58343
+"Survival","mlp",0.3383,0.73332,62.52745,0.46132
+"Survival","thi",0.2512,0.60001,65.24985,0.41866
+"Survival","thp",0.20182,0.53559,67.86369,0.37681
+"Fecundity (seeds set)","mli",0.32536,0.7968,65.90009,0.40833
+"Fecundity (seeds set)","mlp",0.50962,0.82228,51.70144,0.61976
+"Fecundity (seeds set)","thi",0.16448,0.58495,73.66893,0.28119
+"Fecundity (seeds set)","thp",0.23075,0.65647,69.42083,0.3515

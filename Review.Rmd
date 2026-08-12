@@ -312,8 +312,10 @@ bb <- rbind(data.frame(ft = WTg$ft, fit = WTg$fit, g = "wt"),
             data.frame(ft = MUTg$ft, fit = MUTg$fit, g = "mut"))
 round(summary(lm(fit ~ ft * g, data = bb))$coef, 5)   # ft:gwt = slope difference
 
-zz <- (atanh(cor(MUTg$ft, MUTg$fit)) - atanh(cor(WTg$ft, WTg$fit))) /
-      sqrt(1/(nrow(MUTg) - 3) + 1/(nrow(WTg) - 3))
+nWT <- sum(complete.cases(WTg$ft, WTg$fit))   # 2 wt lines lack flowering time: n = 39
+zz <- (atanh(cor(MUTg$ft, MUTg$fit, use = "complete")) -
+       atanh(cor(WTg$ft,  WTg$fit,  use = "complete"))) /
+      sqrt(1/(nrow(MUTg) - 3) + 1/(nWT - 3))
 c(fisher_z = round(zz, 3), p = round(2 * (1 - pnorm(abs(zz))), 4))
 ```
 
@@ -329,14 +331,184 @@ legend("topright", bty = "n", pch = 19, col = c("#4E9A6A", "#D7473A"),
 ```
 
 Neither correlation is individually significant, but they differ from each other
-(interaction p = 0.033; Fisher z = 2.07, p = 0.038): the relationship reverses sign rather
-than disappearing. Over the same lines, fitness vs δ¹³C is r = −0.19 (p = 0.24) in wild
+(interaction p = 0.033; Fisher z = 2.08, p = 0.037 at full precision — the published
+"z = 2.07, p = 0.038" is the same test computed from the rounded correlations −0.21 and
+0.25): the relationship reverses sign rather than disappearing. Over the same lines, fitness vs δ¹³C is r = −0.19 (p = 0.24) in wild
 types and r = 0.40 (p = 0.004) in edited lines — so WUE carries the stronger and only
 individually significant fitness association in the edited background.
 
 **Caveat.** Flowering time in this chamber experiment spans 27.3–137.5 d in the edited
 lines, unlike 13.9–35.8 d in Uli's δ¹³C panel. The two experiments are not the same set of
 lines, so the 32-fold variance collapse reported above applies to Uli's panel only.
+
+# Supplement §VIII.2 — every number, in order
+
+One chunk per claim, in the order the supplement makes them, so this section can be
+checked line-by-line against the text. Expected values from the current supplement are
+noted inline; everything reuses objects loaded above.
+
+## δ¹³C rank consistency between wild types and their flc counterparts
+
+Expected: Spearman ρ = 0.66, p = 0.002; Pearson r = 0.77, p = 1×10⁻⁴, over the 19
+wt–flc pairs.
+
+```{r viii2_pairs}
+Ep <- subset(d, label == "mut"); Wp <- subset(d, label == "wt")
+Ep$acc <- firstnum(Ep$line); Wp$acc <- firstnum(Wp$line)
+pw <- merge(Wp[, c("acc", "deltaC_mean_mean")], Ep[, c("acc", "deltaC_mean_mean")],
+            by = "acc", suffixes = c("_wt", "_mut"))
+c(n_pairs = nrow(pw))
+suppressWarnings(   # ties -> approximate Spearman p
+  cor.test(pw$deltaC_mean_mean_wt, pw$deltaC_mean_mean_mut, method = "spearman"))
+cor.test(pw$deltaC_mean_mean_wt, pw$deltaC_mean_mean_mut)
+```
+
+## Measured phenotypes: r, slope, covariance, SD, CV per set
+
+Expected: 19 paired edited r = 0.50, p = 0.030; 29 edited r = 0.38, p = 0.045,
+slope 4.58 ± 2.18, cov 0.90, SD 0.44 ‰ / 5.4 d, CV 1.44 % / 24.5 %; 20 progenitors +
+Col-0 r = 0.14, p = 0.55, slope 10.44 ± 16.94, cov 1.88, SD 0.42 / 30.8, CV 1.40 / 43.6;
+248 natural (FT16) r = 0.38, p = 5.2×10⁻¹⁰, slope 8.63 ± 1.33, cov 12.26, SD 1.19 / 27.0,
+CV 3.35 / 31.5. (FT10 gives the same qualitative picture — Core statistics table above.)
+
+```{r viii2_measured}
+statcv <- function(x, y, lab) {
+  ok <- !is.na(x) & !is.na(y); x <- x[ok]; y <- y[ok]
+  cbind(stat(x, y, lab),
+        CV_d13C_pct = round(relsd(x), 2), CV_FT_pct = round(cvpct(y), 2)) }
+
+knitr::kable(rbind(
+  statcv(pr$deltaC_mean_mean, pr$dag_mean,   "19 edited (paired)"),
+  statcv(E$deltaC_mean_mean,  E$dag_mean,    "29 edited"),
+  statcv(WC$deltaC_mean_mean, WC$dag_mean,   "20 progenitors + Col-0"),
+  statcv(at16$Delta_13C,      at16$FT16,     "248 natural (FT16)")), row.names = FALSE)
+```
+
+The Col-0 scale anchor (expected: −31.14 ‰ measured here vs −37.21 ‰ reference used with
+the published dataset — ranks comparable across experiments, absolute values not):
+
+```{r viii2_col0}
+c(col0_measured_here = d$deltaC_mean_mean[d$label == "col"], col0_published_ref = -37.21)
+```
+
+## Fisher z on the measured correlations
+
+Expected: 29 edited vs 20 progenitors + Col-0 z = 0.802, p = 0.423; 29 edited vs 248
+natural z = −0.033, p = 0.974.
+
+```{r viii2_fisherz}
+rbind(
+  `29 edited vs 20 progenitors+Col-0` = fz(cor(E$deltaC_mean_mean, E$dag_mean),
+      cor(WC$deltaC_mean_mean, WC$dag_mean), nrow(E), nrow(WC)),
+  `29 edited vs 248 natural (FT16)`   = fz(cor(E$deltaC_mean_mean, E$dag_mean),
+      cor(at16$Delta_13C, at16$FT16), nrow(E), nrow(at16)))
+```
+
+## Variance F tests, measured
+
+Expected: δ¹³C progenitors-vs-edited F = 0.91, p = 0.85; flowering time F = 32.35,
+p = 6.4×10⁻¹⁴; vs the 248 natural accessions δ¹³C F = 7.22, p = 6.8×10⁻⁸ and flowering
+time F = 24.82, p = 8.4×10⁻¹⁵. The relative-variation claims (δ¹³C CV 1.44 % vs 1.40 %,
+flowering-time CV 1.8-fold lower) are the CV columns above and the ratio pair in the
+Relative variation section.
+
+```{r viii2_ftests}
+vt <- function(x, y, lab) { v <- var.test(x, y)
+  data.frame(comparison = lab, F = round(unname(v$statistic), 2),
+             df = paste(v$parameter, collapse = ", "), p = signif(v$p.value, 2)) }
+knitr::kable(rbind(
+  vt(WC$deltaC_mean_mean, E$deltaC_mean_mean, "d13C: 20 progenitors+Col-0 vs 29 edited"),
+  vt(WC$dag_mean,         E$dag_mean,         "FT:   20 progenitors+Col-0 vs 29 edited"),
+  vt(at16$Delta_13C,      E$deltaC_mean_mean, "d13C: 248 natural vs 29 edited"),
+  vt(at16$FT16,           E$dag_mean,         "FT:   248 natural vs 29 edited")),
+  row.names = FALSE)
+```
+
+## Imputed phenotypes: the three quoted blocks
+
+Expected: 28 edited (CS77069 absent from the imputed panel) r = 0.38, p = 0.049,
+slope 4.58 ± 2.22, cov 0.94, SD 0.45 / 5.5, CV 1.47 / 25.0; 19 progenitors (Col-0 absent)
+r = 0.14, p = 0.57, slope 2.56 ± 4.46, cov 6.29, SD 1.57 / 29.1, CV 4.43 / 39.7;
+1135 natural accessions, imputed δ¹³C × imputed FT16, r = 0.59, p = 8.0×10⁻¹⁰⁶,
+slope 19.90 ± 0.82, cov 10.47, SD 0.73 / 24.6, CV 2.02 / 32.5.
+
+```{r viii2_imputed}
+c(absent_edited = subset(m, label == "mut" & is.na(flc_mut_dc13))$line,
+  absent_wt     = subset(m, label %in% c("wt", "col") & is.na(wt_dc13))$line)
+E28 <- subset(m, label == "mut" & !is.na(flc_mut_dc13))              # n = 28
+W19 <- subset(m, label %in% c("wt", "col") & !is.na(wt_dc13))        # n = 19
+ai  <- read.csv(file.path(DAT, "atlas1001_phenotype_matrix_imputed_withID.csv"))
+knitr::kable(rbind(
+  statcv(E28$flc_mut_dc13, E28$dag_mean, "28 edited, imputed d13C"),
+  statcv(W19$wt_dc13,      W19$dag_mean, "19 progenitors, imputed d13C"),
+  statcv(ai$Delta_13C,     ai$FT16,      "1135 natural, imputed (FT16)")),
+  row.names = FALSE)
+```
+
+## Fisher z and F test on the imputed sets
+
+Expected: 28 edited vs 19 progenitors z = 0.800, p = 0.424; 28 edited vs 1135 natural
+z = −1.372, p = 0.170; flowering-time variance F = 27.85, p = 1.3×10⁻¹².
+
+```{r viii2_imputed_tests}
+rbind(
+  `28 edited vs 19 progenitors (imputed)` = fz(cor(E28$flc_mut_dc13, E28$dag_mean),
+      cor(W19$wt_dc13, W19$dag_mean), nrow(E28), nrow(W19)),
+  `28 edited vs 1135 natural (imputed)`   = fz(cor(E28$flc_mut_dc13, E28$dag_mean),
+      cor(ai$Delta_13C, ai$FT16), nrow(E28), nrow(ai)))
+var.test(W19$dag_mean, E28$dag_mean)
+```
+
+## Traits vs fitness (seed weight, growth chamber)
+
+Expected: flowering time vs seed weight r = −0.21, p = 0.195, n = 39 in wild types and
+r = 0.25, p = 0.098, n = 46 in edited lines; genotype × flowering-time interaction
+p = 0.033; Fisher z = 2.07, p = 0.038 (full precision gives 2.08 / 0.037 — the quoted
+2.07 is z computed from the rounded correlations). The interaction model is in the
+previous section (`ftfit_tests`); `cor.test` drops the two wild-type lines with no
+flowering-time record, giving n = 39 of the 41.
+
+```{r viii2_fitness_ft}
+unlist(lapply(list(wt = cor.test(WTg$ft, WTg$fit), flc = cor.test(MUTg$ft, MUTg$fit)),
+  function(ct) c(n = unname(ct$parameter) + 2, r = round(unname(ct$estimate), 2),
+                 p = round(ct$p.value, 3))))
+fz(cor(MUTg$ft, MUTg$fit, use = "complete"), cor(WTg$ft, WTg$fit, use = "complete"),
+   nrow(MUTg), sum(complete.cases(WTg$ft, WTg$fit)))
+```
+
+Expected: fitness vs δ¹³C r = 0.40, p = 0.004 in the edited lines and r = −0.19,
+p = 0.24 in the wild types. The two halves use different δ¹³C sources: the edited lines
+use chamber-measured `mean_dC13_ko` (the Fig. 3C flc source), while the wild-type value
+reproduces exactly from **imputed** `wt_dc13` over the 41 growth-chamber wild-type lines
+— which identifies the wild-type half of the published Fig. 3C statistic, listed as
+missing in `figures-main/Fig3C-remake/README.md` (the plotted wild-type points remain
+PDF-recovered; only the correlation is confirmed here).
+
+```{r viii2_fitness_wue}
+fd  <- read.csv(file.path(DAT, "flc_droughtexp_data.csv"))
+ik  <- read.csv(file.path(DAT, "imputed_mutant_dC13.csv"))
+fmm <- merge(fd, ik[, c("id", "mean_dC13_ko")], by = "id")
+cor.test(fmm$mean_dC13_ko, fmm$rSeedWeight)      # edited: expect r = 0.405, p = 0.0047
+
+WTg$acc <- firstnum(as.character(WTg$id))
+wwt <- merge(WTg, im, by.x = "acc", by.y = "id")
+cor.test(wwt$wt_dc13, wwt$fit)                   # wild type: expect r = -0.19, p = 0.235
+```
+
+## Checklist
+
+| §VIII.2 claim | chunk | reproduces? |
+|---|---|---|
+| ρ = 0.66 / r = 0.77 wt–flc rank consistency | `viii2_pairs` | yes (0.662 / 0.773) |
+| measured r, slope, cov, SD, CV — 3 sets + paired 19 | `viii2_measured` | yes |
+| Col-0 −31.14 vs −37.21 reference | `viii2_col0` | yes |
+| Fisher z 0.802 / −0.033 (measured) | `viii2_fisherz` | yes |
+| F tests 0.91, 32.35, 7.22, 24.82 | `viii2_ftests` | yes |
+| CV 1.44 vs 1.40 %; FT CV 1.8× lower | `viii2_measured` + Relative variation | yes |
+| imputed blocks n = 28 / 19 / 1135 | `viii2_imputed` | yes |
+| Fisher z 0.800 / −1.372; F = 27.85 (imputed) | `viii2_imputed_tests` | yes |
+| FT–fitness r = −0.21 / 0.25; interaction; z = 2.07 | `viii2_fitness_ft` + `ftfit_tests` | yes (2.08 full precision) |
+| δ¹³C–fitness r = −0.19 / 0.40 | `viii2_fitness_wue` | yes |
 
 # Summary
 

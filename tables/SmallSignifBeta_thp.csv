@@ -1,0 +1,5 @@
+trait,Beta,Direction
+ABA_96h_low_water_potential,-0.025 (-0.04852, -0.00148),Avoid
+Root_horizontal_index_day001,-0.037 (-0.07424, 0.00024),?
+stomata_density,-0.035 (-0.0644, -0.0056),Escape
+X72_Vern_Growth,-0.056 (-0.09128, -0.02072),Escape

@@ -1,0 +1,36 @@
+Locus	TAIR.internal.locus.id	GO.term	category	Evidence.code
+AT1G08630	2025645	glycine biosynthetic process	proc	IBA
+AT1G08630	2025645	threonine catabolic process	proc	IBA
+AT1G08630	2025645	threonine aldolase activity	func	IDA
+AT1G08630	2025645	threonine catabolic process	proc	IMP
+AT1G08630	2025645	amino acid metabolic process	proc	IEA
+AT1G08630	2025645	L-allo-threonine aldolase activity	func	IBA
+AT1G08630	2025645	lyase activity	func	IEA
+AT1G11500	2200071	leaf development	proc	IMP
+AT1G11500	2200071	determination of bilateral symmetry	proc	IMP
+AT1G11500	2200071	molecular_function_unknown	func	ND
+AT1G11510	2200106	regulation of DNA-templated transcription	proc	TAS
+AT1G11510	2200106	regulation of DNA-templated transcription	proc	IEA
+AT1G11510	2200106	protein binding	func	IPI
+AT1G11520	2200126	molecular_function_unknown	func	ND
+AT1G11520	2200126	molecular_function_unknown	func	ND
+AT1G11530	2200141	protein disulfide isomerase activity	func	IDA
+AT1G11530	2200141	protein disulfide isomerase activity	func	IDA
+AT1G11530	2200141	protein disulfide isomerase activity	func	IDA
+AT1G11530	2200141	protein disulfide isomerase activity	func	IDA
+AT1G11530	2200141	protein disulfide isomerase activity	func	IDA
+AT1G11530	2200141	protein disulfide isomerase activity	func	IDA
+AT1G11540	2200061	molecular_function_unknown	func	ND
+AT1G11540	2200061	molecular_function_unknown	func	ND
+AT1G11540	2200061	molecular_function_unknown	func	ND
+AT1G11540	2200061	molecular_function_unknown	func	ND
+AT1G11540	2200061	molecular_function_unknown	func	ND
+AT1G11540	2200061	molecular_function_unknown	func	ND
+AT1G11540	2200061	molecular_function_unknown	func	ND
+AT2G22600	2066020	mRNA binding	func	IBA
+AT2G22600	2066020	regulation of gene expression	proc	IBA
+AT5G10170	2184153	inositol-3-phosphate synthase activity	func	IBA
+AT5G10170	2184153	inositol biosynthetic process	proc	IEA
+AT5G10170	2184153	inositol-3-phosphate synthase activity	func	IGI
+AT5G10170	2184153	embryo development ending in seed dormancy	proc	IGI
+AT5G10170	2184153	inositol biosynthetic process	proc	IBA

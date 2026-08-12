@@ -1,0 +1,5 @@
+trait,Beta,Direction
+ABA_96h_low_water_potential,-0.274 (-0.4112, -0.1368),Avoid
+FT16,0.336 (0.05572, 0.61628),Avoid
+Growth_rate,-0.537 (-0.83296, -0.24104),Escape
+Stomatal_index_in_first_leaf,0.328 (0.09476, 0.56124),Avoid

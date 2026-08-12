@@ -1,0 +1,101 @@
+Locus	TAIR.internal.locus.id	GO.term	category	Evidence.code	Reference
+AT1G07540	2025007	molecular_function_unknown	func	ND	Communication:1345790
+AT1G07540	2025007	biological_process_unknown	proc	ND	Communication:1345790
+AT1G07560	2024972	protein binding	func	IPI	Publication:501778368|PMID:29320478  
+AT1G07560	2024972	response to inorganic substance	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G07560	2024972	protein binding	func	IPI	Publication:501760192|PMID:24833385  
+AT1G07560	2024972	kinase activity	func	ISS	Communication:1674994
+AT1G07560	2024972	cellular metal ion homeostasis	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G07560	2024972	ion transmembrane transport	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G07560	2024972	protein serine/threonine kinase activity	func	IEA	AnalysisReference:501756967
+AT1G07560	2024972	phosphorylation	proc	ISS	Communication:1674994
+AT1G07560	2024972	inorganic anion transport	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G07560	2024972	cellular response to extracellular stimulus	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G07560	2024972	protein binding	func	IPI	Publication:501784216|PMID:30806640  
+AT1G07560	2024972	protein phosphorylation	proc	IEA	AnalysisReference:501756966
+AT1G07590	2024952	response to wounding	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G07590	2024952	response to water deprivation	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G07590	2024952	response to abscisic acid	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G07590	2024952	response to salt stress	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G07590	2024952	leaf senescence	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G07590	2024952	regulation of biological quality	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G07590	2024952	chlorophyll catabolic process	proc	IEA	Publication:501796011|PMID:34562334  
+AT1G08030	2205135	regulation of gene expression	proc	IMP	Publication:501740466|PMID:21045165  
+AT1G08030	2205135	innate immune response	proc	IMP	Publication:501747401|PMID:22353039  
+AT1G08030	2205135	copper ion homeostasis	proc	IMP	Publication:501763757|PMID:25908239  
+AT1G08030	2205135	stem cell population maintenance	proc	IMP	Publication:501740466|PMID:21045165  
+AT1G08030	2205135	heparan sulfate 6-O-sulfotransferase activity	func	IBA	Communication:501741973
+AT1G08030	2205135	negative regulation of ethylene biosynthetic process	proc	IMP	Publication:501763757|PMID:25908239  
+AT1G08030	2205135	regulation of root meristem growth	proc	IMP	Publication:501740466|PMID:21045165  
+AT1G08030	2205135	protein-tyrosine sulfotransferase activity	func	IDA	Publication:501733938|PMID:19666544  
+AT1G08030	2205135	response to auxin	proc	IEP	Publication:501740466|PMID:21045165  
+AT1G08030	2205135	heparan sulfate proteoglycan biosynthetic process, enzymatic modification	proc	IBA	Communication:501741973
+AT1G08630	2025645	glycine biosynthetic process	proc	IBA	Communication:501741973
+AT1G08630	2025645	threonine catabolic process	proc	IBA	Communication:501741973
+AT1G08630	2025645	threonine aldolase activity	func	IDA	Publication:501720568|PMID:17172352  
+AT1G08630	2025645	threonine catabolic process	proc	IMP	Publication:501720568|PMID:17172352  
+AT1G08630	2025645	amino acid metabolic process	proc	IEA	AnalysisReference:501756966
+AT1G08630	2025645	L-allo-threonine aldolase activity	func	IBA	Communication:501741973
+AT1G08630	2025645	lyase activity	func	IEA	AnalysisReference:501756966
+AT1G11510	2200106	regulation of DNA-templated transcription	proc	TAS	Publication:501682971|PMID:12535344  
+AT1G11510	2200106	regulation of DNA-templated transcription	proc	IEA	AnalysisReference:501756966
+AT1G11510	2200106	protein binding	func	IPI	Publication:501776083|PMID:28650476  
+AT1G11530	2200141	protein disulfide isomerase activity	func	IDA	Publication:501724625|PMID:18384502  
+AT1G11530	2200141	protein disulfide isomerase activity	func	IDA	Publication:501724625|PMID:18384502  
+AT1G11540	2200061	molecular_function_unknown	func	ND	Communication:1345790
+AT4G11560	2123136	tissue development	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11560	2123136	regulation of RNA metabolic process	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11560	2123136	regulation of macromolecule biosynthetic process	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11560	2123136	positive regulation of macromolecule metabolic process	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11560	2123136	regulation of gene expression	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11560	2123136	shoot system development	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11560	2123136	photoperiodism, flowering	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11560	2123136	DNA-binding transcription repressor activity	func	IDA	Publication:501792686|PMID:33433058  
+AT4G11560	2123136	response to inorganic substance	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11560	2123136	cellular response to abscisic acid stimulus	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11560	2123136	protein binding	func	IPI	Publication:501792686|PMID:33433058  
+AT4G11560	2123136	regulation of developmental process	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11560	2123136	chromatin binding	func	IEA	AnalysisReference:501756966
+AT4G11560	2123136	H3K27me3 modified histone binding	func	IDA	Publication:501792686|PMID:33433058  
+AT4G11560	2123136	protein binding	func	IPI	Publication:501792686|PMID:33433058  
+AT4G11560	2123136	DNA-templated transcription	proc	IEA	AnalysisReference:501756966
+AT4G11560	2123136	negative regulation of biosynthetic process	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11750	2139687	biological_process_unknown	proc	ND	Communication:1345790
+AT4G11750	2139687	molecular_function_unknown	func	ND	Communication:1345790
+AT4G11770	2139722	molecular_function_unknown	func	ND	Communication:1345790
+AT4G11770	2139722	biological_process_unknown	proc	ND	Communication:1345790
+AT4G11850	2137045	membrane lipid metabolic process	proc	IMP	Publication:501746169|PMID:22163277  
+AT4G11850	2137045	protein binding	func	IPI	Publication:501730377|PMID:19452453  
+AT4G11850	2137045	defense response to bacterium	proc	IGI	Publication:501681776|PMID:12182338  
+AT4G11850	2137045	phosphatidylcholine metabolic process	proc	IEA	AnalysisReference:501756966
+AT4G11850	2137045	embryo development ending in seed dormancy	proc	IMP	Publication:501714637|PMID:15634699  
+AT4G11850	2137045	phosphatidylinositol-4,5-bisphosphate binding	func	IDA	Publication:2998|PMID:9353280   
+AT4G11850	2137045	innate immune response	proc	IDA	Publication:501788858|PMID:32152212  
+AT4G11850	2137045	response to oxidative stress	proc	IMP	Publication:501746169|PMID:22163277  
+AT4G11850	2137045	phospholipase D activity	func	ISS	Publication:501681754
+AT4G11850	2137045	phospholipid catabolic process	proc	IBA	Communication:501741973
+AT4G11850	2137045	response to aluminum ion	proc	IMP	Publication:501746169|PMID:22163277  
+AT4G11850	2137045	N-acylphosphatidylethanolamine-specific phospholipase D activity	func	IEA	AnalysisReference:501756967
+AT4G11850	2137045	protein binding	func	IPI	Publication:501788858|PMID:32152212  
+AT4G11850	2137045	calcium ion binding	func	IEA	AnalysisReference:501756966
+AT4G11850	2137045	phospholipase D activity	func	IDA	Publication:2998|PMID:9353280   
+AT4G11850	2137045	phospholipase D activity	func	IBA	Communication:501741973
+AT4G11900	2137010	response to salicylic acid	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11900	2137010	defense response to bacterium	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11900	2137010	protein kinase activity	func	IEA	AnalysisReference:501756966
+AT4G11900	2137010	defense response to fungus	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11900	2137010	recognition of pollen	proc	IEA	AnalysisReference:501756966
+AT4G11900	2137010	programmed cell death	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11900	2137010	innate immune response	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11900	2137010	defense response to other organism	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11900	2137010	calmodulin binding	func	ISS	Communication:501789215
+AT4G11900	2137010	cellular response to salicylic acid stimulus	proc	IEA	Publication:501796011|PMID:34562334  
+AT4G11900	2137010	protein serine/threonine kinase activity	func	IEA	AnalysisReference:501756967
+AT4G11900	2137010	ATP binding	func	IEA	AnalysisReference:501756966
+AT4G11900	2137010	protein serine/threonine kinase activity	func	ISS	Communication:501789215
+AT4G11900	2137010	protein phosphorylation	proc	IEA	AnalysisReference:501756966
+AT5G10170	2184153	embryo development ending in seed dormancy	proc	IGI	Publication:501742428|PMID:21505066  
+AT5G10170	2184153	inositol biosynthetic process	proc	IBA	Communication:501741973
+AT5G10170	2184153	inositol-3-phosphate synthase activity	func	IBA	Communication:501741973
+AT5G10170	2184153	inositol biosynthetic process	proc	IEA	AnalysisReference:501757242
+AT5G10170	2184153	inositol-3-phosphate synthase activity	func	IGI	Publication:501742428|PMID:21505066  

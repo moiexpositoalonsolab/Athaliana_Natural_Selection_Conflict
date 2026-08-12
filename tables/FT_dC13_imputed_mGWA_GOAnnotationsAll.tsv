@@ -1,0 +1,234 @@
+Locus	TAIR internal locus id	Gene Model(s)	GO term	GO ID	TAIR internal GO id	category	GO Slim(s)	Evidence code	Reference	Made by	date last modified
+AT1G11540	6532558305	AT1G11540.2	extracellular region	GO:0005576	294	comp	extracellular region	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11540	2200061	AT1G11540	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	09/06/2003 00:00:00
+AT1G11540	2200061	AT1G11540	Cul4A-RING E3 ubiquitin ligase complex	GO:0031464	21152	comp	other cellular components	IBA	Communication:501741973		04/02/2021 00:00:00
+AT1G11680	2027312	AT1G11680	sterol 14-demethylase activity	GO:0008398	2978	func	catalytic activity	TAS	Publication:501717781|PMID:16169959  	TAIR	12/02/2005 00:00:00
+AT1G11680	2027311	AT1G11680.1	extracellular region	GO:0005576	294	comp	extracellular region	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11680	2027312	AT1G11680	embryo development ending in seed dormancy	GO:0009793	11994	proc	embryo development | post-embryonic development | reproduction | multicellular organism development | anatomical structure development	NAS	Communication:501718471	TAIR	02/22/2006 00:00:00
+AT1G11680	2027312	AT1G11680	oxidoreductase activity	GO:0016491	3460	func	catalytic activity	IBA	Communication:501741973		11/23/2022 00:00:00
+AT1G11680	2027312	AT1G11680	sterol biosynthetic process	GO:0016126	7318	proc	lipid metabolic process | other metabolic processes | biosynthetic process	IBA	Communication:501741973		03/31/2021 00:00:00
+AT1G11680	2027312	AT1G11680	heme binding	GO:0020037	9668	func	other binding	IEA	AnalysisReference:501756966		11/26/2022 00:00:00
+AT1G11680	2027312	AT1G11680	endoplasmic reticulum	GO:0005783	268	comp	endoplasmic reticulum	HDA	Publication:501750648|PMID:22923678  		04/07/2021 00:00:00
+AT1G11680	2027312	AT1G11680	sterol biosynthetic process	GO:0016126	7318	proc	lipid metabolic process | other metabolic processes | biosynthetic process	IMP	Publication:501717781|PMID:16169959  	TAIR	12/02/2005 00:00:00
+AT1G11680	2027312	AT1G11680	iron ion binding	GO:0005506	2918	func	other binding	IEA	AnalysisReference:501756966		11/26/2022 00:00:00
+AT1G11680	2027312	AT1G11680	sterol biosynthetic process	GO:0016126	7318	proc	other metabolic processes | biosynthetic process | lipid metabolic process	TAS	Publication:501680651|PMID:11437378  	TIGR	04/17/2003 00:00:00
+AT1G11680	2027311	AT1G11680.1	Golgi apparatus	GO:0005794	48	comp	Golgi apparatus	HDA	Publication:501747810|PMID:22430844  		05/12/2021 00:00:00
+AT1G11680	2027312	AT1G11680	endoplasmic reticulum	GO:0005783	268	comp	endoplasmic reticulum	HDA	Publication:501718909|PMID:16618929  	TAIR	05/12/2021 00:00:00
+AT2G30440	2064337	AT2G30440	signal peptide processing	GO:0006465	7242	proc	other cellular processes | protein metabolic process | other metabolic processes	IDA	Publication:2814|PMID:9422718   	TAIR	10/09/2009 00:00:00
+AT2G30440	2064337	AT2G30440	chloroplast thylakoid	GO:0009534	704	comp	thylakoid | plastid | chloroplast | other intracellular components	IDA	Publication:2814|PMID:9422718   	TAIR	10/09/2009 00:00:00
+AT2G30440	2064337	AT2G30440	endopeptidase activity	GO:0004175	2240	func	catalytic activity | hydrolase activity	IDA	Publication:2814|PMID:9422718   	TAIR	10/09/2009 00:00:00
+AT2G30440	2064336	AT2G30440.1	plasma membrane	GO:0005886	570	comp	plasma membrane	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT2G30440	2064337	AT2G30440	signal peptide processing	GO:0006465	7242	proc	other metabolic processes | protein metabolic process | other cellular processes	IBA	Communication:501741973		04/20/2022 00:00:00
+AT2G30440	2064337	AT2G30440	chloroplast thylakoid membrane	GO:0009535	706	comp	thylakoid | other membranes | plastid | chloroplast | other intracellular components	IBA	Communication:501741973		04/02/2021 00:00:00
+AT2G30440	2064337	AT2G30440	thylakoid membrane organization	GO:0010027	13461	proc	cellular component organization	IBA	Communication:501741973		03/31/2021 00:00:00
+AT2G30440	2064337	AT2G30440	serine-type endopeptidase activity	GO:0004252	4112	func	catalytic activity | hydrolase activity	IBA	Communication:501741973		04/02/2021 00:00:00
+AT4G00232	505006410	AT4G00232	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TAIR	10/28/2021 00:00:00
+AT4G00232	505006410	AT4G00232	cell differentiation	GO:0030154	9398	proc	cell differentiation	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00232	505006410	AT4G00232	gametophyte development	GO:0048229	17129	proc	multicellular organism development	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00232	505006410	AT4G00232	macromolecule biosynthetic process	GO:0009059	6237	proc	biosynthetic process | other metabolic processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00232	505006410	AT4G00232	cellular macromolecule metabolic process	GO:0044260	19693	proc	other metabolic processes | other cellular processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00232	505006410	AT4G00232	regulation of DNA-templated transcription	GO:0006355	7461	proc	biosynthetic process | nucleobase-containing compound metabolic process | other metabolic processes | other cellular processes	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT4G00232	3704897	AT4G00232.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00232	505006410	AT4G00232	regulation of multicellular organismal process	GO:0051239	19563	proc	other biological processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00232	505006410	AT4G00232	regulation of reproductive process	GO:2000241	36525	proc	reproduction	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00232	505006410	AT4G00232	nucleus	GO:0005634	537	comp	nucleus	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G00232	505006410	AT4G00232	regulation of developmental process	GO:0050793	17954	proc	other biological processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00232	505006410	AT4G00232	regulation of growth	GO:0040008	10887	proc	growth	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00240	2126001	AT4G00240	phospholipase D activity	GO:0004630	3707	func	hydrolase activity	IDA	Publication:3358|PMID:9054397   	TAIR	09/30/2004 00:00:00
+AT4G00240	6532554666	AT4G00240.2	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00240	2126001	AT4G00240	calcium ion binding	GO:0005509	1755	func	other binding	IEA	AnalysisReference:501756966		11/26/2022 00:00:00
+AT4G00240	2126001	AT4G00240	protein binding	GO:0005515	3877	func	protein binding	IPI	Publication:501790246|PMID:32612234  		11/22/2022 00:00:00
+AT4G00240	2126001	AT4G00240	phospholipid catabolic process	GO:0009395	6740	proc	catabolic process | lipid metabolic process | other cellular processes | other metabolic processes	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G00240	2126001	AT4G00240	membrane	GO:0016020	453	comp	other membranes	IEA	AnalysisReference:501756966		11/26/2022 00:00:00
+AT4G00240	2126001	AT4G00240	phospholipase D activity	GO:0004630	3707	func	hydrolase activity	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G00240	2126000	AT4G00240.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00240	2126001	AT4G00240	plasma membrane	GO:0005886	570	comp	plasma membrane	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G00240	2126001	AT4G00240	phospholipase D activity	GO:0004630	3707	func	hydrolase activity	ISS	Publication:501681754	TAIR	03/29/2003 00:00:00
+AT4G00240	2126001	AT4G00240	phosphatidylcholine metabolic process	GO:0046470	13390	proc	other metabolic processes | lipid metabolic process | other cellular processes	IEA	AnalysisReference:501756966		11/26/2022 00:00:00
+AT4G00240	2126001	AT4G00240	N-acylphosphatidylethanolamine-specific phospholipase D activity	GO:0070290	31363	func	hydrolase activity	IEA	AnalysisReference:501756967		11/26/2022 00:00:00
+AT4G00240	2126001	AT4G00240	phospholipase D activity	GO:0004630	3707	func	hydrolase activity	IEA	AnalysisReference:501756967		11/26/2022 00:00:00
+AT4G00440	2126041	AT4G00440	regulation of hormone levels	GO:0010817	30939	proc	other biological processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00440	6532550138	AT4G00440.4	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00440	2126041	AT4G00440	cellular lipid metabolic process	GO:0044255	19692	proc	lipid metabolic process | other metabolic processes | other cellular processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00440	6532552658	AT4G00440.5	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00440	4010712805	AT4G00440.2	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00440	2126041	AT4G00440	shoot system morphogenesis	GO:0010016	13856	proc	multicellular organism development | anatomical structure development	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00440	2126041	AT4G00440	cell differentiation	GO:0030154	9398	proc	cell differentiation	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00440	2126041	AT4G00440	developmental growth	GO:0048589	21420	proc	growth	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00440	2126040	AT4G00440.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00440	4010712806	AT4G00440.3	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00440	2126041	AT4G00440	meristem development	GO:0048507	19325	proc	anatomical structure development	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00440	2126041	AT4G00440	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TAIR	05/08/2009 00:00:00
+AT4G00440	2126041	AT4G00440	lipid biosynthetic process	GO:0008610	6184	proc	biosynthetic process | other metabolic processes | lipid metabolic process	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00440	2126041	AT4G00440	cell division	GO:0051301	20664	proc	other cellular processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G00730	2127008	AT4G00730	anthocyanin accumulation in tissues in response to UV light	GO:0043481	21549	proc	response to external stimulus | response to light stimulus	IMP	Publication:1358|PMID:10402424  	TAIR	08/09/2005 00:00:00
+AT4G00730	2127008	AT4G00730	cutin biosynthetic process	GO:0010143	15102	proc	biosynthetic process | other metabolic processes	IMP	Publication:501748887|PMID:22623518  		11/15/2022 00:00:00
+AT4G00730	2127008	AT4G00730	lipid binding	GO:0008289	3020	func	lipid binding	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT4G00730	2127008	AT4G00730	DNA-binding transcription factor activity, RNA polymerase II-specific	GO:0000981	35772	func	DNA-binding transcription factor activity	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT4G00730	2127008	AT4G00730	plant-type cell wall modification	GO:0009827	10254	proc	cellular component organization | other cellular processes	IMP	Publication:501767635|PMID:26720211  	TAIR	02/12/2016 00:00:00
+AT4G00730	2127008	AT4G00730	root hair cell differentiation	GO:0048765	22771	proc	other cellular processes | cell differentiation | multicellular organism development | anatomical structure development	IMP	Publication:501742091|PMID:21421418  	TAIR	04/29/2011 00:00:00
+AT4G00730	2127008	AT4G00730	protein binding	GO:0005515	3877	func	protein binding	IPI	Publication:501772807|PMID:25564655  		06/28/2022 00:00:00
+AT4G00730	2127008	AT4G00730	transcription cis-regulatory region binding	GO:0000976	35767	func	nucleic acid binding | DNA binding	IPI	Publication:501773603|PMID:27923776  		12/18/2020 00:00:00
+AT4G00730	4515101756	AT4G00730.2	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00730	2127008	AT4G00730	root development	GO:0048364	18902	proc	multicellular organism development | anatomical structure development	IMP	Publication:1358|PMID:10402424  	TAIR	02/28/2005 00:00:00
+AT4G00730	3703487	AT4G00730.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00730	2127008	AT4G00730	DNA-binding transcription factor activity	GO:0003700	4449	func	DNA-binding transcription factor activity	ISS	Publication:1345963|PMID:11118137  	TAIR	06/06/2003 00:00:00
+AT4G00740	2117733	AT4G00740	S-adenosylmethionine-dependent methyltransferase activity	GO:0008757	1241	func	transferase activity	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G00740	2117733	AT4G00740	endosome	GO:0005768	272	comp	endosome	HDA	Publication:501750648|PMID:22923678  		04/07/2021 00:00:00
+AT4G00740	2117732	AT4G00740.1	Golgi trans cisterna	GO:0000138	56	comp	other intracellular components | Golgi apparatus	HDA	Publication:501785785|PMID:31266899  		08/16/2019 00:00:00
+AT4G00740	2117733	AT4G00740	pectin biosynthetic process	GO:0045489	12231	proc	other metabolic processes | carbohydrate metabolic process | biosynthetic process	IEA	AnalysisReference:501757242		11/22/2022 00:00:00
+AT4G00740	2117733	AT4G00740	Golgi membrane	GO:0000139	54	comp	other membranes | other intracellular components | Golgi apparatus	IDA	Publication:501743585|PMID:21725030  		06/18/2020 00:00:00
+AT4G00740	2117732	AT4G00740.1	membrane	GO:0016020	453	comp	other membranes	IDA	Publication:501743585|PMID:21725030  	TAIR	03/22/2013 00:00:00
+AT4G00740	2117732	AT4G00740.1	Golgi apparatus	GO:0005794	48	comp	Golgi apparatus	HDA	Publication:501747810|PMID:22430844  		05/12/2021 00:00:00
+AT4G00740	2117733	AT4G00740	mitochondrion	GO:0005739	486	comp	mitochondrion	HDA	Publication:501761766|PMID:25293756  		04/04/2019 00:00:00
+AT4G00740	2117733	AT4G00740	Golgi apparatus	GO:0005794	48	comp	Golgi apparatus	HDA	Publication:501761078|PMID:25122472  		05/10/2021 00:00:00
+AT4G00740	2117733	AT4G00740	Golgi apparatus	GO:0005794	48	comp	Golgi apparatus	HDA	Publication:501718909|PMID:16618929  	TAIR	05/12/2021 00:00:00
+AT4G00740	6532561184	AT4G00740.2	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00740	2117733	AT4G00740	trans-Golgi network	GO:0005802	57	comp	Golgi apparatus | other intracellular components	HDA	Publication:501750648|PMID:22923678  		04/07/2021 00:00:00
+AT4G00740	2117732	AT4G00740.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00740	2117733	AT4G00740	cell wall pectin metabolic process	GO:0052546	26421	proc	carbohydrate metabolic process | other metabolic processes | other cellular processes | cellular component organization	IMP	Publication:501743585|PMID:21725030  	TAIR	08/04/2011 00:00:00
+AT4G00740	2117733	AT4G00740	cytoplasm	GO:0005737	231	comp	cytoplasm	IBA	Communication:501741973		04/20/2022 00:00:00
+AT4G00740	2117733	AT4G00740	Golgi apparatus	GO:0005794	48	comp	Golgi apparatus	HDA	Publication:501750648|PMID:22923678  		04/07/2021 00:00:00
+AT4G00740	2117733	AT4G00740	cell wall biogenesis	GO:0042546	13564	proc	other cellular processes	IMP	Publication:501743585|PMID:21725030  		03/31/2021 00:00:00
+AT4G00740	2117733	AT4G00740	S-adenosylmethionine-dependent methyltransferase activity	GO:0008757	1241	func	transferase activity	IDA	Publication:501743585|PMID:21725030  	TAIR	08/04/2011 00:00:00
+AT4G00990	2125221	AT4G00990	chromatin	GO:0000785	14233	comp	other intracellular components	IBA	Communication:501741973		09/29/2022 00:00:00
+AT4G00990	2125221	AT4G00990	cytoplasm	GO:0005737	231	comp	cytoplasm	IDA	Publication:501776082|PMID:28650521  		05/04/2022 00:00:00
+AT4G00990	6532557705	AT4G00990.3	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00990	2125221	AT4G00990	histone H3K9 demethylase activity	GO:0032454	25449	func	catalytic activity	IDA	Publication:501776082|PMID:28650521  	TAIR	08/15/2017 00:00:00
+AT4G00990	2125221	AT4G00990	epigenetic regulation of gene expression	GO:0040029	10745	proc	regulation of gene expression, epigenetic	IMP	Publication:501776082|PMID:28650521  		05/04/2022 00:00:00
+AT4G00990	6532559156	AT4G00990.2	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00990	2125221	AT4G00990	regulation of stomatal closure	GO:0090333	35355	proc	other cellular processes	IMP	Publication:501795135|PMID:34197643  		05/04/2022 00:00:00
+AT4G00990	2125221	AT4G00990	histone H3-K9 demethylation	GO:0033169	27052	proc	cellular component organization | other metabolic processes	IDA	Publication:501795135|PMID:34197643  		05/04/2022 00:00:00
+AT4G00990	2125221	AT4G00990	transcription coregulator activity	GO:0003712	4446	func	transcription regulator activity	IBA	Communication:501741973		04/20/2022 00:00:00
+AT4G00990	2125221	AT4G00990	histone deacetylase complex	GO:0000118	353	comp	nucleus | nucleoplasm	IBA	Communication:501741973		04/02/2021 00:00:00
+AT4G00990	2125221	AT4G00990	histone H3-K9 demethylation	GO:0033169	27052	proc	other metabolic processes | cellular component organization	IEA	AnalysisReference:501756966		11/26/2022 00:00:00
+AT4G00990	2125221	AT4G00990	histone H3-K9 demethylation	GO:0033169	27052	proc	other metabolic processes | cellular component organization	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G00990	2125221	AT4G00990	nucleus	GO:0005634	537	comp	nucleus	IDA	Publication:501795135|PMID:34197643  		05/04/2022 00:00:00
+AT4G00990	2125221	AT4G00990	regulation of transcription by RNA polymerase II	GO:0006357	7463	proc	nucleobase-containing compound metabolic process | biosynthetic process | other metabolic processes | other cellular processes	IBA	Communication:501741973		03/31/2021 00:00:00
+AT4G00990	2125221	AT4G00990	protein binding	GO:0005515	3877	func	protein binding	IPI	Publication:501795135|PMID:34197643  		05/04/2022 00:00:00
+AT4G00990	2125221	AT4G00990	defense response to bacterium	GO:0042742	14972	proc	response to biotic stimulus | response to stress | response to external stimulus	IMP	Publication:501776082|PMID:28650521  	TAIR	08/15/2017 00:00:00
+AT4G00990	2125221	AT4G00990	nucleus	GO:0005634	537	comp	nucleus	IDA	Publication:501776082|PMID:28650521  		05/04/2022 00:00:00
+AT4G00990	3439520	AT4G00990.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G00990	2125221	AT4G00990	positive regulation of response to water deprivation	GO:1902584	45639	proc	response to abiotic stimulus | response to chemical | response to stress	IMP	Publication:501795135|PMID:34197643  		05/04/2022 00:00:00
+AT4G00990	2125221	AT4G00990	response to bacterium	GO:0009617	7120	proc	response to external stimulus | response to biotic stimulus	IEP	Publication:501776082|PMID:28650521  		05/04/2022 00:00:00
+AT4G00990	2125221	AT4G00990	chromatin DNA binding	GO:0031490	21178	func	chromatin binding | DNA binding	IBA	Communication:501741973		04/20/2022 00:00:00
+AT4G00990	2125221	AT4G00990	response to water deprivation	GO:0009414	5647	proc	response to abiotic stimulus | response to stress | response to chemical	IEP	Publication:501795135|PMID:34197643  		05/04/2022 00:00:00
+AT4G00990	2125221	AT4G00990	histone H3K9 demethylase activity	GO:0032454	25449	func	catalytic activity	IEA	AnalysisReference:501756966		11/26/2022 00:00:00
+AT4G00990	2125221	AT4G00990	histone H3K9 demethylase activity	GO:0032454	25449	func	catalytic activity	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G00990	2125221	AT4G00990	epigenetic regulation of gene expression	GO:0040029	10745	proc	regulation of gene expression, epigenetic	IMP	Publication:501795135|PMID:34197643  		05/04/2022 00:00:00
+AT4G00990	2125221	AT4G00990	regulation of photoperiodism, flowering	GO:2000028	35576	proc	multicellular organism development | reproduction | anatomical structure development | post-embryonic development | response to light stimulus	IMP	Publication:501776082|PMID:28650521  	TAIR	08/15/2017 00:00:00
+AT4G01010	2125205	AT4G01010.1	mitochondrion	GO:0005739	486	comp	mitochondrion	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G01010	6532561480	AT4G01010.2	mitochondrion	GO:0005739	486	comp	mitochondrion	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G01010	2125206	AT4G01010	response to abscisic acid	GO:0009737	11395	proc	response to endogenous stimulus | response to chemical	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G01010	2125206	AT4G01010	ion channel activity	GO:0005216	2912	func	transporter activity	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT4G01010	2125206	AT4G01010	hormone-mediated signaling pathway	GO:0009755	11413	proc	response to endogenous stimulus | response to chemical | other cellular processes | signal transduction	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G01010	2125206	AT4G01010	response to water	GO:0009415	7596	proc	response to abiotic stimulus | response to chemical	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G01040	2124988	AT4G01040	oligosaccharide binding	GO:0070492	31620	func	carbohydrate binding	IBA	Communication:501741973		04/02/2021 00:00:00
+AT4G01040	2124988	AT4G01040	extracellular region	GO:0005576	294	comp	extracellular region	IBA	Communication:501741973		04/02/2021 00:00:00
+AT4G01040	2124988	AT4G01040	chitin binding	GO:0008061	1899	func	other binding	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT4G01040	2124988	AT4G01040	endoplasmic reticulum	GO:0005783	268	comp	endoplasmic reticulum	HDA	Publication:501750648|PMID:22923678  		04/07/2021 00:00:00
+AT4G01040	2124988	AT4G01040	carbohydrate metabolic process	GO:0005975	5291	proc	carbohydrate metabolic process	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT4G01140	2125003	AT4G01140	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	10/04/2003 00:00:00
+AT4G02760	6532551349	AT4G02760.6	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G02760	6532551363	AT4G02760.9	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G02760	6532551362	AT4G02760.8	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G02760	2140244	AT4G02760.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G02760	6532552889	AT4G02760.4	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G02760	6530297340	AT4G02760.3	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G02760	6532560787	AT4G02760.7	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G02760	6532551352	AT4G02760.5	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G02760	2140245	AT4G02760	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TAIR	10/28/2021 00:00:00
+AT4G02760	2140245	AT4G02760	SCF-dependent proteasomal ubiquitin-dependent protein catabolic process	GO:0031146	19827	proc	other cellular processes | other metabolic processes | catabolic process | protein metabolic process	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G02760	2140245	AT4G02760	SCF ubiquitin ligase complex	GO:0019005	7868	comp	other cellular components	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G03210	2125436	AT4G03210.1	extracellular region	GO:0005576	294	comp	extracellular region	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G03210	2125437	AT4G03210	xylem development	GO:0010089	14843	proc	anatomical structure development	IGI	Publication:501788211|PMID:32005783  	TAIR	10/30/2020 00:00:00
+AT4G03210	2125437	AT4G03210	xyloglucan:xyloglucosyl transferase activity	GO:0016762	4652	func	transferase activity	ISS	Publication:501707710|PMID:12856951  	TAIR	09/18/2003 00:00:00
+AT4G03210	2125437	AT4G03210	hydrolase activity, hydrolyzing O-glycosyl compounds	GO:0004553	2781	func	hydrolase activity	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT4G03210	2125437	AT4G03210	xyloglucan metabolic process	GO:0010411	27025	proc	other cellular processes | other metabolic processes | carbohydrate metabolic process	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT4G03210	2125437	AT4G03210	xyloglucan:xyloglucosyl transferase activity	GO:0016762	4652	func	transferase activity	IEA	AnalysisReference:501756967		11/22/2022 00:00:00
+AT4G03210	2125437	AT4G03210	plant-type secondary cell wall biogenesis	GO:0009834	10267	proc	other cellular processes	IGI	Publication:501788211|PMID:32005783  	TAIR	10/30/2020 00:00:00
+AT4G03210	2125437	AT4G03210	cell wall biogenesis	GO:0042546	13564	proc	other cellular processes	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT4G03210	2125437	AT4G03210	polysaccharide binding	GO:0030247	8585	func	carbohydrate binding	ISS	Communication:501789215		02/08/2022 00:00:00
+AT4G11240	2128258	AT4G11240	protein serine/threonine phosphatase activity	GO:0004722	3908	func	catalytic activity | hydrolase activity	ISS	Publication:2553|PMID:9617814   	TAIR	02/12/2008 00:00:00
+AT4G11240	2128258	AT4G11240	protein serine/threonine phosphatase activity	GO:0004722	3908	func	hydrolase activity | catalytic activity	IDA	Publication:501741364|PMID:21222654  	TAIR	04/19/2011 00:00:00
+AT4G11240	2128258	AT4G11240	RNA metabolic process	GO:0016070	4899	proc	nucleobase-containing compound metabolic process | other metabolic processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G11240	2128258	AT4G11240	nucleus	GO:0005634	537	comp	nucleus	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G11240	2128257	AT4G11240.1	mitochondrion	GO:0005739	486	comp	mitochondrion	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G11240	2128258	AT4G11240	protein dephosphorylation	GO:0006470	6878	proc	other cellular processes | other metabolic processes	ISS	Publication:2553|PMID:9617814   	TAIR	11/11/2003 00:00:00
+AT4G11240	2128258	AT4G11240	myosin phosphatase activity	GO:0017018	3284	func	hydrolase activity | catalytic activity	IEA	AnalysisReference:501756967		11/26/2022 00:00:00
+AT4G11240	2128258	AT4G11240	macromolecule modification	GO:0043412	21458	proc	other metabolic processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT4G11240	2128258	AT4G11240	cytoplasm	GO:0005737	231	comp	cytoplasm	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G11240	2128258	AT4G11240	protein serine/threonine phosphatase activity	GO:0004722	3908	func	hydrolase activity | catalytic activity	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G11745	1005716195	AT4G11745	biological_process_unknown	GO:0008150	5239	proc	unknown biological processes	ND	Communication:1345790	TIGR	02/01/2022 00:00:00
+AT4G11745	1005713852	AT4G11745.1	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G11745	1005716195	AT4G11745	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	09/06/2003 00:00:00
+AT4G11750	2139686	AT4G11750.1	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G11750	2139687	AT4G11750	biological_process_unknown	GO:0008150	5239	proc	unknown biological processes	ND	Communication:1345790	TIGR	02/01/2022 00:00:00
+AT4G11750	2139687	AT4G11750	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	04/17/2003 00:00:00
+AT4G11770	2139722	AT4G11770	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	04/17/2003 00:00:00
+AT4G11770	2139722	AT4G11770	biological_process_unknown	GO:0008150	5239	proc	unknown biological processes	ND	Communication:1345790	TIGR	02/01/2022 00:00:00
+AT4G11770	2139722	AT4G11770	cellular_component_unknown	GO:0005575	163	comp	unknown cellular components	ND	Communication:1345790	TAIR	02/01/2022 00:00:00
+AT4G11845	4010712867	AT4G11845.1	mitochondrion	GO:0005739	486	comp	mitochondrion	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT4G11845	4010713879	AT4G11845	cytosol	GO:0005829	241	comp	cytosol	HDA	Publication:501776792|PMID:28887381  		04/04/2019 00:00:00
+AT4G11850	2137045	AT4G11850	membrane lipid metabolic process	GO:0006643	6320	proc	lipid metabolic process | other cellular processes | other metabolic processes	IMP	Publication:501746169|PMID:22163277  	TAIR	01/25/2012 00:00:00
+AT4G11850	2137045	AT4G11850	protein binding	GO:0005515	3877	func	protein binding	IPI	Publication:501730377|PMID:19452453  		10/29/2009 00:00:00
+AT4G11850	2137045	AT4G11850	defense response to bacterium	GO:0042742	14972	proc	response to stress | response to external stimulus | response to biotic stimulus	IGI	Publication:501681776|PMID:12182338  	TAIR	12/18/2020 00:00:00
+AT4G11850	2137045	AT4G11850	phosphatidylcholine metabolic process	GO:0046470	13390	proc	other metabolic processes | lipid metabolic process | other cellular processes	IEA	AnalysisReference:501756966		11/26/2022 00:00:00
+AT4G11850	2137045	AT4G11850	embryo development ending in seed dormancy	GO:0009793	11994	proc	anatomical structure development | reproduction | embryo development | post-embryonic development | multicellular organism development	IMP	Publication:501714637|PMID:15634699  	TAIR	03/07/2007 00:00:00
+AT4G11850	2137045	AT4G11850	phosphatidylinositol-4,5-bisphosphate binding	GO:0005546	3675	func	other binding | lipid binding	IDA	Publication:2998|PMID:9353280   	TAIR	08/09/2010 00:00:00
+AT4G11850	2137045	AT4G11850	innate immune response	GO:0045087	11128	proc	response to biotic stimulus | response to external stimulus | response to stress	IDA	Publication:501788858|PMID:32152212  		03/27/2020 00:00:00
+AT4G11850	2137045	AT4G11850	response to oxidative stress	GO:0006979	6625	proc	response to stress	IMP	Publication:501746169|PMID:22163277  	TAIR	01/25/2012 00:00:00
+AT4G11850	2137045	AT4G11850	phospholipase D activity	GO:0004630	3707	func	hydrolase activity	ISS	Publication:501681754	TAIR	03/29/2003 00:00:00
+AT4G11850	2137045	AT4G11850	plasma membrane	GO:0005886	570	comp	plasma membrane	HDA	Publication:501750648|PMID:22923678  		04/07/2021 00:00:00
+AT4G11850	2137045	AT4G11850	plasma membrane	GO:0005886	570	comp	plasma membrane	IDA	Publication:501788858|PMID:32152212  		03/27/2020 00:00:00
+AT4G11850	2137045	AT4G11850	phospholipid catabolic process	GO:0009395	6740	proc	other metabolic processes | catabolic process | lipid metabolic process | other cellular processes	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G11850	2137045	AT4G11850	response to aluminum ion	GO:0010044	14700	proc	response to chemical	IMP	Publication:501746169|PMID:22163277  	TAIR	01/25/2012 00:00:00
+AT4G11850	2137045	AT4G11850	N-acylphosphatidylethanolamine-specific phospholipase D activity	GO:0070290	31363	func	hydrolase activity	IEA	AnalysisReference:501756967		11/26/2022 00:00:00
+AT4G11850	2137045	AT4G11850	plasma membrane	GO:0005886	570	comp	plasma membrane	HDA	Publication:501718909|PMID:16618929  	TAIR	05/12/2021 00:00:00
+AT4G11850	2137045	AT4G11850	cytosol	GO:0005829	241	comp	cytosol	HDA	Publication:501776792|PMID:28887381  		04/04/2019 00:00:00
+AT4G11850	2137045	AT4G11850	plasma membrane	GO:0005886	570	comp	plasma membrane	IBA	Communication:501741973		11/23/2022 00:00:00
+AT4G11850	2137045	AT4G11850	protein binding	GO:0005515	3877	func	protein binding	IPI	Publication:501788858|PMID:32152212  		03/27/2020 00:00:00
+AT4G11850	2137045	AT4G11850	calcium ion binding	GO:0005509	1755	func	other binding	IEA	AnalysisReference:501756966		11/26/2022 00:00:00
+AT4G11850	2137045	AT4G11850	phospholipase D activity	GO:0004630	3707	func	hydrolase activity	IDA	Publication:2998|PMID:9353280   	TAIR	11/19/2003 00:00:00
+AT4G11850	2137045	AT4G11850	phospholipase D activity	GO:0004630	3707	func	hydrolase activity	IBA	Communication:501741973		11/23/2022 00:00:00
+AT5G10170	2184153	AT5G10170	cytoplasm	GO:0005737	231	comp	cytoplasm	IBA	Communication:501741973		09/29/2022 00:00:00
+AT5G10170	2184152	AT5G10170.1	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G10170	2184153	AT5G10170	cytoplasm	GO:0005737	231	comp	cytoplasm	IDA	Publication:501736475|PMID:20215587  	TAIR	04/15/2010 00:00:00
+AT5G10170	2184153	AT5G10170	embryo development ending in seed dormancy	GO:0009793	11994	proc	multicellular organism development | embryo development | reproduction | post-embryonic development | anatomical structure development	IGI	Publication:501742428|PMID:21505066  		08/03/2011 00:00:00
+AT5G10170	2184153	AT5G10170	inositol biosynthetic process	GO:0006021	6452	proc	other metabolic processes | other cellular processes | carbohydrate metabolic process | biosynthetic process	IBA	Communication:501741973		11/23/2022 00:00:00
+AT5G10170	2184153	AT5G10170	inositol-3-phosphate synthase activity	GO:0004512	3275	func	catalytic activity	IBA	Communication:501741973		11/23/2022 00:00:00
+AT5G10170	2184153	AT5G10170	inositol biosynthetic process	GO:0006021	6452	proc	carbohydrate metabolic process | other metabolic processes | biosynthetic process | other cellular processes	IEA	AnalysisReference:501757242		11/26/2022 00:00:00
+AT5G10170	2184153	AT5G10170	inositol-3-phosphate synthase activity	GO:0004512	3275	func	catalytic activity	IGI	Publication:501742428|PMID:21505066  		08/03/2011 00:00:00
+AT5G25415	505006637	AT5G25415	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TAIR	05/08/2009 00:00:00
+AT5G25415	505006637	AT5G25415	biological_process_unknown	GO:0008150	5239	proc	unknown biological processes	ND	Communication:1345790	TIGR	02/01/2022 00:00:00
+AT5G25415	505006637	AT5G25415	cellular_component_unknown	GO:0005575	163	comp	unknown cellular components	ND	Communication:1345790	TIGR	02/01/2022 00:00:00
+AT5G45830	2152390	AT5G45830	sequence-specific DNA binding	GO:0043565	22416	func	DNA binding	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT5G45830	2152390	AT5G45830	DNA-templated transcription	GO:0006351	7470	proc	nucleobase-containing compound metabolic process | other metabolic processes | biosynthetic process | other cellular processes	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT5G45830	2152390	AT5G45830	abscisic acid-activated signaling pathway	GO:0009738	11414	proc	other cellular processes | signal transduction | response to endogenous stimulus | response to chemical	IMP	Publication:501723093|PMID:17890372  	TAIR	03/19/2010 00:00:00
+AT5G45830	6532559434	AT5G45830.6	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G45830	2152390	AT5G45830	seed dormancy process	GO:0010162	17254	proc	multicellular organism development | reproduction | post-embryonic development | anatomical structure development	IMP	Publication:501723093|PMID:17890372  	TAIR	03/19/2010 00:00:00
+AT5G45830	6532559435	AT5G45830.4	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G45830	6532555408	AT5G45830.3	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G45830	2152390	AT5G45830	regulation of seed dormancy process	GO:2000033	35581	proc	reproduction | post-embryonic development | multicellular organism development | anatomical structure development	IMP	Publication:501720046|PMID:17065317  	TAIR	08/23/2010 00:00:00
+AT5G45830	6532559432	AT5G45830.2	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G45830	2152390	AT5G45830	sugar mediated signaling pathway	GO:0010182	13865	proc	other cellular processes | response to chemical | signal transduction	IMP	Publication:501723093|PMID:17890372  	TAIR	03/19/2010 00:00:00
+AT5G45830	2152390	AT5G45830	identical protein binding	GO:0042802	15210	func	protein binding	IPI	Publication:501790246|PMID:32612234  		11/22/2022 00:00:00
+AT5G45830	6532562386	AT5G45830.5	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G45830	2152390	AT5G45830	protein binding	GO:0005515	3877	func	protein binding	IPI	Publication:501790246|PMID:32612234  		11/22/2022 00:00:00
+AT5G45830	3441711	AT5G45830.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G53150	6532563658	AT5G53150.6	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G53150	2163786	AT5G53150	flower development	GO:0009908	11347	proc	flower development	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT5G53150	2163786	AT5G53150	regulation of reproductive process	GO:2000241	36525	proc	reproduction	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT5G53150	2163785	AT5G53150.1	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G53150	6532563927	AT5G53150.5	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G53150	2163786	AT5G53150	regulation of biological quality	GO:0065008	25784	proc	other biological processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT5G53150	2163786	AT5G53150	regulation of developmental process	GO:0050793	17954	proc	other biological processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT5G53150	2163786	AT5G53150	photoperiodism, flowering	GO:0048573	21196	proc	response to light stimulus | post-embryonic development | anatomical structure development | reproduction | multicellular organism development	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT5G53150	2163786	AT5G53150	positive regulation of macromolecule metabolic process	GO:0010604	29564	proc	other metabolic processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT5G53150	6532563653	AT5G53150.3	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G53150	2163786	AT5G53150	regulation of DNA-templated transcription	GO:0006355	7461	proc	nucleobase-containing compound metabolic process | biosynthetic process | other cellular processes | other metabolic processes	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT5G53150	6532563926	AT5G53150.4	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G53150	2163786	AT5G53150	protein metabolic process	GO:0019538	10586	proc	protein metabolic process	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT5G53150	2163786	AT5G53150	phyllome development	GO:0048827	23475	proc	anatomical structure development | multicellular organism development	IEA	Publication:501796011|PMID:34562334  		11/14/2022 00:00:00
+AT5G53150	6532563922	AT5G53150.2	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G53150	2163786	AT5G53150	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TAIR	10/28/2021 00:00:00

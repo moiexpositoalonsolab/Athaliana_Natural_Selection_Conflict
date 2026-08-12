@@ -1,0 +1,81 @@
+Locus	TAIR internal locus id	Gene Model(s)	GO term	GO ID	TAIR internal GO id	category	GO Slim(s)	Evidence code	Reference	Made by	date last modified
+AT1G08630	2025645	AT1G08630	cytosol	GO:0005829	241	comp	cytosol	IBA	Communication:501741973		11/23/2022 00:00:00
+AT1G08630	6532550241	AT1G08630.6	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G08630	2025645	AT1G08630	glycine biosynthetic process	GO:0006545	5906	proc	other metabolic processes | biosynthetic process | other cellular processes	IBA	Communication:501741973		11/23/2022 00:00:00
+AT1G08630	2025645	AT1G08630	threonine catabolic process	GO:0006567	7434	proc	other cellular processes | other metabolic processes | catabolic process	IBA	Communication:501741973		11/23/2022 00:00:00
+AT1G08630	1005715526	AT1G08630.3	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G08630	6532559499	AT1G08630.7	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G08630	2025644	AT1G08630.1	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G08630	1005715527	AT1G08630.2	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G08630	1009021034	AT1G08630.4	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G08630	2025645	AT1G08630	threonine aldolase activity	GO:0004793	4409	func	catalytic activity	IDA	Publication:501720568|PMID:17172352  	TAIR	01/29/2007 00:00:00
+AT1G08630	2025645	AT1G08630	threonine catabolic process	GO:0006567	7434	proc	other cellular processes | catabolic process | other metabolic processes	IMP	Publication:501720568|PMID:17172352  	TAIR	01/29/2007 00:00:00
+AT1G08630	2025645	AT1G08630	amino acid metabolic process	GO:0006520	5099	proc	other cellular processes | other metabolic processes	IEA	AnalysisReference:501756966		11/26/2022 00:00:00
+AT1G08630	2025645	AT1G08630	L-allo-threonine aldolase activity	GO:0008732	1063	func	catalytic activity	IBA	Communication:501741973		09/29/2022 00:00:00
+AT1G08630	2025645	AT1G08630	lyase activity	GO:0016829	3071	func	catalytic activity	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT1G11500	2200071	AT1G11500	endoplasmic reticulum	GO:0005783	268	comp	endoplasmic reticulum	ISS	Communication:501789215		02/08/2022 00:00:00
+AT1G11500	2200071	AT1G11500	leaf development	GO:0048366	18907	proc	anatomical structure development | multicellular organism development	IMP	Publication:501777715|PMID:29139551  		02/08/2022 00:00:00
+AT1G11500	2200071	AT1G11500	determination of bilateral symmetry	GO:0009855	12002	proc	multicellular organism development	IMP	Publication:501777715|PMID:29139551  		02/08/2022 00:00:00
+AT1G11500	2200071	AT1G11500	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	10/04/2003 00:00:00
+AT1G11500	6532549952	AT1G11500.2	chloroplast	GO:0009507	175	comp	chloroplast	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11510	2200106	AT1G11510	regulation of DNA-templated transcription	GO:0006355	7461	proc	other cellular processes | biosynthetic process | other metabolic processes | nucleobase-containing compound metabolic process	TAS	Publication:501682971|PMID:12535344  		06/03/2011 00:00:00
+AT1G11510	2200106	AT1G11510	regulation of DNA-templated transcription	GO:0006355	7461	proc	other metabolic processes | other cellular processes | biosynthetic process | nucleobase-containing compound metabolic process	IEA	AnalysisReference:501756966		11/22/2022 00:00:00
+AT1G11510	6532557239	AT1G11510.2	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11510	2200106	AT1G11510	protein binding	GO:0005515	3877	func	protein binding	IPI	Publication:501776083|PMID:28650476  		11/22/2022 00:00:00
+AT1G11510	2200105	AT1G11510.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11510	2200106	AT1G11510	nucleus	GO:0005634	537	comp	nucleus	IBA	Communication:501741973		11/23/2022 00:00:00
+AT1G11520	2200126	AT1G11520	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	10/04/2003 00:00:00
+AT1G11520	2200125	AT1G11520.1	chloroplast	GO:0009507	175	comp	chloroplast	HDA	Publication:501724486|PMID:18431481  		04/07/2021 00:00:00
+AT1G11520	2200125	AT1G11520.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11520	2200126	AT1G11520	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	10/04/2003 00:00:00
+AT1G11520	2200125	AT1G11520.1	chloroplast	GO:0009507	175	comp	chloroplast	HDA	Publication:501724486|PMID:18431481  		04/07/2021 00:00:00
+AT1G11520	2200125	AT1G11520.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11530	2200141	AT1G11530	extracellular region	GO:0005576	294	comp	extracellular region	HDA	Publication:501776792|PMID:28887381  		04/04/2019 00:00:00
+AT1G11530	2200141	AT1G11530	protein disulfide isomerase activity	GO:0003756	3881	func	catalytic activity	IDA	Publication:501724625|PMID:18384502  	TAIR	12/05/2012 00:00:00
+AT1G11530	2200141	AT1G11530	protein disulfide isomerase activity	GO:0003756	3881	func	catalytic activity	IDA	Publication:501724625|PMID:18384502  	TAIR	11/20/2008 00:00:00
+AT1G11530	2200140	AT1G11530.1	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11530	2200141	AT1G11530	cytosol	GO:0005829	241	comp	cytosol	IDA	Publication:501724625|PMID:18384502  	TAIR	11/20/2008 00:00:00
+AT1G11530	2200141	AT1G11530	extracellular region	GO:0005576	294	comp	extracellular region	HDA	Publication:501776792|PMID:28887381  		04/04/2019 00:00:00
+AT1G11530	2200141	AT1G11530	protein disulfide isomerase activity	GO:0003756	3881	func	catalytic activity	IDA	Publication:501724625|PMID:18384502  	TAIR	12/05/2012 00:00:00
+AT1G11530	2200141	AT1G11530	protein disulfide isomerase activity	GO:0003756	3881	func	catalytic activity	IDA	Publication:501724625|PMID:18384502  	TAIR	11/20/2008 00:00:00
+AT1G11530	2200140	AT1G11530.1	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11530	2200141	AT1G11530	cytosol	GO:0005829	241	comp	cytosol	IDA	Publication:501724625|PMID:18384502  	TAIR	11/20/2008 00:00:00
+AT1G11530	2200141	AT1G11530	extracellular region	GO:0005576	294	comp	extracellular region	HDA	Publication:501776792|PMID:28887381  		04/04/2019 00:00:00
+AT1G11530	2200141	AT1G11530	protein disulfide isomerase activity	GO:0003756	3881	func	catalytic activity	IDA	Publication:501724625|PMID:18384502  	TAIR	12/05/2012 00:00:00
+AT1G11530	2200141	AT1G11530	protein disulfide isomerase activity	GO:0003756	3881	func	catalytic activity	IDA	Publication:501724625|PMID:18384502  	TAIR	11/20/2008 00:00:00
+AT1G11530	2200140	AT1G11530.1	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11530	2200141	AT1G11530	cytosol	GO:0005829	241	comp	cytosol	IDA	Publication:501724625|PMID:18384502  	TAIR	11/20/2008 00:00:00
+AT1G11540	6532558305	AT1G11540.2	extracellular region	GO:0005576	294	comp	extracellular region	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11540	2200061	AT1G11540	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	09/06/2003 00:00:00
+AT1G11540	2200061	AT1G11540	Cul4A-RING E3 ubiquitin ligase complex	GO:0031464	21152	comp	other cellular components	IBA	Communication:501741973		04/02/2021 00:00:00
+AT1G11540	6532558305	AT1G11540.2	extracellular region	GO:0005576	294	comp	extracellular region	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11540	2200061	AT1G11540	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	09/06/2003 00:00:00
+AT1G11540	2200061	AT1G11540	Cul4A-RING E3 ubiquitin ligase complex	GO:0031464	21152	comp	other cellular components	IBA	Communication:501741973		04/02/2021 00:00:00
+AT1G11540	6532558305	AT1G11540.2	extracellular region	GO:0005576	294	comp	extracellular region	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11540	2200061	AT1G11540	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	09/06/2003 00:00:00
+AT1G11540	2200061	AT1G11540	Cul4A-RING E3 ubiquitin ligase complex	GO:0031464	21152	comp	other cellular components	IBA	Communication:501741973		04/02/2021 00:00:00
+AT1G11540	6532558305	AT1G11540.2	extracellular region	GO:0005576	294	comp	extracellular region	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11540	2200061	AT1G11540	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	09/06/2003 00:00:00
+AT1G11540	2200061	AT1G11540	Cul4A-RING E3 ubiquitin ligase complex	GO:0031464	21152	comp	other cellular components	IBA	Communication:501741973		04/02/2021 00:00:00
+AT1G11540	6532558305	AT1G11540.2	extracellular region	GO:0005576	294	comp	extracellular region	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11540	2200061	AT1G11540	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	09/06/2003 00:00:00
+AT1G11540	2200061	AT1G11540	Cul4A-RING E3 ubiquitin ligase complex	GO:0031464	21152	comp	other cellular components	IBA	Communication:501741973		04/02/2021 00:00:00
+AT1G11540	6532558305	AT1G11540.2	extracellular region	GO:0005576	294	comp	extracellular region	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11540	2200061	AT1G11540	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	09/06/2003 00:00:00
+AT1G11540	2200061	AT1G11540	Cul4A-RING E3 ubiquitin ligase complex	GO:0031464	21152	comp	other cellular components	IBA	Communication:501741973		04/02/2021 00:00:00
+AT1G11540	6532558305	AT1G11540.2	extracellular region	GO:0005576	294	comp	extracellular region	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT1G11540	2200061	AT1G11540	molecular_function_unknown	GO:0003674	3226	func	unknown molecular functions	ND	Communication:1345790	TIGR	09/06/2003 00:00:00
+AT1G11540	2200061	AT1G11540	Cul4A-RING E3 ubiquitin ligase complex	GO:0031464	21152	comp	other cellular components	IBA	Communication:501741973		04/02/2021 00:00:00
+AT2G22600	2066020	AT2G22600	nucleus	GO:0005634	537	comp	nucleus	IBA	Communication:501741973		11/23/2022 00:00:00
+AT2G22600	2066019	AT2G22600.1	nucleus	GO:0005634	537	comp	nucleus	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT2G22600	2066020	AT2G22600	mRNA binding	GO:0003729	3091	func	RNA binding	IBA	Communication:501741973		11/23/2022 00:00:00
+AT2G22600	2066020	AT2G22600	cytoplasm	GO:0005737	231	comp	cytoplasm	IBA	Communication:501741973		11/23/2022 00:00:00
+AT2G22600	2066020	AT2G22600	regulation of gene expression	GO:0010468	28541	proc	other metabolic processes	IBA	Communication:501741973		11/23/2022 00:00:00
+AT5G10170	2184153	AT5G10170	inositol-3-phosphate synthase activity	GO:0004512	3275	func	catalytic activity	IBA	Communication:501741973		11/23/2022 00:00:00
+AT5G10170	2184153	AT5G10170	cytoplasm	GO:0005737	231	comp	cytoplasm	IBA	Communication:501741973		09/29/2022 00:00:00
+AT5G10170	2184153	AT5G10170	inositol biosynthetic process	GO:0006021	6452	proc	carbohydrate metabolic process | other metabolic processes | biosynthetic process | other cellular processes	IEA	AnalysisReference:501757242		11/26/2022 00:00:00
+AT5G10170	2184153	AT5G10170	inositol-3-phosphate synthase activity	GO:0004512	3275	func	catalytic activity	IGI	Publication:501742428|PMID:21505066  		08/03/2011 00:00:00
+AT5G10170	2184152	AT5G10170.1	cytoplasm	GO:0005737	231	comp	cytoplasm	ISM	AnalysisReference:501780126		08/31/2018 00:00:00
+AT5G10170	2184153	AT5G10170	cytoplasm	GO:0005737	231	comp	cytoplasm	IDA	Publication:501736475|PMID:20215587  	TAIR	04/15/2010 00:00:00
+AT5G10170	2184153	AT5G10170	embryo development ending in seed dormancy	GO:0009793	11994	proc	multicellular organism development | embryo development | reproduction | post-embryonic development | anatomical structure development	IGI	Publication:501742428|PMID:21505066  		08/03/2011 00:00:00
+AT5G10170	2184153	AT5G10170	inositol biosynthetic process	GO:0006021	6452	proc	other metabolic processes | other cellular processes | carbohydrate metabolic process | biosynthetic process	IBA	Communication:501741973		11/23/2022 00:00:00

@@ -1,0 +1,61 @@
+##
+## GEMMA Version    = 0.98.4 (2021-01-29)
+## Build profile    = /gnu/store/8mkllydvkgfy6ydlrymrx8wj0dy1x6lm-profile
+## GCC version      = 7.5.0
+## GSL Version      = 2.6
+## OpenBlas         = OpenBLAS 0.3.9  - OpenBLAS 0.3.9 DYNAMIC_ARCH NO_AFFINITY Haswell MAX_THREADS=128
+##   arch           = Haswell
+##   threads        = 2
+##   parallel type  = threaded
+##
+## Command Line Input = ../gemma -bfile ../1001gbi -miss 0.05 -maf 0.05 -r2 1 -k ../1001gbi.sXX.txt -lmm 4 -n 1 10 -o mGWAS_FT16_Growth_rate 
+##
+## Date = Tue Sep 13 19:34:55 2022
+##
+## Summary Statistics:
+## number of total individuals = 1135
+## number of analyzed individuals = 395
+## number of covariates = 1
+## number of phenotypes = 2
+## number of total SNPs/var = 11769920
+## number of analyzed SNPs/var = 347257
+## REMLE log-likelihood in the null model = -908.802
+## MLE log-likelihood in the null model = -908.493
+## REMLE estimate for Vg in the null model: 
+0.768799
+0.523746	0.685623
+## se(Vg): 
+0.0742292
+0.0623707	0.0823436
+## REMLE estimate for Ve in the null model: 
+0.0789062
+-0.0123775	0.185263
+## se(Ve): 
+0.0292702
+0.0261974	0.0457398
+## MLE estimate for Vg in the null model: 
+0.776993	0.529258
+0.529258	0.69328
+## se(Vg): 
+0.074714
+0.0627594	0.0828406
+## MLE estimate for Ve in the null model: 
+0.0731942	-0.0157734
+-0.0157734	0.179201
+## se(Ve): 
+0.0284407
+0.02553	0.0450915
+## estimate for B (d by c) in the null model (columns correspond to the covariates provided in the file): 
+-0.202512
+-0.0292364
+## se(B): 
+0.0141337
+0.0216569
+##
+## Computation Time:
+## total computation time = 37.5178 min 
+## computation time break down: 
+##      time on eigen-decomposition = 0.00140673 min 
+##      time on calculating UtX = 0.110575 min 
+##      time on optimization = 34.5906 min 
+##

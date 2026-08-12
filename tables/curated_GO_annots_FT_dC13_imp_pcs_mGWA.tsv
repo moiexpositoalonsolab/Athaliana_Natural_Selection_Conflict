@@ -1,0 +1,257 @@
+Locus	TAIR.internal.locus.id	GO.term	category	Evidence.code
+AT1G11540	2200061	molecular_function_unknown	func	ND
+AT1G11680	2027312	sterol 14-demethylase activity	func	TAS
+AT1G11680	2027312	embryo development ending in seed dormancy	proc	NAS
+AT1G11680	2027312	oxidoreductase activity	func	IBA
+AT1G11680	2027312	sterol biosynthetic process	proc	IBA
+AT1G11680	2027312	heme binding	func	IEA
+AT1G11680	2027312	sterol biosynthetic process	proc	IMP
+AT1G11680	2027312	iron ion binding	func	IEA
+AT1G11680	2027312	sterol biosynthetic process	proc	TAS
+AT1G11740	2027342	cellular macromolecule metabolic process	proc	IEA
+AT1G78070	2029486	response to salt stress	proc	IEA
+AT1G78070	2029486	molecular_function_unknown	func	ND
+AT1G78070	2029486	response to cold	proc	IEA
+AT1G78070	2029486	secondary metabolite biosynthetic process	proc	IEA
+AT1G78070	2029486	response to water deprivation	proc	IEA
+AT1G78070	2029486	DNA-templated transcription	proc	IEA
+AT1G78070	2029486	defense response to fungus	proc	IEA
+AT1G78070	2029486	lipid metabolic process	proc	IEA
+AT1G78070	2029486	response to light stimulus	proc	IEA
+AT1G78070	2029486	macromolecule localization	proc	IEA
+AT1G78070	2029486	abscisic acid-activated signaling pathway	proc	IEA
+AT1G78070	2029486	monocarboxylic acid metabolic process	proc	IEA
+AT1G78070	2029486	cellular response to hypoxia	proc	HEP
+AT1G78070	2029486	regulation of post-embryonic development	proc	IEA
+AT1G78070	2029486	response to oxidative stress	proc	IEA
+AT1G78070	2029486	response to wounding	proc	IEA
+AT1G78070	2029486	response to jasmonic acid	proc	IEA
+AT1G78070	2029486	defense response to bacterium	proc	IEA
+AT2G33560	2050977	protein binding	func	IPI
+AT2G33560	2050977	mitotic spindle assembly checkpoint signaling	proc	IDA
+AT2G33560	2050977	protein binding	func	IPI
+AT2G33560	2050977	protein binding	func	IPI
+AT2G33560	2050977	mitotic spindle assembly checkpoint signaling	proc	IBA
+AT2G33560	2050977	meiotic sister chromatid cohesion, centromeric	proc	IBA
+AT2G33560	2050977	protein kinase activity	func	IBA
+AT4G00232	505006410	gametophyte development	proc	IEA
+AT4G00232	505006410	macromolecule biosynthetic process	proc	IEA
+AT4G00232	505006410	regulation of multicellular organismal process	proc	IEA
+AT4G00232	505006410	regulation of growth	proc	IEA
+AT4G00232	505006410	molecular_function_unknown	func	ND
+AT4G00232	505006410	cell differentiation	proc	IEA
+AT4G00232	505006410	cellular macromolecule metabolic process	proc	IEA
+AT4G00232	505006410	regulation of DNA-templated transcription	proc	IEA
+AT4G00232	505006410	regulation of reproductive process	proc	IEA
+AT4G00232	505006410	regulation of developmental process	proc	IEA
+AT4G00240	2126001	phospholipase D activity	func	IDA
+AT4G00240	2126001	calcium ion binding	func	IEA
+AT4G00240	2126001	protein binding	func	IPI
+AT4G00240	2126001	phospholipid catabolic process	proc	IBA
+AT4G00240	2126001	phospholipase D activity	func	IBA
+AT4G00240	2126001	phosphatidylcholine metabolic process	proc	IEA
+AT4G00240	2126001	N-acylphosphatidylethanolamine-specific phospholipase D activity	func	IEA
+AT4G00240	2126001	phospholipase D activity	func	IEA
+AT4G00240	2126001	phospholipase D activity	func	ISS
+AT4G00300	2126076	cellular response to oxygen-containing compound	proc	IEA
+AT4G00300	2126076	growth	proc	IEA
+AT4G00300	2126076	cellular response to hormone stimulus	proc	IEA
+AT4G00300	2126076	signal transduction	proc	IEA
+AT4G00300	2126076	glycosyltransferase activity	func	ISS
+AT4G00300	2126076	protein kinase activity	func	IEA
+AT4G00300	2126076	cellular response to lipid	proc	IEA
+AT4G00440	2126041	cellular lipid metabolic process	proc	IEA
+AT4G00440	2126041	shoot system morphogenesis	proc	IEA
+AT4G00440	2126041	developmental growth	proc	IEA
+AT4G00440	2126041	meristem development	proc	IEA
+AT4G00440	2126041	molecular_function_unknown	func	ND
+AT4G00440	2126041	lipid biosynthetic process	proc	IEA
+AT4G00440	2126041	cell division	proc	IEA
+AT4G00440	2126041	regulation of hormone levels	proc	IEA
+AT4G00440	2126041	cell differentiation	proc	IEA
+AT4G00630	2127123	regulation of photosynthesis	proc	IMP
+AT4G00630	2127123	regulation of seedling development	proc	IMP
+AT4G00630	2127123	potassium ion transmembrane transporter activity	func	ISS
+AT4G00630	2127123	response to absence of light	proc	IMP
+AT4G00630	2127123	primary root development	proc	IMP
+AT4G00630	2127123	potassium:proton antiporter activity	func	IMP
+AT4G00630	2127123	plastid rRNA transcription	proc	IMP
+AT4G00630	2127123	proton transmembrane transport	proc	IDA
+AT4G00630	2127123	response to sucrose	proc	IMP
+AT4G00630	2127123	potassium ion transport	proc	IDA
+AT4G00630	2127123	chloroplast organization	proc	IGI
+AT4G00630	2127123	regulation of pH	proc	IMP
+AT4G00630	2127123	potassium:proton antiporter activity	func	IBA
+AT4G00630	2127123	reactive nitrogen species metabolic process	proc	IMP
+AT4G00630	2127123	potassium:proton antiporter activity	func	IMP
+AT4G00630	2127123	proton transmembrane transporter activity	func	IDA
+AT4G00630	2127123	regulation of response to water deprivation	proc	IMP
+AT4G00630	2127123	potassium ion transport	proc	IDA
+AT4G00630	2127123	potassium:proton antiporter activity	func	IDA
+AT4G00630	2127123	response to abscisic acid	proc	IMP
+AT4G00630	2127123	regulation of reactive oxygen species metabolic process	proc	IMP
+AT4G00630	2127123	regulation of photosynthesis	proc	IGI
+AT4G00630	2127123	potassium:proton antiporter activity	func	IDA
+AT4G00630	2127123	potassium ion transmembrane transporter activity	func	IDA
+AT4G00730	2127008	cutin biosynthetic process	proc	IMP
+AT4G00730	2127008	lipid binding	func	IEA
+AT4G00730	2127008	transcription cis-regulatory region binding	func	IPI
+AT4G00730	2127008	protein binding	func	IPI
+AT4G00730	2127008	DNA-binding transcription factor activity	func	ISS
+AT4G00730	2127008	anthocyanin accumulation in tissues in response to UV light	proc	IMP
+AT4G00730	2127008	DNA-binding transcription factor activity, RNA polymerase II-specific	func	IEA
+AT4G00730	2127008	root development	proc	IMP
+AT4G00730	2127008	plant-type cell wall modification	proc	IMP
+AT4G00730	2127008	root hair cell differentiation	proc	IMP
+AT4G00740	2117733	S-adenosylmethionine-dependent methyltransferase activity	func	IBA
+AT4G00740	2117733	cell wall pectin metabolic process	proc	IMP
+AT4G00740	2117733	S-adenosylmethionine-dependent methyltransferase activity	func	IDA
+AT4G00740	2117733	pectin biosynthetic process	proc	IEA
+AT4G00740	2117733	cell wall biogenesis	proc	IMP
+AT4G00750	2117728	shoot system development	proc	IEA
+AT4G00750	2117728	cellular nitrogen compound biosynthetic process	proc	IEA
+AT4G00750	2117728	molecular_function_unknown	func	ND
+AT4G00750	2117728	hormone-mediated signaling pathway	proc	IEA
+AT4G00750	2117728	organic substance catabolic process	proc	IEA
+AT4G00750	2117728	cellular catabolic process	proc	IEA
+AT4G00990	2125221	epigenetic regulation of gene expression	proc	IMP
+AT4G00990	2125221	histone H3-K9 demethylation	proc	IDA
+AT4G00990	2125221	histone H3-K9 demethylation	proc	IBA
+AT4G00990	2125221	regulation of transcription by RNA polymerase II	proc	IBA
+AT4G00990	2125221	protein binding	func	IPI
+AT4G00990	2125221	defense response to bacterium	proc	IMP
+AT4G00990	2125221	positive regulation of response to water deprivation	proc	IMP
+AT4G00990	2125221	response to water deprivation	proc	IEP
+AT4G00990	2125221	histone H3K9 demethylase activity	func	IBA
+AT4G00990	2125221	epigenetic regulation of gene expression	proc	IMP
+AT4G00990	2125221	regulation of photoperiodism, flowering	proc	IMP
+AT4G00990	2125221	histone H3K9 demethylase activity	func	IDA
+AT4G00990	2125221	regulation of stomatal closure	proc	IMP
+AT4G00990	2125221	transcription coregulator activity	func	IBA
+AT4G00990	2125221	histone H3-K9 demethylation	proc	IEA
+AT4G00990	2125221	response to bacterium	proc	IEP
+AT4G00990	2125221	chromatin DNA binding	func	IBA
+AT4G00990	2125221	histone H3K9 demethylase activity	func	IEA
+AT4G01010	2125206	ion channel activity	func	IEA
+AT4G01010	2125206	response to abscisic acid	proc	IEA
+AT4G01010	2125206	hormone-mediated signaling pathway	proc	IEA
+AT4G01010	2125206	response to water	proc	IEA
+AT4G01040	2124988	chitin binding	func	IEA
+AT4G01040	2124988	oligosaccharide binding	func	IBA
+AT4G01040	2124988	carbohydrate metabolic process	proc	IEA
+AT4G01140	2125003	molecular_function_unknown	func	ND
+AT4G02710	2132348	response to light stimulus	proc	IEA
+AT4G02710	2132348	actin filament binding	func	IBA
+AT4G02710	2132348	RNA metabolic process	proc	IEA
+AT4G02730	2140215	histone binding	func	IBA
+AT4G02730	2140215	histone H3-K4 methylation	proc	IBA
+AT4G02760	2140245	molecular_function_unknown	func	ND
+AT4G02760	2140245	SCF-dependent proteasomal ubiquitin-dependent protein catabolic process	proc	IBA
+AT4G03210	2125437	xyloglucan metabolic process	proc	IEA
+AT4G03210	2125437	plant-type secondary cell wall biogenesis	proc	IGI
+AT4G03210	2125437	cell wall biogenesis	proc	IEA
+AT4G03210	2125437	xylem development	proc	IGI
+AT4G03210	2125437	xyloglucan:xyloglucosyl transferase activity	func	ISS
+AT4G03210	2125437	hydrolase activity, hydrolyzing O-glycosyl compounds	func	IEA
+AT4G03210	2125437	xyloglucan:xyloglucosyl transferase activity	func	IEA
+AT4G11240	2128258	protein serine/threonine phosphatase activity	func	ISS
+AT4G11240	2128258	protein serine/threonine phosphatase activity	func	IDA
+AT4G11240	2128258	protein dephosphorylation	proc	ISS
+AT4G11240	2128258	RNA metabolic process	proc	IEA
+AT4G11240	2128258	myosin phosphatase activity	func	IEA
+AT4G11240	2128258	macromolecule modification	proc	IEA
+AT4G11240	2128258	protein serine/threonine phosphatase activity	func	IBA
+AT4G11745	1005716195	biological_process_unknown	proc	ND
+AT4G11745	1005716195	molecular_function_unknown	func	ND
+AT4G11750	2139687	biological_process_unknown	proc	ND
+AT4G11750	2139687	molecular_function_unknown	func	ND
+AT4G11770	2139722	biological_process_unknown	proc	ND
+AT4G11770	2139722	molecular_function_unknown	func	ND
+AT4G11820	2137015	hydroxymethylglutaryl-CoA synthase activity	func	IGI
+AT4G11820	2137015	farnesyl diphosphate biosynthetic process, mevalonate pathway	proc	IBA
+AT4G11820	2137015	isopentenyl diphosphate biosynthetic process, mevalonate pathway	proc	TAS
+AT4G11820	2137015	hydroxymethylglutaryl-CoA synthase activity	func	ISS
+AT4G11820	2137015	acetyl-CoA metabolic process	proc	IBA
+AT4G11820	2137015	hydroxymethylglutaryl-CoA synthase activity	func	IBA
+AT4G11850	2137045	membrane lipid metabolic process	proc	IMP
+AT4G11850	2137045	embryo development ending in seed dormancy	proc	IMP
+AT4G11850	2137045	innate immune response	proc	IDA
+AT4G11850	2137045	phospholipase D activity	func	ISS
+AT4G11850	2137045	phospholipid catabolic process	proc	IBA
+AT4G11850	2137045	protein binding	func	IPI
+AT4G11850	2137045	defense response to bacterium	proc	IGI
+AT4G11850	2137045	phosphatidylcholine metabolic process	proc	IEA
+AT4G11850	2137045	phosphatidylinositol-4,5-bisphosphate binding	func	IDA
+AT4G11850	2137045	response to oxidative stress	proc	IMP
+AT4G11850	2137045	response to aluminum ion	proc	IMP
+AT4G11850	2137045	N-acylphosphatidylethanolamine-specific phospholipase D activity	func	IEA
+AT4G11850	2137045	protein binding	func	IPI
+AT4G11850	2137045	calcium ion binding	func	IEA
+AT4G11850	2137045	phospholipase D activity	func	IDA
+AT4G11850	2137045	phospholipase D activity	func	IBA
+AT5G10140	2184118	protein binding	func	IPI
+AT5G10140	2184118	DNA-binding transcription factor activity	func	IEA
+AT5G10140	2184118	DNA-binding transcription factor activity	func	ISS
+AT5G10140	2184118	protein dimerization activity	func	IEA
+AT5G10140	2184118	DNA-binding transcription factor activity	func	TAS
+AT5G10140	2184118	DNA-binding transcription factor activity	func	IDA
+AT5G10140	2184118	DNA-binding transcription factor activity, RNA polymerase II-specific	func	IBA
+AT5G10140	2184118	response to temperature stimulus	proc	IDA
+AT5G10140	2184118	vernalization response	proc	IEP
+AT5G10140	2184118	negative regulation of flower development	proc	IBA
+AT5G10140	2184118	protein binding	func	IPI
+AT5G10140	2184118	RNA polymerase II cis-regulatory region sequence-specific DNA binding	func	IBA
+AT5G10140	2184118	protein binding	func	IPI
+AT5G10140	2184118	regulation of circadian rhythm	proc	IMP
+AT5G10140	2184118	regulation of photoperiodism, flowering	proc	IMP
+AT5G10140	2184118	transcription cis-regulatory region binding	func	IPI
+AT5G10140	2184118	DNA-binding transcription factor activity	func	ISS
+AT5G10140	2184118	response to temperature stimulus	proc	IMP
+AT5G10140	2184118	RNA polymerase II transcription regulatory region sequence-specific DNA binding	func	IEA
+AT5G10140	2184118	regulation of transcription by RNA polymerase II	proc	IBA
+AT5G10140	2184118	positive regulation of transcription by RNA polymerase II	proc	IEA
+AT5G10140	2184118	negative regulation of flower development	proc	IMP
+AT5G10150	2184133	regulation of cell division	proc	IMP
+AT5G10150	2184133	protein binding	func	IPI
+AT5G10150	2184133	plant organ morphogenesis	proc	IMP
+AT5G10150	2184133	specification of plant organ axis polarity	proc	IMP
+AT5G10150	2184133	regulation of root morphogenesis	proc	IMP
+AT5G10150	2184133	protein homodimerization activity	func	IDA
+AT5G10170	2184153	inositol biosynthetic process	proc	IBA
+AT5G10170	2184153	inositol-3-phosphate synthase activity	func	IBA
+AT5G10170	2184153	inositol biosynthetic process	proc	IEA
+AT5G10170	2184153	inositol-3-phosphate synthase activity	func	IGI
+AT5G10170	2184153	embryo development ending in seed dormancy	proc	IGI
+AT5G10770	2183730	defense response	proc	IEA
+AT5G10770	2183730	organic cyclic compound biosynthetic process	proc	IEA
+AT5G10770	2183730	oxoacid metabolic process	proc	IEA
+AT5G10770	2183730	aromatic compound biosynthetic process	proc	IEA
+AT5G10770	2183730	molecular_function_unknown	func	ND
+AT5G10770	2183730	terpenoid metabolic process	proc	IEA
+AT5G10770	2183730	secondary metabolite biosynthetic process	proc	IEA
+AT5G25415	505006637	biological_process_unknown	proc	ND
+AT5G25415	505006637	molecular_function_unknown	func	ND
+AT5G45750	2171943	intracellular protein transport	proc	IBA
+AT5G45750	2171943	protein binding	func	IPI
+AT5G45750	2171943	GTPase activity	func	IBA
+AT5G45750	2171943	cell wall biogenesis	proc	IMP
+AT5G45760	2171953	biological_process_unknown	proc	ND
+AT5G45760	2171953	molecular_function_unknown	func	ND
+AT5G45830	2152390	sequence-specific DNA binding	func	IEA
+AT5G45830	2152390	seed dormancy process	proc	IMP
+AT5G45830	2152390	regulation of seed dormancy process	proc	IMP
+AT5G45830	2152390	sugar mediated signaling pathway	proc	IMP
+AT5G45830	2152390	identical protein binding	func	IPI
+AT5G45830	2152390	DNA-templated transcription	proc	IEA
+AT5G45830	2152390	abscisic acid-activated signaling pathway	proc	IMP
+AT5G45830	2152390	protein binding	func	IPI
+AT5G53150	2163786	regulation of reproductive process	proc	IEA
+AT5G53150	2163786	regulation of developmental process	proc	IEA
+AT5G53150	2163786	photoperiodism, flowering	proc	IEA
+AT5G53150	2163786	protein metabolic process	proc	IEA
+AT5G53150	2163786	phyllome development	proc	IEA
+AT5G53150	2163786	molecular_function_unknown	func	ND
+AT5G53150	2163786	flower development	proc	IEA
+AT5G53150	2163786	regulation of biological quality	proc	IEA
+AT5G53150	2163786	positive regulation of macromolecule metabolic process	proc	IEA
+AT5G53150	2163786	regulation of DNA-templated transcription	proc	IEA

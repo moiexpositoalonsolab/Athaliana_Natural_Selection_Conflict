@@ -1589,18 +1589,20 @@ src &lt;- data.frame(
            &quot;deltaC_extended_group_rep3_pval.csv&quot;,
            &quot;lines_info_annot.csv&quot;,
            &quot;atlas1001_phenotypes_matrix_MR.csv&quot;,
-           &quot;imputed_wt&amp;mut_dc13.csv&quot;),
-  where = c(CHAM, CHAM, CHAM, DAT, DAT),
+           &quot;imputed_wt&amp;mut_dc13.csv&quot;,
+           &quot;atlas1001_phenotype_matrix_imputed_withID.csv&quot;),
+  where = c(CHAM, CHAM, CHAM, DAT, DAT, DAT),
   what = c(&quot;Uli&#39;s δ¹³C experiment: 49 line means (29 flc-edited, 19 wild-type progenitors, Col-0), 3 reps each. Fig. 3B source.&quot;,
            &quot;The 19 edited lines that have a paired wild-type progenitor, with per-line p-values vs that progenitor.&quot;,
            &quot;Metadata for 112 edited lines: progenitor accession, FT16 from 1001G, wild-type flowering time and FLC qRT.&quot;,
            &quot;1001 Genomes phenotype matrix, MEASURED values (Delta_13C, FT10, FT16).&quot;,
-           &quot;Imputed δ¹³C for 306 accessions, separate wild-type and flc-mutant predictions.&quot;))
+           &quot;Imputed δ¹³C for 306 accessions, separate wild-type and flc-mutant predictions.&quot;,
+           &quot;1001 Genomes phenotype matrix, IMPUTED values for all 1135 accessions (Delta_13C, FT16).&quot;))
 knitr::kable(src[, c(&quot;file&quot;, &quot;what&quot;)])</code></pre>
 <table>
 <colgroup>
-<col width="23%" />
-<col width="76%" />
+<col width="28%" />
+<col width="71%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1633,6 +1635,11 @@ FT16 from 1001G, wild-type flowering time and FLC qRT.</td>
 <td align="left">imputed_wt&amp;mut_dc13.csv</td>
 <td align="left">Imputed δ¹³C for 306 accessions, separate wild-type and
 flc-mutant predictions.</td>
+</tr>
+<tr class="even">
+<td align="left">atlas1001_phenotype_matrix_imputed_withID.csv</td>
+<td align="left">1001 Genomes phenotype matrix, IMPUTED values for all
+1135 accessions (Delta_13C, FT16).</td>
 </tr>
 </tbody>
 </table>
@@ -1680,24 +1687,34 @@ c(edited_lines = nrow(E), unique_accessions = length(unique(firstnum(E$line))),
              sd_FT = round(sd(y), 2))
 }
 
+# imputed δ13C merge, used again in later sections
+d$acc &lt;- firstnum(d$line); d$acc[d$label == &quot;col&quot;] &lt;- 6909
+m   &lt;- merge(d, im, by.x = &quot;acc&quot;, by.y = &quot;id&quot;, all.x = TRUE)
+E28 &lt;- subset(m, label == &quot;mut&quot; &amp; !is.na(flc_mut_dc13))            # CS77069 absent
+W19 &lt;- subset(m, label %in% c(&quot;wt&quot;, &quot;col&quot;) &amp; !is.na(wt_dc13))      # Col-0 absent
+ai  &lt;- read.csv(file.path(DAT, &quot;atlas1001_phenotype_matrix_imputed_withID.csv&quot;))
+
 tab &lt;- rbind(
   stat(pr$deltaC_mean_mean, pr$dag_mean,   &quot;19 edited (paired w/ progenitor)&quot;),
   stat(E$deltaC_mean_mean,  E$dag_mean,    &quot;29 edited (all)&quot;),
   stat(W$deltaC_mean_mean,  W$dag_mean,    &quot;19 progenitors&quot;),
   stat(WC$deltaC_mean_mean, WC$dag_mean,   &quot;20 progenitors + Col-0&quot;),
   stat(at16$Delta_13C,      at16$FT16,     &quot;248 natural accessions (FT16)&quot;),
-  stat(at10$Delta_13C,      at10$FT10,     &quot;261 natural accessions (FT10)&quot;))
+  stat(at10$Delta_13C,      at10$FT10,     &quot;261 natural accessions (FT10)&quot;),
+  stat(E28$flc_mut_dc13,    E28$dag_mean,  &quot;28 edited (imputed d13C)&quot;),
+  stat(W19$wt_dc13,         W19$dag_mean,  &quot;19 progenitors (imputed d13C)&quot;),
+  stat(ai$Delta_13C,        ai$FT16,       &quot;1135 natural accessions (imputed, FT16)&quot;))
 knitr::kable(tab, row.names = FALSE)</code></pre>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="37%" />
-<col width="4%" />
-<col width="8%" />
-<col width="8%" />
+<col width="42%" />
+<col width="5%" />
+<col width="7%" />
+<col width="7%" />
 <col width="6%" />
-<col width="10%" />
-<col width="8%" />
 <col width="9%" />
+<col width="7%" />
+<col width="8%" />
 <col width="6%" />
 </colgroup>
 <thead>
@@ -1780,6 +1797,39 @@ knitr::kable(tab, row.names = FALSE)</code></pre>
 <td align="right">1.190</td>
 <td align="right">18.77</td>
 </tr>
+<tr class="odd">
+<td align="left">28 edited (imputed d13C)</td>
+<td align="right">28</td>
+<td align="right">0.376</td>
+<td align="right">0.0489</td>
+<td align="right">4.58</td>
+<td align="right">2.22</td>
+<td align="right">0.935</td>
+<td align="right">0.452</td>
+<td align="right">5.51</td>
+</tr>
+<tr class="even">
+<td align="left">19 progenitors (imputed d13C)</td>
+<td align="right">19</td>
+<td align="right">0.138</td>
+<td align="right">0.5740</td>
+<td align="right">2.56</td>
+<td align="right">4.46</td>
+<td align="right">6.288</td>
+<td align="right">1.568</td>
+<td align="right">29.09</td>
+</tr>
+<tr class="odd">
+<td align="left">1135 natural accessions (imputed, FT16)</td>
+<td align="right">1135</td>
+<td align="right">0.586</td>
+<td align="right">0.0000</td>
+<td align="right">19.90</td>
+<td align="right">0.82</td>
+<td align="right">10.466</td>
+<td align="right">0.725</td>
+<td align="right">24.61</td>
+</tr>
 </tbody>
 </table>
 <p>Flowering time is days-to-flowering at 21 °C for the chamber sets and
@@ -1788,6 +1838,11 @@ but not identical quantities.</p>
 <p><code>20 progenitors + Col-0</code> reproduces the
 <code>β = 10.44 ± 16.9</code> reported in the manuscript, confirming the
 Fig. 3B wild-type line includes Col-0.</p>
+<p>The last three rows are the imputed sets of Supplement §VIII.2: 28
+edited (CS77069 is absent from the imputed panel), 19 progenitors (Col-0
+is absent), and the full 1135- accession 1001 Genomes panel with imputed
+δ¹³C × imputed FT16. Flowering time in the two chamber rows is still the
+measured value — only δ¹³C is imputed there.</p>
 </div>
 <div id="visualisation" class="section level1">
 <h1>Visualisation</h1>
@@ -2020,8 +2075,7 @@ ratios are not interpretable.</p>
 flc-mutant predictions for 306 accessions. For the edited lines that
 were actually measured it contains the <strong>measured</strong> values
 (fidelity r = 1), so imputation changes nothing there.</p>
-<pre class="r"><code>d$acc &lt;- firstnum(d$line); d$acc[d$label == &quot;col&quot;] &lt;- 6909
-m &lt;- merge(d, im, by.x = &quot;acc&quot;, by.y = &quot;id&quot;, all.x = TRUE)
+<pre class="r"><code># m (chamber lines x imputed δ13C) is built in the Core statistics chunk
 Ei &lt;- subset(m, label == &quot;mut&quot;); Wi &lt;- subset(m, label == &quot;wt&quot;)
 knitr::kable(rbind(
   stat(Ei$flc_mut_dc13,     Ei$dag_mean, &quot;edited, imputed&quot;),
@@ -2460,14 +2514,12 @@ p = 0.049, slope 4.58 ± 2.22, cov 0.94, SD 0.45 / 5.5, CV 1.47 / 25.0;
 6.29, SD 1.57 / 29.1, CV 4.43 / 39.7; 1135 natural accessions, imputed
 δ¹³C × imputed FT16, r = 0.59, p = 8.0×10⁻¹⁰⁶, slope 19.90 ± 0.82, cov
 10.47, SD 0.73 / 24.6, CV 2.02 / 32.5.</p>
-<pre class="r"><code>c(absent_edited = subset(m, label == &quot;mut&quot; &amp; is.na(flc_mut_dc13))$line,
+<pre class="r"><code># E28, W19, ai are built in the Core statistics chunk
+c(absent_edited = subset(m, label == &quot;mut&quot; &amp; is.na(flc_mut_dc13))$line,
   absent_wt     = subset(m, label %in% c(&quot;wt&quot;, &quot;col&quot;) &amp; is.na(wt_dc13))$line)</code></pre>
 <pre><code>##      absent_edited          absent_wt 
 ## &quot;IDCS77069-05-R03&quot;              &quot;COL&quot;</code></pre>
-<pre class="r"><code>E28 &lt;- subset(m, label == &quot;mut&quot; &amp; !is.na(flc_mut_dc13))              # n = 28
-W19 &lt;- subset(m, label %in% c(&quot;wt&quot;, &quot;col&quot;) &amp; !is.na(wt_dc13))        # n = 19
-ai  &lt;- read.csv(file.path(DAT, &quot;atlas1001_phenotype_matrix_imputed_withID.csv&quot;))
-knitr::kable(rbind(
+<pre class="r"><code>knitr::kable(rbind(
   statcv(E28$flc_mut_dc13, E28$dag_mean, &quot;28 edited, imputed d13C&quot;),
   statcv(W19$wt_dc13,      W19$dag_mean, &quot;19 progenitors, imputed d13C&quot;),
   statcv(ai$Delta_13C,     ai$FT16,      &quot;1135 natural, imputed (FT16)&quot;)),

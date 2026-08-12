@@ -32,13 +32,15 @@ src <- data.frame(
            "deltaC_extended_group_rep3_pval.csv",
            "lines_info_annot.csv",
            "atlas1001_phenotypes_matrix_MR.csv",
-           "imputed_wt&mut_dc13.csv"),
-  where = c(CHAM, CHAM, CHAM, DAT, DAT),
+           "imputed_wt&mut_dc13.csv",
+           "atlas1001_phenotype_matrix_imputed_withID.csv"),
+  where = c(CHAM, CHAM, CHAM, DAT, DAT, DAT),
   what = c("Uli's δ¹³C experiment: 49 line means (29 flc-edited, 19 wild-type progenitors, Col-0), 3 reps each. Fig. 3B source.",
            "The 19 edited lines that have a paired wild-type progenitor, with per-line p-values vs that progenitor.",
            "Metadata for 112 edited lines: progenitor accession, FT16 from 1001G, wild-type flowering time and FLC qRT.",
            "1001 Genomes phenotype matrix, MEASURED values (Delta_13C, FT10, FT16).",
-           "Imputed δ¹³C for 306 accessions, separate wild-type and flc-mutant predictions."))
+           "Imputed δ¹³C for 306 accessions, separate wild-type and flc-mutant predictions.",
+           "1001 Genomes phenotype matrix, IMPUTED values for all 1135 accessions (Delta_13C, FT16)."))
 knitr::kable(src[, c("file", "what")])
 ```
 
@@ -86,13 +88,23 @@ stat <- function(x, y, label) {
              sd_FT = round(sd(y), 2))
 }
 
+# imputed δ13C merge, used again in later sections
+d$acc <- firstnum(d$line); d$acc[d$label == "col"] <- 6909
+m   <- merge(d, im, by.x = "acc", by.y = "id", all.x = TRUE)
+E28 <- subset(m, label == "mut" & !is.na(flc_mut_dc13))            # CS77069 absent
+W19 <- subset(m, label %in% c("wt", "col") & !is.na(wt_dc13))      # Col-0 absent
+ai  <- read.csv(file.path(DAT, "atlas1001_phenotype_matrix_imputed_withID.csv"))
+
 tab <- rbind(
   stat(pr$deltaC_mean_mean, pr$dag_mean,   "19 edited (paired w/ progenitor)"),
   stat(E$deltaC_mean_mean,  E$dag_mean,    "29 edited (all)"),
   stat(W$deltaC_mean_mean,  W$dag_mean,    "19 progenitors"),
   stat(WC$deltaC_mean_mean, WC$dag_mean,   "20 progenitors + Col-0"),
   stat(at16$Delta_13C,      at16$FT16,     "248 natural accessions (FT16)"),
-  stat(at10$Delta_13C,      at10$FT10,     "261 natural accessions (FT10)"))
+  stat(at10$Delta_13C,      at10$FT10,     "261 natural accessions (FT10)"),
+  stat(E28$flc_mut_dc13,    E28$dag_mean,  "28 edited (imputed d13C)"),
+  stat(W19$wt_dc13,         W19$dag_mean,  "19 progenitors (imputed d13C)"),
+  stat(ai$Delta_13C,        ai$FT16,       "1135 natural accessions (imputed, FT16)"))
 knitr::kable(tab, row.names = FALSE)
 ```
 
@@ -101,6 +113,11 @@ natural accessions, so slopes are comparable in kind but not identical quantitie
 
 `20 progenitors + Col-0` reproduces the `β = 10.44 ± 16.9` reported in the manuscript,
 confirming the Fig. 3B wild-type line includes Col-0.
+
+The last three rows are the imputed sets of Supplement §VIII.2: 28 edited (CS77069 is
+absent from the imputed panel), 19 progenitors (Col-0 is absent), and the full 1135-
+accession 1001 Genomes panel with imputed δ¹³C × imputed FT16. Flowering time in the
+two chamber rows is still the measured value — only δ¹³C is imputed there.
 
 # Visualisation
 
@@ -252,8 +269,7 @@ accessions. For the edited lines that were actually measured it contains the **m
 values (fidelity r = 1), so imputation changes nothing there.
 
 ```{r imputed}
-d$acc <- firstnum(d$line); d$acc[d$label == "col"] <- 6909
-m <- merge(d, im, by.x = "acc", by.y = "id", all.x = TRUE)
+# m (chamber lines x imputed δ13C) is built in the Core statistics chunk
 Ei <- subset(m, label == "mut"); Wi <- subset(m, label == "wt")
 knitr::kable(rbind(
   stat(Ei$flc_mut_dc13,     Ei$dag_mean, "edited, imputed"),
@@ -433,11 +449,9 @@ r = 0.14, p = 0.57, slope 2.56 ± 4.46, cov 6.29, SD 1.57 / 29.1, CV 4.43 / 39.7
 slope 19.90 ± 0.82, cov 10.47, SD 0.73 / 24.6, CV 2.02 / 32.5.
 
 ```{r viii2_imputed}
+# E28, W19, ai are built in the Core statistics chunk
 c(absent_edited = subset(m, label == "mut" & is.na(flc_mut_dc13))$line,
   absent_wt     = subset(m, label %in% c("wt", "col") & is.na(wt_dc13))$line)
-E28 <- subset(m, label == "mut" & !is.na(flc_mut_dc13))              # n = 28
-W19 <- subset(m, label %in% c("wt", "col") & !is.na(wt_dc13))        # n = 19
-ai  <- read.csv(file.path(DAT, "atlas1001_phenotype_matrix_imputed_withID.csv"))
 knitr::kable(rbind(
   statcv(E28$flc_mut_dc13, E28$dag_mean, "28 edited, imputed d13C"),
   statcv(W19$wt_dc13,      W19$dag_mean, "19 progenitors, imputed d13C"),

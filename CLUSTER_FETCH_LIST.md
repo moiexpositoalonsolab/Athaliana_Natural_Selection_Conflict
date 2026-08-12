@@ -122,4 +122,37 @@ One level UP from natvar (`~/moilab/projects/`):
 - Filenames contain `&` and spaces ("growth chamber") — quote paths.
 - `.rda` files in this project are often RDS-format (readRDS, not load).
 - If a listed file is missing, note it and move on — don't hunt substitutes.
-- Report back: what was found, what was missing, tarball size.
+- The repo's own code still references the OLD cluster path (`~/safedata/natvar/...`)
+  in `source()`/`setwd()` calls — historical; the files now live under
+  `~/moilab/projects/natvar/`.
+
+## Delivering via git push (preferred over tarball)
+
+The repo is **https://github.com/moiexpositoalonsolab/Athaliana_Natural_Selection_Conflict**
+(branch `main`, current HEAD `d2a2e27` — already contains the `.gitignore`,
+`data/README.md`, and this file, so clone fresh; do not work from an old copy).
+
+1. Check auth first: `gh auth status` or `ssh -T git@github.com`. You need push
+   rights to `moiexpositoalonsolab`. If there is no credential on the cluster,
+   fall back to the tarball route and say so.
+2. `git clone git@github.com:moiexpositoalonsolab/Athaliana_Natural_Selection_Conflict.git`
+   (or https), then `git checkout -b cluster-tier1`.
+3. Copy the tier-1 files (sections 1–6 above) into the clone **at the same
+   relative paths** they have under `~/moilab/projects/natvar/` — e.g.
+   `multivarGWAS/all_impmGWAS_logoutput/`, `data/d4.rda`, `tables/`,
+   `figs/**/*.rda`, `analyses/*.R`. The four `~/moilab/projects/`-level files go
+   to: `tables-safedata/` (the two mega_hypparams tables), `data/`
+   (atlas1001_phenotype_matrix_imputed_onlypheno.rda), `phenotypes/`
+   (phenotypes_list.txt).
+4. Guards before committing:
+   - `find . -size +50M -not -path "./.git/*"` — anything over 50 MB, leave out
+     and report it; GitHub hard-fails at 100 MB.
+   - The `.gitignore` already excludes `*.assoc.txt`, `*.bed/.bim/.fam`,
+     `*.sXX.txt` — do not force-add anything it blocks.
+   - `git status` — only intended files staged.
+5. Commit with a message listing what was found vs missing from this manifest,
+   then `git push -u origin cluster-tier1`.
+6. Do NOT push to `main` directly — the branch lets Moi review the diff on
+   GitHub and merge. Report back: branch name, commit hash, files found /
+   missing / skipped-for-size, and anything from the bonus hunts (§7 — include
+   any S28/S21 scripts you find in the same branch under `analyses/`).

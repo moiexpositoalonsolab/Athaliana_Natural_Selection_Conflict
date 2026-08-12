@@ -18,3 +18,6 @@ multivarGWAS/*/output/*.assoc.txt
 *.bim
 *.fam
 *.sXX.txt
+
+# Rplots.pdf is a stray artifact of running R scripts non-interactively
+Rplots.pdf

@@ -1,0 +1,20 @@
+# OS / editor junk
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+
+# Large GWAS outputs (fetched with FETCH_LARGE=1; too big for GitHub)
+*.assoc.txt
+*.assoc.txt.param.txt
+gwaresults/
+FitnessResiduals/output/
+FLC_koData/output/
+phenotypes/*/1001/
+multivarGWAS/*/output/*.assoc.txt
+
+# Genotypes never go in the repo (3.3 GB; see data/README.md for location)
+*.bed
+*.bim
+*.fam
+*.sXX.txt

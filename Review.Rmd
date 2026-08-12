@@ -1,0 +1,352 @@
+---
+title: "Ruffley & Lutz et al. — statistics computed for the NEE revision"
+subtitle: "Flowering time × WUE (δ¹³C): correlations, slopes, covariances"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE,
+                      fig.width = 7, fig.height = 4.5, dpi = 110)
+options(stringsAsFactors = FALSE)
+set.seed(1)
+```
+
+Everything below is recomputed from the deposited data. Written to answer
+Reviewer 2 comment 1 ("no p-value or r² values are listed") and the related
+Reviewer 1 points on Fig. 3B/3C.
+
+# Source data
+
+```{r paths}
+SUB  <- "~/projects/natvar/NatEcoEvo_SubmissionNovember"
+DAT  <- file.path(SUB, "Athaliana_Natural_Selection_Conflict/data")
+CHAM <- "~/projects/natvar/Ruffley_Lutz_et_al_joint_MS/Data_code_Ruffley_Lutz_et_al"
+
+src <- data.frame(
+  file = c("deltaC_extended_group_rep3.csv",
+           "deltaC_extended_group_rep3_pval.csv",
+           "lines_info_annot.csv",
+           "atlas1001_phenotypes_matrix_MR.csv",
+           "imputed_wt&mut_dc13.csv"),
+  where = c(CHAM, CHAM, CHAM, DAT, DAT),
+  what = c("Uli's δ¹³C experiment: 49 line means (29 flc-edited, 19 wild-type progenitors, Col-0), 3 reps each. Fig. 3B source.",
+           "The 19 edited lines that have a paired wild-type progenitor, with per-line p-values vs that progenitor.",
+           "Metadata for 112 edited lines: progenitor accession, FT16 from 1001G, wild-type flowering time and FLC qRT.",
+           "1001 Genomes phenotype matrix, MEASURED values (Delta_13C, FT10, FT16).",
+           "Imputed δ¹³C for 306 accessions, separate wild-type and flc-mutant predictions."))
+knitr::kable(src[, c("file", "what")])
+```
+
+```{r load}
+d  <- read.csv(file.path(CHAM, "deltaC_extended_group_rep3.csv"))
+pr <- read.csv(file.path(CHAM, "deltaC_extended_group_rep3_pval.csv"))
+at <- read.csv(file.path(DAT,  "atlas1001_phenotypes_matrix_MR.csv"))
+im <- read.csv(file.path(DAT,  "imputed_wt&mut_dc13.csv"))
+
+# groups. dag_mean = days to flowering, 21 C chamber; deltaC_mean_mean = measured d13C
+E   <- subset(d, label == "mut")                 # 29 edited lines
+W   <- subset(d, label == "wt")                  # 19 wild-type progenitors
+WC  <- subset(d, label %in% c("wt", "col"))      # + Col-0  (n = 20; this is the Fig 3B green fit)
+at16 <- at[!is.na(at$FT16) & !is.na(at$Delta_13C), ]
+at10 <- at[!is.na(at$FT10) & !is.na(at$Delta_13C), ]
+c(edited = nrow(E), progenitors = nrow(W), progenitors_col0 = nrow(WC),
+  atlas_FT16 = nrow(at16), atlas_FT10 = nrow(at10))
+```
+
+Each of the 29 edited lines comes from a **distinct** accession (no pseudo-replication),
+and all 29 have δ¹³C measured in triplicate. The 19 are the subset with a paired
+progenitor — *not* a measured-vs-imputed distinction.
+
+```{r independence}
+firstnum <- function(v) as.numeric(sapply(v, function(x) {
+  m <- regmatches(x, regexpr("[0-9]+", x)); if (length(m)) m else NA }))
+c(edited_lines = nrow(E), unique_accessions = length(unique(firstnum(E$line))),
+  all_measured_3reps = sum(E$deltaC_mean_count == 3),
+  paired_subset_of_29 = all(pr$line %in% E$line))
+```
+
+# Core statistics
+
+```{r core}
+stat <- function(x, y, label) {
+  ok <- !is.na(x) & !is.na(y); x <- x[ok]; y <- y[ok]
+  ct <- cor.test(x, y); f <- lm(y ~ x)
+  data.frame(set = label, n = length(x),
+             r = round(unname(ct$estimate), 3),
+             p = signif(ct$p.value, 3),
+             slope = round(unname(coef(f)[2]), 2),
+             slope_SE = round(summary(f)$coef[2, 2], 2),
+             cov = round(cov(x, y), 3),
+             sd_d13C = round(sd(x), 3),
+             sd_FT = round(sd(y), 2))
+}
+
+tab <- rbind(
+  stat(pr$deltaC_mean_mean, pr$dag_mean,   "19 edited (paired w/ progenitor)"),
+  stat(E$deltaC_mean_mean,  E$dag_mean,    "29 edited (all)"),
+  stat(W$deltaC_mean_mean,  W$dag_mean,    "19 progenitors"),
+  stat(WC$deltaC_mean_mean, WC$dag_mean,   "20 progenitors + Col-0"),
+  stat(at16$Delta_13C,      at16$FT16,     "248 natural accessions (FT16)"),
+  stat(at10$Delta_13C,      at10$FT10,     "261 natural accessions (FT10)"))
+knitr::kable(tab, row.names = FALSE)
+```
+
+Flowering time is days-to-flowering at 21 °C for the chamber sets and FT10/FT16 for the
+natural accessions, so slopes are comparable in kind but not identical quantities.
+
+`20 progenitors + Col-0` reproduces the `β = 10.44 ± 16.9` reported in the manuscript,
+confirming the Fig. 3B wild-type line includes Col-0.
+
+# Visualisation
+
+```{r fig3b, fig.height=4.5}
+plot(WC$deltaC_mean_mean, WC$dag_mean, pch = 19, col = "#4E9A6A",
+     xlim = range(d$deltaC_mean_mean), ylim = range(d$dag_mean),
+     xlab = expression(delta^13*C~"(per mil)"), ylab = "Flowering time (days, 21 C)",
+     main = "Fig. 3B recomputed, within-genotype fits")
+points(E$deltaC_mean_mean, E$dag_mean, pch = 19, col = "#D7473A")
+abline(lm(dag_mean ~ deltaC_mean_mean, data = WC), col = "#4E9A6A", lwd = 2)
+abline(lm(dag_mean ~ deltaC_mean_mean, data = E),  col = "#D7473A", lwd = 2)
+legend("topleft", bty = "n", pch = 19, col = c("#4E9A6A", "#D7473A"),
+       legend = c(sprintf("wild type + Col-0: r = %.2f, p = %.2f",
+                          cor(WC$deltaC_mean_mean, WC$dag_mean),
+                          cor.test(WC$deltaC_mean_mean, WC$dag_mean)$p.value),
+                  sprintf("edited (flc): r = %.2f, p = %.3f",
+                          cor(E$deltaC_mean_mean, E$dag_mean),
+                          cor.test(E$deltaC_mean_mean, E$dag_mean)$p.value)))
+```
+
+```{r background}
+plot(at16$Delta_13C, at16$FT16, pch = 19, cex = .45, col = "grey55",
+     xlab = expression(delta^13*C~"(per mil)"), ylab = "FT16 (days)",
+     main = expression("Natural accessions, measured "*delta^13*C*" (n = 248)"))
+abline(lm(FT16 ~ Delta_13C, data = at16), col = "black", lwd = 2)
+legend("topleft", bty = "n",
+       legend = sprintf("r = %.2f, p = %.1e", cor(at16$Delta_13C, at16$FT16),
+                        cor.test(at16$Delta_13C, at16$FT16)$p.value))
+```
+
+The natural δ¹³C range (−38.7 to −30.8‰) barely overlaps the chamber range
+(−31.4 to −29.4‰); the two cannot be overlaid on a raw axis.
+
+# Formal tests
+
+```{r tests}
+fz <- function(r1, r2, n1, n2) {
+  z <- (atanh(r1) - atanh(r2)) / sqrt(1/(n1 - 3) + 1/(n2 - 3))
+  c(z = round(z, 3), p = round(2 * (1 - pnorm(abs(z))), 4)) }
+
+rbind(
+  `edited vs natural (FT16)`  = fz(cor(E$deltaC_mean_mean, E$dag_mean),
+                                   cor(at16$Delta_13C, at16$FT16), nrow(E), nrow(at16)),
+  `edited vs natural (FT10)`  = fz(cor(E$deltaC_mean_mean, E$dag_mean),
+                                   cor(at10$Delta_13C, at10$FT10), nrow(E), nrow(at10)),
+  `edited vs progenitors+Col0`= fz(cor(E$deltaC_mean_mean, E$dag_mean),
+                                   cor(WC$deltaC_mean_mean, WC$dag_mean), nrow(E), nrow(WC)))
+```
+
+```{r slopetest}
+b <- rbind(data.frame(x = E$deltaC_mean_mean,  y = E$dag_mean,  g = "edited"),
+           data.frame(x = WC$deltaC_mean_mean, y = WC$dag_mean, g = "progenitor"))
+round(summary(lm(y ~ x * g, data = b))$coef, 4)   # interaction = slope difference
+```
+
+```{r covtest}
+cc <- function(s) cov(s$deltaC_mean_mean, s$dag_mean)
+obs <- cc(E) - cc(WC)
+boot <- replicate(20000, cc(E[sample(nrow(E), replace = TRUE), ]) -
+                          cc(WC[sample(nrow(WC), replace = TRUE), ]))
+c(observed_difference = round(obs, 3),
+  CI_lower = round(quantile(boot, .025), 3), CI_upper = round(quantile(boot, .975), 3))
+```
+
+**The variance test is the robust result.** Editing collapses flowering-time variance
+~32-fold while leaving δ¹³C variance untouched.
+
+```{r vartest}
+rbind(d13C = c(progenitors = var(WC$deltaC_mean_mean), edited = var(E$deltaC_mean_mean)),
+      FT   = c(var(WC$dag_mean), var(E$dag_mean)))
+var.test(WC$dag_mean, E$dag_mean)
+```
+
+Box's M tests the whole covariance matrix, so it rejects here because of the *variance*,
+not the covariance — do not cite it as evidence about covariance.
+
+```{r boxm}
+S1 <- cov(cbind(E$deltaC_mean_mean, E$dag_mean));  n1 <- nrow(E)
+S2 <- cov(cbind(WC$deltaC_mean_mean, WC$dag_mean)); n2 <- nrow(WC); p <- 2; g <- 2
+Sp <- ((n1-1)*S1 + (n2-1)*S2) / (n1 + n2 - g)
+M  <- (n1+n2-g)*log(det(Sp)) - ((n1-1)*log(det(S1)) + (n2-1)*log(det(S2)))
+cst <- 1 - (sum(1/c(n1-1, n2-1)) - 1/(n1+n2-g)) * (2*p^2+3*p-1) / (6*(p+1)*(g-1))
+c(chi2 = round(M*cst, 2), df = (g-1)*p*(p+1)/2,
+  p = signif(pchisq(M*cst, (g-1)*p*(p+1)/2, lower.tail = FALSE), 3))
+```
+
+# Covariance scaling
+
+Scaling each set by its **own** SDs returns the correlation and discards the magnitude
+information. Scaling all sets by a **common** reference (the natural population) keeps it.
+
+```{r scaling}
+sdx0 <- sd(at16$Delta_13C); sdy0 <- sd(at16$FT16)
+sc <- function(x, y, lab) data.frame(set = lab, r = round(cor(x, y), 3),
+  cov_raw = round(cov(x, y), 3),
+  cov_ownSD = round(cov(x/sd(x), y/sd(y)), 3),
+  cov_commonSD = round(cov(x/sdx0, y/sdy0), 3))
+knitr::kable(rbind(
+  sc(E$deltaC_mean_mean, E$dag_mean,   "29 edited"),
+  sc(WC$deltaC_mean_mean, WC$dag_mean, "20 progenitors + Col-0"),
+  sc(at16$Delta_13C, at16$FT16,        "248 natural (FT16)")), row.names = FALSE)
+```
+
+Do **not** mean-standardise δ¹³C (Houle-style evolvability): its mean is negative on an
+arbitrary reference scale, so mean-scaled values are sign-inverted nonsense.
+
+# Relative variation (percentage)
+
+δ¹³C has a negative mean on an arbitrary (VPDB) zero, so a signed CV is negative and
+uninterpretable. We therefore report `100 * SD / |mean|` for δ¹³C, and a conventional
+CV for flowering time, which has a true zero.
+
+```{r cv}
+relsd <- function(x) 100 * sd(x) / abs(mean(x))
+cvpct <- function(x) 100 * sd(x) / mean(x)
+cvrow <- function(lab, x, y) data.frame(
+  set = lab, n = length(x),
+  d13C_relSD_pct = round(relsd(x), 2),
+  FT_CV_pct = round(cvpct(y), 2))
+
+cvtab <- rbind(
+  cvrow("29 edited",              E$deltaC_mean_mean,  E$dag_mean),
+  cvrow("20 progenitors + Col-0", WC$deltaC_mean_mean, WC$dag_mean),
+  cvrow("19 progenitors",         W$deltaC_mean_mean,  W$dag_mean),
+  cvrow("248 natural (FT16)",     at16$Delta_13C,      at16$FT16),
+  cvrow("261 natural (FT10)",     at10$Delta_13C,      at10$FT10))
+knitr::kable(cvtab, row.names = FALSE)
+
+c(d13C_ratio_progenitors_over_edited = round(relsd(WC$deltaC_mean_mean) /
+                                             relsd(E$deltaC_mean_mean), 2),
+  FT_ratio_progenitors_over_edited   = round(cvpct(WC$dag_mean) /
+                                             cvpct(E$dag_mean), 2))
+```
+
+Relative δ¹³C variation is essentially identical between edited lines and progenitors
+(ratio ≈ 0.97), while relative flowering-time variation is ~1.8× lower in the edited
+lines — the same conclusion as the F tests, without the mean shift that inflates the
+raw 32-fold variance ratio.
+
+Only the progenitors-vs-edited comparison is condition-controlled (same chamber, same
+experiment). The natural panels were phenotyped at 16 °C and 10 °C, and CV depends
+strongly on condition — the same accessions give 31.5% at FT16 and 20.2% at FT10 — so
+chamber-vs-atlas CV ratios are not interpretable.
+
+# Measured vs imputed
+
+`imputed_wt&mut_dc13.csv` holds separate wild-type and flc-mutant predictions for 306
+accessions. For the edited lines that were actually measured it contains the **measured**
+values (fidelity r = 1), so imputation changes nothing there.
+
+```{r imputed}
+d$acc <- firstnum(d$line); d$acc[d$label == "col"] <- 6909
+m <- merge(d, im, by.x = "acc", by.y = "id", all.x = TRUE)
+Ei <- subset(m, label == "mut"); Wi <- subset(m, label == "wt")
+knitr::kable(rbind(
+  stat(Ei$flc_mut_dc13,     Ei$dag_mean, "edited, imputed"),
+  stat(Ei$deltaC_mean_mean, Ei$dag_mean, "edited, measured"),
+  stat(Wi$wt_dc13,          Wi$dag_mean, "progenitors, imputed"),
+  stat(Wi$deltaC_mean_mean, Wi$dag_mean, "progenitors, measured")), row.names = FALSE)
+
+c(fidelity_edited = round(cor(Ei$flc_mut_dc13, Ei$deltaC_mean_mean, use = "complete"), 3),
+  fidelity_wildtype = round(cor(Wi$wt_dc13, Wi$deltaC_mean_mean, use = "complete"), 3))
+```
+
+**Scale warning.** The two imputed columns are on different scales — mean wild-type
+−35.6‰ vs mean mutant −30.8‰, an offset of ~4.8‰ — which is why the analysis code
+divides them by different constants (−37.21 and −31.14). This is a plausible contributor
+to the wild-type/mutant non-overlap Reviewer 1 questioned in Fig. 3C.
+
+```{r scaleoffset}
+c(mean_wt_imputed = round(mean(im$wt_dc13), 2), sd_wt = round(sd(im$wt_dc13), 3),
+  mean_mut_imputed = round(mean(im$flc_mut_dc13), 2), sd_mut = round(sd(im$flc_mut_dc13), 3),
+  offset = round(mean(im$wt_dc13) - mean(im$flc_mut_dc13), 2))
+```
+
+# Flowering time vs fitness (Reviewer 2, comment 1b)
+
+Reviewer 2 asked for the flowering-time/seed-weight relationship over the same lines as
+Fig. 3C. Source is the growth-chamber experiment (`optimal` treatment), not Uli's δ¹³C run.
+
+```{r ftfit}
+GC <- paste0("/Users/moisesexpositoalonso/Library/CloudStorage/",
+             "GoogleDrive-moiexpositoalonso@berkeley.edu/Shared drives/MOI-LAB/PROJECTS/",
+             "field_experiment_ranges/climate.change.evo.exp/field_prep_year1/crispr/growth chamber")
+gc <- read.csv(file.path(GC, "wrangled_data_crispr.csv"))
+sw <- read.csv(file.path(GC, "seed_weights.csv"))
+gd <- merge(gc, sw, by = "NEW_ID")
+gd$weight_w_paper <- suppressWarnings(as.numeric(gd$weight_w_paper))
+gd$rSeedWeight <- gd$weight_w_paper - 0.3992667          # as in AtlasofPhenotypes.Rmd
+gd$founder <- as.character(gd$founder)
+gd$founder[is.na(gd$founder) | gd$founder == ""] <- "c"  # c = CRISPR, f = wild-type founder
+gopt <- subset(gd, drought == "optimal")
+
+# replicate wrangle_Expdata(): per line, drop NA seed weight, then average
+wrangle <- function(dat) do.call(rbind, lapply(unique(dat$real_id), function(i) {
+  t <- dat[dat$real_id == i, ]; t <- t[!is.na(t$rSeedWeight), ]
+  if (!nrow(t)) return(NULL)
+  data.frame(id = i, ft = mean(t$days_to_flowering, na.rm = TRUE),
+             fit = mean(t$rSeedWeight, na.rm = TRUE)) }))
+WTg  <- wrangle(subset(gopt, founder == "f"))
+MUTg <- wrangle(subset(gopt, founder == "c"))
+
+knitr::kable(rbind(stat(WTg$ft,  WTg$fit,  "wild type"),
+                   stat(MUTg$ft, MUTg$fit, "CRISPR flc")), row.names = FALSE)
+```
+
+```{r ftfit_tests}
+bb <- rbind(data.frame(ft = WTg$ft, fit = WTg$fit, g = "wt"),
+            data.frame(ft = MUTg$ft, fit = MUTg$fit, g = "mut"))
+round(summary(lm(fit ~ ft * g, data = bb))$coef, 5)   # ft:gwt = slope difference
+
+zz <- (atanh(cor(MUTg$ft, MUTg$fit)) - atanh(cor(WTg$ft, WTg$fit))) /
+      sqrt(1/(nrow(MUTg) - 3) + 1/(nrow(WTg) - 3))
+c(fisher_z = round(zz, 3), p = round(2 * (1 - pnorm(abs(zz))), 4))
+```
+
+```{r ftfit_plot, fig.height=4.2}
+plot(WTg$ft, WTg$fit, pch = 19, col = "#4E9A6A",
+     xlab = "Flowering time (days)", ylab = "Seed weight (g, paper-corrected)",
+     main = "Flowering time vs fitness, growth chamber")
+points(MUTg$ft, MUTg$fit, pch = 19, col = "#D7473A")
+abline(lm(fit ~ ft, data = WTg),  col = "#4E9A6A", lwd = 2)
+abline(lm(fit ~ ft, data = MUTg), col = "#D7473A", lwd = 2)
+legend("topright", bty = "n", pch = 19, col = c("#4E9A6A", "#D7473A"),
+       legend = c("wild type  r = -0.21, p = 0.195", "CRISPR flc  r = +0.25, p = 0.098"))
+```
+
+Neither correlation is individually significant, but they differ from each other
+(interaction p = 0.033; Fisher z = 2.07, p = 0.038): the relationship reverses sign rather
+than disappearing. Over the same lines, fitness vs δ¹³C is r = −0.19 (p = 0.24) in wild
+types and r = 0.40 (p = 0.004) in edited lines — so WUE carries the stronger and only
+individually significant fitness association in the edited background.
+
+**Caveat.** Flowering time in this chamber experiment spans 27.3–137.5 d in the edited
+lines, unlike 13.9–35.8 d in Uli's δ¹³C panel. The two experiments are not the same set of
+lines, so the 32-fold variance collapse reported above applies to Uli's panel only.
+
+# Summary
+
+| Claim | Test | Result |
+|---|---|---|
+| Editing changed the correlation | Fisher z vs natural population | p = 0.97 — no |
+| Editing changed the slope | interaction term | p = 0.68 — no |
+| Editing changed the covariance | bootstrap | p = 0.84 — no |
+| Editing collapsed flowering-time variance | F test | **p = 6×10⁻¹⁴ — yes, 32-fold** |
+| Wild-type relationship in Fig. 3B is significant | correlation | p = 0.55 — no |
+
+The constraint is relaxed because flowering-time variance collapses, not because the
+genetic correlation between the traits changes.

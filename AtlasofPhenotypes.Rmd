@@ -1736,7 +1736,7 @@ if(RERUN){
 
 In addition to measuring selection on flowering time (Fig. 2A,B,C), we also measured the total selective effect on all non-fitness phenotypes in this study (1821). In order to compare the measures of selection, all fitness measures and phenotypes were scaled prior to calculating their covariance. The fitness data was measured in two different environments, Madrid, Spain and Tubingen, Germany, in two rainfall treatments at each location, high and low rain, as well as two planting densities, high and low. This results in a combination of eight different treatments, and three fitness measures for each treatment; survival, seeds set, lifetime fitness. All were used to detect an association with selection for all non-fitness phenotypes.
 
-To compute phenotypic selection coefficients s (Lande and Arnold 1983), we use covariation between relative lifetime fitness w (number of offspring including 0s by the mean of the population) and a given phenotype z (mean and variance centered):  w = sX where  s is the total selection coefficient. We computed s with 100 bootstrap replicates for each phenotype and noted those with a significant association with selection as those estimates with 95% CI that do not overlap with 0.
+To compute phenotypic selection differentials s (Lande and Arnold 1983), we use covariation between relative lifetime fitness w (number of offspring including 0s by the mean of the population) and a given phenotype z (mean and variance centered):  w = sX where  s is the total selection differential. We computed s with 100 bootstrap replicates for each phenotype and noted those with a significant association with selection as those estimates with 95% CI that do not overlap with 0.
 
 ```{r, echo=F, eval=F, message=F, warning=F}
 RERUN=F 
@@ -2016,7 +2016,7 @@ if(RERUN){
   # sum(p[,1])
   
   #hist(sort(table(names_vec), decreasing = T)[1:50])
-  knitr::kable(df, col.names = colnames(df), caption = "Table SII.1 Summary of significant total selection coefficients measured for 1823 traits (plus 20 PCS) using 3 fitness traits, measured on individuals and populations, across 4 environments.", fixed_thread=T )
+  knitr::kable(df, col.names = colnames(df), caption = "Table SII.1 Summary of significant total selection differentials measured for 1823 traits (plus 20 PCS) using 3 fitness traits, measured on individuals and populations, across 4 environments.", fixed_thread=T )
   
   ## sort the most associated phenotypes with selection
   #sort(table(names_vec), decreasing = T)[1:50]
@@ -2132,7 +2132,7 @@ if(RERUN){
 ```{r, echo=F, eval=F, warning=F, message=F}
   df <- readRDS(file="./data/PhenotypeSelectionSummary.rda")
   #write.table(df, file="./tables/PhenotypeSelectionSummary.tsv", sep="\t", quote = F, row.names = F, col.names = T)
-  knitr::kable(df, col.names = colnames(df), caption = "Table SII.1 Summary of significant total selection coefficients measured for 1823 traits (plus 20 PCS) using 3 fitness traits, measured on individuals and populations, across 4 environments.", fixed_thread=T )
+  knitr::kable(df, col.names = colnames(df), caption = "Table SII.1 Summary of significant total selection differentials measured for 1823 traits (plus 20 PCS) using 3 fitness traits, measured on individuals and populations, across 4 environments.", fixed_thread=T )
 ```
 
 
@@ -2150,7 +2150,7 @@ if(RERUN){
 }else{
   pcs_sel_response <- read.table(file="./tables/PC1_2_selectionResponse.tsv",
               header = T, sep="\t")
-  knitr::kable(pcs_sel_response, caption = "Table SII.2 Total selection coefficients measured for PC axes 1 and 2 with all fitness traits, measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
+  knitr::kable(pcs_sel_response, caption = "Table SII.2 Total selection differentials measured for PC axes 1 and 2 with all fitness traits, measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
 }
 ```
 
@@ -2162,7 +2162,7 @@ if(RERUN){
     expo_ft_sel <- read.table(file="./tables/ExpAlo_FTphenotypes_selectionResponse.tsv",
               header = T, sep="\t")
   
-  knitr::kable(expo_ft_sel, caption = "Table SII.3 Total selection coefficients measured for flowering time traits from Exposito-Alonso et al. (2019) with 3 fitness traits, measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
+  knitr::kable(expo_ft_sel, caption = "Table SII.3 Total selection differentials measured for flowering time traits from Exposito-Alonso et al. (2019) with 3 fitness traits, measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
 }
 ```
 
@@ -2173,7 +2173,7 @@ if(RERUN){
 }else{
   ft_sel <- read.table(file="./tables/FTphenotypesSignif_selectionResponse.tsv",
               header = T, sep="\t")
-  knitr::kable(ft_sel, caption = "Table SII.4 Significant total selection coefficients measured for flowering time traits from various other studies associated with 3 fitness traits from Exposito-Alonso et al 2019, measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
+  knitr::kable(ft_sel, caption = "Table SII.4 Significant total selection differentials measured for flowering time traits from various other studies associated with 3 fitness traits from Exposito-Alonso et al 2019, measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
 }
 ```
 
@@ -2184,7 +2184,7 @@ if(RERUN){
 }else{
    gr_sel <- read.table(file="./tables/GRphenotypes_selectionResponse.tsv",
                header=T, sep="\t")
-   knitr::kable(gr_sel, caption = "Table SII.5 Significant total selection coefficients measured for growth rate related traits associated with 3 fitness traits measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
+   knitr::kable(gr_sel, caption = "Table SII.5 Significant total selection differentials measured for growth rate related traits associated with 3 fitness traits measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
 }
 ```
 
@@ -2196,7 +2196,7 @@ if(RERUN){
 }else{
    dorm_germ_sel <- read.table(file="./tables/DormPerc_phenotypes_selectionResponse.tsv",
                header = T, sep="\t")
-   knitr::kable(dorm_germ_sel, caption = "Table SII.6 Significant total selection coefficients measured for primary and secondary dormancy related traits associated with 3 fitness traits measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
+   knitr::kable(dorm_germ_sel, caption = "Table SII.6 Significant total selection differentials measured for primary and secondary dormancy related traits associated with 3 fitness traits measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
 }
 ```
 
@@ -2207,7 +2207,7 @@ if(RERUN){
 }else{
    dcar_pheno <- read.table(file="./tables/DeltaC13_phenotypes_selectionResponse.tsv",
                header = T, sep="\t")
-   knitr::kable(dcar_pheno, caption = "Table SII.7 Total selection coefficients measured for Delta_C13 associated with 3 fitness traits measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
+   knitr::kable(dcar_pheno, caption = "Table SII.7 Total selection differentials measured for Delta_C13 associated with 3 fitness traits measured across two environments (Tubingen and Madrid; t/m), two rainfall treatments (high and low; h/l) and two planting densities (individual and population; i/p).", fixed_thread=T )
 }
 ```
 
@@ -2596,7 +2596,7 @@ if(RERUN){
 }
 ```
 
-To understand which phenotypes had the strongest impact on flowering time, we performed iterative estimates of the mutlivariate selection coefficients (s and Beta), while removing one trait at a time. Notably, when growth rate was removed, the impact on flowering time estimates changed slightly, but mainly the effect of selection moved toward selecting for ecotypes that did not require vernalization. Only when we removed both growth rate and growth after vernalization did we see the estimates of flowering time significantly affected, and the significant positive selective effect for late flowering gone (__Figure SII.4__)
+To understand which phenotypes had the strongest impact on flowering time, we performed iterative estimates of the multivariate selection differentials and gradients (s and Beta), while removing one trait at a time. Notably, when growth rate was removed, the impact on flowering time estimates changed slightly, but mainly the effect of selection moved toward selecting for ecotypes that did not require vernalization. Only when we removed both growth rate and growth after vernalization did we see the estimates of flowering time significantly affected, and the significant positive selective effect for late flowering gone (__Figure SII.4__)
 
 ```{r, echo=F, eval=T, warning=F, fig.cap="Figure SII.4 Multivariate selection analysis for 10 focal traits (growth rate and vernalization growth removed) with dry-hot, cool-wet, and high/low planting density fitness data from Exposito-Alonso et al. 2019.",  fig.height=7, fig.width=8.5}
  selection_noGrowthRate <- readRDS(file="./figs/tmpobjects/MultivSel_noGrowthRate.rda")
@@ -7991,7 +7991,7 @@ if(RERUN){
 
 #### Control for growth rate selective effect from survival and lifetime fitnes
 
-```{r, echo=F, eval=T, message=F, warning=F, fig.width=8, fig.height=10, fig.cap="Figure SIII.21 mGWA of flowering time and delta_C13 colored by selection coefficients being either positively selected (green) or negatively selected (red). Selection coefficients are from top) a GWA with residuals from a model of lifetime fitness as a function of growth rate and bottom) a GWA with residuals from a model of survival as a function of growth rate"}
+```{r, echo=F, eval=T, message=F, warning=F, fig.width=8, fig.height=10, fig.cap="Figure SIII.21 mGWA of flowering time and delta_C13 colored by selection differentials being either positively selected (green) or negatively selected (red). Selection differentials are from top) a GWA with residuals from a model of lifetime fitness as a function of growth rate and bottom) a GWA with residuals from a model of survival as a function of growth rate"}
 RERUN=F
 if(RERUN){
 
@@ -8175,7 +8175,7 @@ if(RERUN){
 
 #### Scatter plot
 
-```{r, echo=F, eval=T, message=F, warning=F, fig.width=7, fig.height=4, fig.cap="Figure SIII.22 Top 0.05% SNPs from mGWA of flowering time and deltaC_13, plotted by their effect size estimated in both traits, colored by their selection coefficient estimated from linear models of left) lifetime fitness as a function of growth rate and right) survival as a function of growth rate."}
+```{r, echo=F, eval=T, message=F, warning=F, fig.width=7, fig.height=4, fig.cap="Figure SIII.22 Top 0.05% SNPs from mGWA of flowering time and deltaC_13, plotted by their effect size estimated in both traits, colored by their selection differential estimated from linear models of left) lifetime fitness as a function of growth rate and right) survival as a function of growth rate."}
 RERUN=F
 if(RERUN){
   library(dplyr)

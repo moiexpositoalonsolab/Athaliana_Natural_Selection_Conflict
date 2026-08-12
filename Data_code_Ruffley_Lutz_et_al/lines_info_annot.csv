@@ -1,0 +1,113 @@
+mut_line_ID,old_name_some_wrong_1001_seeds_and_fastq,assigned_mut_class,ID_wt_1,alt_ID_wt,ID_wt_2,name_wt,FT16_1001,country_wt,lat_wt,Unnamed: 10,long_wt,k1-9_group_wt,FTi_dag_mut,FLC_qRT_mut,FTi_dag_wt,FLC_qRT_wt,comment,DELSCREEN_MANUAL/WEI,region_12-3,region_0-1,Part of QTL,RNAseq,analysis_group,del_screen
+ID0424-02-R05,ID0424-02-R05,2,424,,ID0424,Draha2,68.25,CZE,49.4112,,16.2815,central_europe,25.3,32.7,30.5,85.85,,False,ok,ok,False,False,,small_snp_indel
+ID0424-04-R05,ID0424-04-R05,3,424,,ID0424,Draha2,68.25,CZE,49.4112,,16.2815,central_europe,21.6,21.4,30.5,85.85,,False,ok,0,False,False,,small_snp_indel
+ID0932-02-R04,ID0932-02-R04,3,932,,ID0932,CHA-41,68.75,USA,42.3634,,-71.1445,western_europe,20.8,20.3,38.0,44.59,,False,same like ID0932-06-R01,0,False,False,,small_snp_indel
+ID0932-09-R01,ID0932-09-R01,3,932,,ID0932,CHA-41,68.75,USA,42.3634,,-71.1445,western_europe,22.3,14.1,38.0,44.59,,False,ok,0,False,False,,small_snp_indel
+ID1890-05-R04,ID1890-05-R04,2,1890,,ID1890,MNF-Riv-21,75.75,USA,43.5139,,-86.1859,asia,22.8,47.7,44.2,102.59,,False,ok,ok,False,False,,small_snp_indel
+ID1890-01-R05,ID1890-01-R05,3,1890,,ID1890,MNF-Riv-21,75.75,USA,43.5139,,-86.1859,asia,22.0,46.0,44.2,102.59,,False,ok,0,False,False,,small_snp_indel
+ID1954-06-R05,ID1954-06-R05,3,1954,,ID1954,MNF-Jac-12,101.0,USA,43.5187,,-86.1739,germany,24.4,53.8,53.9,153.58,,False,ok,0,False,False,,small_snp_indel
+ID1954-10-R05,ID1954-10-R05,3,1954,,ID1954,MNF-Jac-12,101.0,USA,43.5187,,-86.1739,germany,21.2,89.1,53.9,153.58,,False,ok,0,False,False,,small_snp_indel
+ID2016-03-R05,ID2016-03-R05,3,2016,,ID2016,MNF-Pin-39,69.75,USA,43.5356,,-86.1788,admixed,18.8,81.6,41.9,162.21,,False,ok,0,False,False,,small_snp_indel
+ID2171-08-R03,ID2171-08-R03,3,2171,,ID2171,Paw-26,82.5,USA,42.148,,-86.431,germany,21.0,34.7,43.6,85.08,,False,ok,0,False,False,,small_snp_indel
+ID2171-21-R05,ID2171-21-R05,3,2171,,ID2171,Paw-26,82.5,USA,42.148,,-86.431,germany,21.3,30.8,43.6,85.08,,False,ok,0,False,False,,small_snp_indel
+ID4807-02-R05,ID4807-02-R05,1,4807,,ID4807,UKSW06-207,87.5,UK,50.4,,-4.9,western_europe,22.1,1.0,102.5,88.8,,True,0,0,False,False,,del>25bp
+ID4807-14-R03,ID4807-14-R03,1,4807,,ID4807,UKSW06-207,87.5,UK,50.4,,-4.9,western_europe,21.3,7.8,102.5,88.8,,True,largedel,0,False,True,,del>25bp
+ID5151-11-R04,ID5151-11-R04,4,5151,,ID5151,UKSE06-325,73.67,UK,52.2,,-1.7,admixed,26.6,17.9,49.3,169.26,,False,0,ok,False,False,,small_snp_indel
+ID5741-02-R03,ID5741-02-R03,3,5741,,ID5741,UKID36,88.5,UK,56.6,,-4.1,western_europe,37.0,58.8,52.8,146.08,,False,ok,0,False,False,,small_snp_indel
+ID5741-04-R01,ID5741-04-R01,3,5741,,ID5741,UKID36,88.5,UK,56.6,,-4.1,western_europe,37.2,54.4,52.8,146.08,,False,ok,0,False,False,,small_snp_indel
+ID6086-01-R04,ID6086-01-R04,2,6086,,ID6086,Sr:3,100.75,SWE,58.9,,11.2,admixed,28.5,59.0,102.5,194.45,,False,ok,ok,False,False,,small_snp_indel
+ID6086-07-R03,ID6086-07-R03,3,6086,,ID6086,Sr:3,100.75,SWE,58.9,,11.2,admixed,33.9,121.2,102.5,194.45,,False,ok,0,False,False,,small_snp_indel
+ID6132-05-R01,ID6132-05-R01,3,6132,,ID6132,T790,102.5,SWE,55.8386,,13.3186,south_sweden,41.2,67.3,88.0,154.27,,False,ok,0,False,False,,small_snp_indel
+ID6132-01-R01,ID6132-01-R01,4,6132,,ID6132,T790,102.5,SWE,55.8386,,13.3186,south_sweden,40.9,61.2,88.0,154.27,,False,ANN LOW,ok,False,False,,small_snp_indel
+ID6133-07-R03,ID6133-07-R03,1,6133,,ID6133,T800,91.75,SWE,55.8364,,13.2906,south_sweden,31.8,27.4,63.3,195.62,,True,largedel,ok,False,False,,del>25bp
+ID6133-01-R05,ID6133-01-R05,3,6133,,ID6133,T800,91.75,SWE,55.8364,,13.2906,south_sweden,29.1,68.8,63.3,195.62,,False,ok,0,False,False,,small_snp_indel
+ID6136-02-R05,ID6136-02-R05,3,6136,,ID6136,T840,84.5,SWE,55.9336,,13.5519,south_sweden,34.4,52.9,86.7,190.24,,False,ok,0,False,False,,small_snp_indel
+ID6136-15-R04,ID6136-15-R04,3,6136,,ID6136,T840,84.5,SWE,55.9336,,13.5519,south_sweden,31.2,31.3,86.7,190.24,,False,ok,0,False,False,,small_snp_indel
+ID6138-09-R04,ID6138-09-R04,1,6138,,ID6138,T860,90.75,SWE,55.9403,,13.5511,south_sweden,30.6,13.9,52.2,112.55,,True,largedel,0,False,False,,del>25bp
+ID6138-07-R03,ID6138-07-R03,3,6138,,ID6138,T860,90.75,SWE,55.9403,,13.5511,south_sweden,33.2,30.6,52.2,112.55,,False,ok,0,False,False,,small_snp_indel
+ID6413-10-R05,ID6413-10-R05,1,6413,,ID6413,Ull3-4,95.0,SWE,56.06,,13.97,south_sweden,21.8,2.6,63.4,159.52,,True,largedel,0,True,False,,del>25bp
+ID6413-12-R05,ID6413-12-R05,1,6413,,ID6413,Ull3-4,95.0,SWE,56.06,,13.97,south_sweden,20.8,3.4,63.4,159.52,,True,largedel,0,False,False,,del>25bp
+ID6990-01-R05,ID6680-01-R05,1,6990,,ID6990,Amel-1,60.25,NED,53.448,,5.73,admixed,24.4,1.1,81.3,166.24,,True,ANN LOW,0,False,False,,del>25bp
+ID6990-08-R03,ID6680-08-R03,1,6990,,ID6990,Amel-1,60.25,NED,53.448,,5.73,admixed,25.7,0.5,81.3,166.24,,True,ok,0,True,True,,del>25bp
+ID7169-04-R05,ID7169-04-R05,3,7169,,ID7169,Hh-0,78.25,GER,54.4175,,9.88682,admixed,28.8,59.2,48.2,156.8,,False,ok,0,False,False,,small_snp_indel
+ID7186-01-R01,ID9075-01-R01,1,7186,,ID7186,Kn-0,49.75,LTU,54.8969,,23.8924,central_europe,14.5,0.4,20.3,20.11,,True,0,0,False,False,,del>25bp
+ID7186-15-R03,ID9705-15-R03,1,7186,,ID7186,Kn-0,49.75,LTU,54.8969,,23.8924,central_europe,14.3,2.7,20.3,20.11,,True,ok,0,True,False,,del>25bp
+ID7316-05-R05,ID7307-05-R05,3,7316,,ID7316,Rhen-1,89.25,NED,51.9667,,5.566669999999999,admixed,30.5,35.7,66.4,110.1,,False,ok,0,False,False,,small_snp_indel
+ID8234-01-R05,ID8234-01-R05,1,8234,,ID8234,Gul1-2,92.75,SWE,56.4606,,15.8127,south_sweden,31.7,1.0,98.1,126.66,,True,0,ok,False,False,,del>25bp
+ID8246-10-R03,ID8246-10-R03,2,8246,,ID8246,NC-6,76.5,USA,35.0,,-79.18,germany,21.3,97.6,56.2,202.29,"likely k.o., truncation of exon7",False,ok,ok,False,False,,small_snp_indel
+ID8246-17-R05,ID8246-17-R05,3,8246,,ID8246,NC-6,76.5,USA,35.0,,-79.18,germany,22.8,162.5,56.2,202.29,"likely k.o., truncation of exon7",False,ok,0,False,False,,del>25bp
+ID8283-01-R04,ID8283-01-R04,1,8283,,ID8283,Dra3-1,82.67,SWE,55.76,,14.12,south_sweden,21.5,1.2,99.2,169.46,,True,0,ok,False,True,,del>25bp
+ID8283-02-R04,ID8283-02-R04,1,8283,,ID8283,Dra3-1,82.67,SWE,55.76,,14.12,south_sweden,21.7,1.7,99.2,169.46,,True,0,ok,False,False,,del>25bp
+ID8337-06-R03,ID8337-06-R03,3,8337,,ID8337,Mir-0,72.5,ITA,44.0,,12.37,western_europe,25.7,85.4,49.0,167.64,,False,ok,0,False,False,,small_snp_indel
+ID8337-09-R04,ID8337-09-R04,3,8337,,ID8337,Mir-0,72.5,ITA,44.0,,12.37,western_europe,26.6,85.0,49.0,167.64,,False,ok,0,False,False,,small_snp_indel
+ID8369-04-R05,ID8369-04-R05,1,8369,,ID8369,Rev-1,94.67,SWE,55.6942,,13.4504,south_sweden,24.6,1.3,57.3,153.45,,True,0,0,True,False,,del>25bp
+ID8369-05-R03,ID8369-05-R03,1,8369,,ID8369,Rev-1,94.67,SWE,55.6942,,13.4504,south_sweden,24.7,12.8,57.3,153.45,,True,ok,0,False,False,,del>25bp
+ID8376-10-R04,ID8376-10-R04,1,8376,,ID8376,Sanna-2,104.0,SWE,62.69,,18.0,north_sweden,29.8,0.1,,241.94,,True,largedel,0,True,False,,del>25bp
+ID8376-04-R05,ID8376-04-R05,3,8376,,ID8376,Sanna-2,104.0,SWE,62.69,,18.0,north_sweden,39.9,46.5,,241.94,,False,ok,0,False,False,,small_snp_indel
+ID9069-01-R05,ID9069-01-R05,3,9069,,ID9069,CS75410,90.75,AZE,38.6536,,48.7992,italy_balkan_caucasus,26.8,32.3,103.1,160.53,,False,ok,0,False,False,,del>25bp
+ID9070-02-R01,ID9070-02-R01,3,9070,,ID9070,CS75411,88.5,AZE,38.6536,,48.7992,italy_balkan_caucasus,19.7,43.1,98.4,152.37,,False,ok,0,False,False,,small_snp_indel
+ID9070-11-R04,ID9070-11-R04,3,9070,,ID9070,CS75411,88.5,AZE,38.6536,,48.7992,italy_balkan_caucasus,20.9,67.9,98.4,152.37,,False,ok,0,False,False,,small_snp_indel
+ID9079-02-R01,ID9079-02-R01,1,9079,,ID9079,CS75420,102.0,AZE,38.7833,,48.5517,italy_balkan_caucasus,17.7,0.7,109.4,155.25,,True,ANN LOW,ok,False,False,,del>25bp
+ID9102-01-R05,ID9102-01-R05,1,9102,,ID9102,CS75443,80.75,GEO,41.8296,,46.2831,italy_balkan_caucasus,23.2,0.7,62.1,169.62,,True,largedel,0,True,True,,del>25bp
+ID9102-02-R05,ID9102-02-R05,3,9102,,ID9102,CS75443,80.75,GEO,41.8296,,46.2831,italy_balkan_caucasus,35.4,39.8,62.1,169.62,,False,ok,0,False,True,,small_snp_indel
+ID9111-01-R05,ID9111-01-R05,1,9111,,ID9111,CS75452,89.25,GEO,41.8296,,46.2831,italy_balkan_caucasus,27.4,0.6,100.9,121.61,,True,0,0,True,True,,del>25bp
+ID9111-02-R04,ID9111-02-R04,1,9111,,ID9111,CS75452,89.25,GEO,41.8296,,46.2831,italy_balkan_caucasus,27.8,0.1,100.9,121.61,,True,ok,0,False,False,,del>25bp
+ID9323-02-R05,ID9323-02-R05,1,9323,,ID9323,Ådal 3,80.75,SWE,62.8622,,18.336,north_sweden,32.1,100.9,72.8,115.84,,True,largedel,0,False,False,,del>25bp
+ID9323-12-R04,ID9323-12-R04,3,9323,,ID9323,Ådal 3,80.75,SWE,62.8622,,18.336,north_sweden,25.4,18.3,72.8,115.84,,False,ok,0,False,False,,small_snp_indel
+ID9402-01-R05,ID9402-01-R05,1,9402,,ID9402,Hel 3,78.75,SWE,57.8765,,14.8549,south_sweden,23.0,11.7,54.6,190.37,,True,largedel,ok,False,True,,del>25bp
+ID9402-11-R03,ID9402-11-R03,3,9402,,ID9402,Hel 3,78.75,SWE,57.8765,,14.8549,south_sweden,26.9,75.3,54.6,190.37,,False,ok,0,False,True,,small_snp_indel
+ID9404-08-R03,ID9404-08-R03,1,9404,,ID9404,HolA1 1,78.75,SWE,55.7491,,13.399000000000001,south_sweden,28.8,6.0,83.0,134.69,,True,largedel,0,False,False,,del>25bp
+ID9407-04-R02,ID9407-04-R02,1,9407,,ID9407,HolA2 2,75.0,SWE,55.7491,,13.399000000000001,south_sweden,23.1,0.0,60.4,174.65,,True,0,0,True,False,,del>25bp
+ID9407-01-R05,ID9081-01-R05,3,9407,,ID9407,HolA2 2,75.0,SWE,55.7491,,13.399000000000001,south_sweden,28.0,44.5,60.4,174.65,,False,ok,0,False,False,,small_snp_indel
+ID9421-04-R02,ID9421-04-R02,1,9421,,ID9421,Lan 1,103.0,SWE,55.9745,,14.3997,south_sweden,35.8,0.9,83.6,142.05,,True,0,0,True,False,,del>25bp
+ID9421-07-R02,ID9421-07-R02,1,9421,,ID9421,Lan 1,103.0,SWE,55.9745,,14.3997,south_sweden,38.0,1.9,83.6,142.05,,True,0,0,True,False,,del>25bp
+ID9450-02-R05,ID9450-02-R05,3,9450,,ID9450,Spro 1,78.5,SWE,57.2545,,18.2109,south_sweden,24.3,25.7,78.9,173.21,,False,ok,0,False,False,,small_snp_indel
+ID9450-05-R04,ID9450-05-R04,3,9450,,ID9450,Spro 1,78.5,SWE,57.2545,,18.2109,south_sweden,23.6,49.0,78.9,173.21,,False,ok,0,False,False,,small_snp_indel
+ID9569-06-R03,ID9569-06-R03,1,9569,,ID9569,Pds-1,96.5,ESP,42.87,,-6.45,western_europe,22.2,0.5,48.0,93.4,,True,0,0,True,True,,del>25bp
+ID9569-11-R01,ID9569-11-R01,1,9569,,ID9569,Pds-1,96.5,ESP,42.87,,-6.45,western_europe,21.9,0.0,48.0,93.4,,True,0,0,False,False,,del>25bp
+ID9579-01-R04,ID9579-01-R04,3,9579,,ID9579,San-10,79.25,ESP,38.33,,-3.51,admixed,18.1,52.6,55.3,190.11,,False,ok,0,False,False,,small_snp_indel
+ID9579-07-R05,ID9579-07-R05,3,9579,,ID9579,San-10,79.25,ESP,38.33,,-3.51,admixed,18.3,75.0,55.3,190.11,,False,ok,0,False,False,,small_snp_indel
+ID9582-01-R03,ID9582-01-R03,1,9582,,ID9582,Ses-0,93.75,ESP,41.48,,-1.63,spain,16.5,3.3,49.8,275.24,,True,0,0,True,False,,del>25bp
+ID9582-02-R02,ID9582-02-R02,1,9582,,ID9582,Ses-0,93.75,ESP,41.48,,-1.63,spain,18.3,11.1,49.8,275.24,,True,largedel,0,False,False,,del>25bp
+ID9583-03-R01,ID9583-03-R01,1,9583,,ID9583,Sne-0,89.5,ESP,37.09,,-3.38,relict,18.1,0.0,63.2,217.89,,True,0,0,True,False,,del>25bp
+ID9583-06-R04,ID9583-06-R04,1,9583,,ID9583,Sne-0,89.5,ESP,37.09,,-3.38,relict,18.3,0.0,63.2,217.89,,True,0,0,False,False,,del>25bp
+ID9599-02-R02,ID9599-02-R02,1,9599,,ID9599,Viñ-0,90.25,ESP,42.8,,-5.77,western_europe,18.3,0.0,55.9,102.54,very likely FLC k.o.,True,largedel,0,False,False,,del>25bp
+ID9644-14-R02,ID9644-14-R02,1,9644,,ID9644,Zupan-1,69.0,CRO,45.07,,18.72,central_europe,18.9,0.1,37.6,63.87,,True,0,ok,False,True,,del>25bp
+ID9644-13-R02,ID9644-13-R02,2,9644,,ID9644,Zupan-1,69.0,CRO,45.07,,18.72,central_europe,20.4,38.6,37.6,63.87,,False,ok,ok,False,True,,small_snp_indel
+IDCS77187-01-R05,ID9707-01-R05,3,9707,CS77187,IDCS77187,Podvi-1,72.75,BUL,41.57,,24.84,italy_balkan_caucasus,26.8,44.5,50.6,139.67,,False,ok,0,False,False,,small_snp_indel
+IDCS77187-04-R04,ID9707-04-R04,3,9707,CS77187,IDCS77187,Podvi-1,72.75,BUL,41.57,,24.84,italy_balkan_caucasus,24.9,42.7,50.6,139.67,,False,ok,0,False,False,,small_snp_indel
+ID9729-01-R05,ID9729-01-R05,1,9729,,ID9729,Stiav-2,79.0,SVK,48.46,,18.9,central_europe,29.0,0.2,111.1,148.55,,True,0,0,True,True,,del>25bp
+ID9729-09-R05,ID9729-09-R05,1,9729,,ID9729,Stiav-2,79.0,SVK,48.46,,18.9,central_europe,36.2,62.8,111.1,148.55,,True,0,0,False,True,,del>25bp
+ID9733-02-R04,ID9733-02-R04,2,9733,,ID9733,Bela-2,83.75,SVK,48.47,,18.94,central_europe,22.1,36.1,55.0,172.49,,False,ok,ok,False,False,,small_snp_indel
+ID9733-03-R03,ID9733-03-R03,3,9733,,ID9733,Bela-2,83.75,SVK,48.47,,18.94,central_europe,24.1,42.8,55.0,172.49,,False,ok,0,False,False,,del>25bp
+ID9736-02-R05,ID9536-02-R05,1,9736,,ID9736,Teiu-2,81.0,ROU,44.69,,25.17,admixed,18.3,0.1,39.2,96.61,,True,0,0,True,False,,del>25bp
+ID9736-05-R04,ID9536-05-R04,1,9736,,ID9736,Teiu-2,81.0,ROU,44.69,,25.17,admixed,19.3,0.0,39.2,96.61,,True,0,0,True,False,,del>25bp
+ID9738-01-R02,ID9738-01-R02,1,9738,,ID9738,Bran-1,73.75,ROU,45.57,,25.42,admixed,19.3,0.0,40.1,169.68,,True,0,ok,False,False,,del>25bp
+ID9738-04-R02,ID9738-04-R02,1,9738,,ID9738,Bran-1,73.75,ROU,45.57,,25.42,admixed,20.5,0.2,40.1,169.68,,True,largedel,0,False,False,,del>25bp
+ID9741-02-R03,ID9741-02-R03,1,9741,,ID9741,Orast-1,71.5,ROU,45.84,,23.16,central_europe,20.9,0.5,47.3,135.3,,True,0,0,True,False,,del>25bp
+ID9741-04-R05,ID9741-04-R05,1,9741,,ID9741,Orast-1,71.5,ROU,45.84,,23.16,central_europe,21.0,0.1,47.3,135.3,,True,0,0,False,False,,del>25bp
+ID9743-06-R03,ID9743-06-R03,1,9743,,ID9743,Furni-1,75.0,ROU,45.14,,25.0,admixed,19.3,17.5,42.6,228.68,,True,largedel,ok,False,False,,del>25bp
+ID9743-03-R05,ID9743-03-R05,2,9743,,ID9743,Furni-1,75.0,ROU,45.14,,25.0,admixed,21.8,68.8,42.6,228.68,,False,ok,ok,False,False,,small_snp_indel
+ID9748-01-R03,ID9748-01-R03,3,9748,,ID9748,Zagub-1,86.25,SRB,44.23,,21.71,admixed,26.8,54.5,51.9,126.99,,False,ok,0,False,False,,small_snp_indel
+ID9755-05-R05,ID9755-05-R05,1,9755,,ID9755,Vajug-1,82.0,SRB,44.56,,22.56,italy_balkan_caucasus,17.4,0.8,67.8,226.07,,True,ANN LOW,0,True,False,,del>25bp
+ID9821-14-R04,ID9821-14-R04,2,9821,,ID9821,Aru-0,72.25,ESP,41.81,,2.49,spain,29.6,95.3,52.3,209.99,,False,ok,ok,False,False,,del>25bp
+ID9821-07-R02,ID9821-07-R02,3,9821,,ID9821,Aru-0,72.25,ESP,41.81,,2.49,spain,25.7,56.9,52.3,209.99,,False,ok,0,False,False,,del>25bp
+ID9831-03-R04,ID9831-03-R04,1,9831,,ID9831,Cas-0,88.25,ESP,38.54,,-3.39,admixed,22.8,73.8,61.1,159.95,,True,largedel,0,False,False,,del>25bp
+ID9831-01-R01,ID9831-01-R01,3,9831,,ID9831,Cas-0,88.25,ESP,38.54,,-3.39,admixed,22.8,57.4,61.1,159.95,,False,ok,0,False,False,,small_snp_indel
+ID9848-08-R02,ID9748-08-R02,1,9848,,ID9848,Glo-1,98.0,ESP,40.11,,-5.77,spain,16.8,25.4,55.3,161.84,,True,largedel,0,False,False,,del>25bp
+ID9848-05-R04,ID9748-05-R04,3,9848,,ID9848,Glo-1,98.0,ESP,40.11,,-5.77,spain,16.1,16.5,55.3,161.84,,False,ok,0,False,False,,small_snp_indel
+ID9882-01-R03,ID9882-01-R03,3,9882,,ID9882,Pil-0,70.33,ESP,40.46,,-4.26,spain,23.5,64.5,42.1,154.34,,False,ok,0,False,False,,small_snp_indel
+ID9882-02-R04,ID9882-02-R04,3,9882,,ID9882,Pil-0,70.33,ESP,40.46,,-4.26,spain,23.2,72.9,42.1,154.34,,False,ok,0,False,False,,small_snp_indel
+ID9888-01-R01,ID9888-01-R01,3,9888,,ID9888,Pva-1,96.67,ESP,40.93,,-3.31,spain,25.1,105.0,51.7,268.11,,False,ok,0,False,False,,small_snp_indel
+ID9888-01-R04,ID9888-01-R04,3,9888,,ID9888,Pva-1,96.67,ESP,40.93,,-3.31,spain,25.5,146.9,51.7,268.11,,False,ok,0,False,False,x,small_snp_indel
+ID9895-09-R04,ID9895-09-R04,2,9895,,ID9895,Sfb-6,71.0,ESP,41.78,,2.57,spain,22.5,34.8,57.5,102.59,,False,ok,ok,False,False,,del>25bp
+ID9895-03-R05,ID9895-03-R05,3,9895,,ID9895,Sfb-6,71.0,ESP,41.78,,2.57,spain,21.1,26.9,57.5,102.59,,False,ok,0,False,False,,del>25bp
+ID9906-04-R02,ID9906-04-R02,3,9906,,ID9906,Mah-6,80.0,ESP,40.0,,4.25,admixed,18.3,92.7,47.4,162.04,,False,ok,0,False,False,,small_snp_indel
+ID9906-06-R04,ID9906-06-R04,3,9906,,ID9906,Mah-6,80.0,ESP,40.0,,4.25,admixed,17.9,63.8,47.4,162.04,,False,ok,0,False,False,,del>25bp
+ID9908-06-R05,ID9928-06-R05,1,9908,,ID9908,ESP-1-11,46.5,FRA,50.72,,3.47,western_europe,13.9,0.0,54.2,162.64,,True,largedel,0,False,False,,del>25bp
+ID9908-12-R05,ID9928-12-R05,1,9908,,ID9908,ESP-1-11,46.5,FRA,50.72,,3.47,western_europe,14.1,0.4,54.2,162.64,,True,largedel,0,True,False,,del>25bp
+IDCS77069-05-R03,ID9915-05-R03,1,9915,CS77069,IDCS77069,MAR-4-16,75.5,FRA,47.45,,3.94,central_europe,22.3,1.5,60.2,152.25,,True,0,0,True,False,,del>25bp
+IDCS77069-08-R03,ID9915-08-R03,3,9915,CS77069,IDCS77069,MAR-4-16,75.5,FRA,47.45,,3.94,central_europe,19.7,6.2,60.2,152.25,,False,ok,0,False,False,,small_snp_indel
+ID9918-07-R03,ID9918-07-R03,3,9918,,ID9918,SAUL-24,90.0,FRA,47.43,,5.21,western_europe,21.6,77.8,45.6,226.04,,False,ok,0,False,False,,small_snp_indel
+ID9925-03-R03,ID9925-03-R03,1,9925,,ID9925,RUM-20,79.0,FRA,48.91,,4.52,western_europe,15.9,0.0,51.5,84.45,,True,0,0,True,False,,del>25bp
+ID9925-06-R02,ID9925-06-R02,1,9925,,ID9925,RUM-20,79.0,FRA,48.91,,4.52,western_europe,16.5,0.0,51.5,84.45,,True,0,0,True,False,,del>25bp

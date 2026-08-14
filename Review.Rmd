@@ -257,68 +257,6 @@ c(mean_wt_imputed = round(mean(im$wt_dc13), 2), sd_wt = round(sd(im$wt_dc13), 3)
   offset = round(mean(im$wt_dc13) - mean(im$flc_mut_dc13), 2))
 ```
 
-# Flowering time vs fitness (Reviewer 2, comment 1b)
-
-Reviewer 2 asked for the flowering-time/seed-weight relationship over the same lines as
-Fig. 3C. Source is the growth-chamber experiment (`optimal` treatment), not Uli's δ¹³C run.
-
-```{r ftfit}
-GC <- paste0("/Users/moisesexpositoalonso/Library/CloudStorage/",
-             "GoogleDrive-moiexpositoalonso@berkeley.edu/Shared drives/MOI-LAB/PROJECTS/",
-             "field_experiment_ranges/climate.change.evo.exp/field_prep_year1/crispr/growth chamber")
-gc <- read.csv(file.path(GC, "wrangled_data_crispr.csv"))
-sw <- read.csv(file.path(GC, "seed_weights.csv"))
-gd <- merge(gc, sw, by = "NEW_ID")
-gd$weight_w_paper <- suppressWarnings(as.numeric(gd$weight_w_paper))
-gd$rSeedWeight <- gd$weight_w_paper - 0.3992667          # as in AtlasofPhenotypes.Rmd
-gd$founder <- as.character(gd$founder)
-gd$founder[is.na(gd$founder) | gd$founder == ""] <- "c"  # c = CRISPR, f = wild-type founder
-gopt <- subset(gd, drought == "optimal")
-
-# replicate wrangle_Expdata(): per line, drop NA seed weight, then average
-wrangle <- function(dat) do.call(rbind, lapply(unique(dat$real_id), function(i) {
-  t <- dat[dat$real_id == i, ]; t <- t[!is.na(t$rSeedWeight), ]
-  if (!nrow(t)) return(NULL)
-  data.frame(id = i, ft = mean(t$days_to_flowering, na.rm = TRUE),
-             fit = mean(t$rSeedWeight, na.rm = TRUE)) }))
-WTg  <- wrangle(subset(gopt, founder == "f"))
-MUTg <- wrangle(subset(gopt, founder == "c"))
-
-knitr::kable(rbind(stat(WTg$ft,  WTg$fit,  "wild type"),
-                   stat(MUTg$ft, MUTg$fit, "CRISPR flc")), row.names = FALSE)
-```
-
-```{r ftfit_tests}
-bb <- rbind(data.frame(ft = WTg$ft, fit = WTg$fit, g = "wt"),
-            data.frame(ft = MUTg$ft, fit = MUTg$fit, g = "mut"))
-round(summary(lm(fit ~ ft * g, data = bb))$coef, 5)   # ft:gwt = slope difference
-
-zz <- (atanh(cor(MUTg$ft, MUTg$fit)) - atanh(cor(WTg$ft, WTg$fit))) /
-      sqrt(1/(nrow(MUTg) - 3) + 1/(nrow(WTg) - 3))
-c(fisher_z = round(zz, 3), p = round(2 * (1 - pnorm(abs(zz))), 4))
-```
-
-```{r ftfit_plot, fig.height=4.2}
-plot(WTg$ft, WTg$fit, pch = 19, col = "#4E9A6A",
-     xlab = "Flowering time (days)", ylab = "Seed weight (g, paper-corrected)",
-     main = "Flowering time vs fitness, growth chamber")
-points(MUTg$ft, MUTg$fit, pch = 19, col = "#D7473A")
-abline(lm(fit ~ ft, data = WTg),  col = "#4E9A6A", lwd = 2)
-abline(lm(fit ~ ft, data = MUTg), col = "#D7473A", lwd = 2)
-legend("topright", bty = "n", pch = 19, col = c("#4E9A6A", "#D7473A"),
-       legend = c("wild type  r = -0.21, p = 0.195", "CRISPR flc  r = +0.25, p = 0.098"))
-```
-
-Neither correlation is individually significant, but they differ from each other
-(interaction p = 0.033; Fisher z = 2.07, p = 0.038): the relationship reverses sign rather
-than disappearing. Over the same lines, fitness vs δ¹³C is r = −0.19 (p = 0.24) in wild
-types and r = 0.40 (p = 0.004) in edited lines — so WUE carries the stronger and only
-individually significant fitness association in the edited background.
-
-**Caveat.** Flowering time in this chamber experiment spans 27.3–137.5 d in the edited
-lines, unlike 13.9–35.8 d in Uli's δ¹³C panel. The two experiments are not the same set of
-lines, so the 32-fold variance collapse reported above applies to Uli's panel only.
-
 # Summary of the Fig. 3B/3C tests
 
 | Claim | Test | Result |

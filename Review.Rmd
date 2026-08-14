@@ -700,27 +700,6 @@ has the largest deflection angle, but composite fitness sits in the thinnest
 part of the evolvability distribution. An angle measures where the response
 *goes*; a percentile measures how much variance the direction *has*.)
 
-### Why is fecundity the worst-aligned direction?
-
-Not because fecundity itself is "less heritable" — $G$ is the same matrix for
-all three rows; only $\beta$ changes. The mechanism is *where* each gradient
-puts its weight:
-
-```{r mechanism}
-t(sapply(betas, function(b) {
-  proj <- as.vector(t(ev_final$vectors) %*% b)^2
-  c(weighted_h2_along_beta  = sum(b^2 * diag(G_final)),
-    pct_on_4_smallest_eigdirs = round(100 * sum(proj[9:12])))
-}))
-```
-
-The survival gradient loads mostly on highly heritable traits (growth rate,
-flowering time; weighted $h^2 \approx 0.74$). The fecundity gradient puts 59% of
-its squared weight on vernalization growth ($h^2 = 0.33$) and ~64% of it on the
-four *smallest* eigendirections of $G$, versus ~37% for survival. **"Fecundity
-selection acts on traits — and directions — with less genetic variance"** is the
-correct summary; "fecundity is less heritable" is not even well-formed here.
-
 ### Conditional evolvability and autonomy (the part S28 doesn't show)
 
 $c(\beta)$ needs $G^{-1}$ — and here the final $G$ bites back. `nearPD`
@@ -745,21 +724,8 @@ round(aut, 3)
 Median autonomy 0.001, 0.10, or 0.37 depending on an arbitrary regularisation
 constant: **conditional evolvability and autonomy are not estimable from this
 $G$.** A joint, rather than pairwise, re-estimation of $G$ would be needed
-before any conditional claim can be made.
-
-Two fragility lessons, now demonstrated on our own final matrix:
-
-- $c(\beta)$ is dominated by the **smallest** eigenvalues of $G$ (via $G^{-1}$),
-  which are always the worst-estimated — here they are not estimated at all but
-  *manufactured* by the nearPD projection. Conditional measures amplify matrix
-  errors that ordinary evolvability barely notices ($e$ touches only the
-  numerator, never $G^{-1}$); $e$, $r$, and $\theta$ are untouched by any of
-  this.
-- Corollary: **check PSD — and distance from the PSD boundary — before
-  interpreting anything built on $G^{-1}$**, and be suspicious of any
-  "near-null subspace" claim until the matrix construction has been audited.
-  Our $G$'s null space is an artifact of pairwise assembly plus projection, not
-  evidence of an absolute evolutionary constraint.
+before any conditional claim can be made ($e$, $r$, and $\theta$ are untouched
+by this — they never use $G^{-1}$).
 
 ## Reading the constraint results with all of this in hand
 
@@ -786,9 +752,9 @@ S13 `mli` gradients (right; identical to `S28_regenerated_mli.csv`):
   side-effects.
 - The constraint is strongest for exactly the fitness component that opposes
   survival in our selection analyses — the geometry of $G$ is entangled with the
-  survival–fecundity conflict the paper is about, via the mechanism shown above:
-  the fecundity gradient puts ~64% of its squared weight on the four
-  variance-poorest eigendirections, versus ~37% for survival (panel C logic).
+  survival–fecundity conflict the paper is about: the fecundity gradient puts
+  ~64% of its squared weight on the four variance-poorest eigendirections of
+  $G$, versus ~37% for survival (panel C logic).
 - And the punchline for intuition: the median pairwise $|r_g|$ is 0.36, with a
   quarter of pairs above 0.55 — no single pair, on its own, explains a 51–66°
   deflection. **Constraint is a property of the whole matrix, not of any pair**

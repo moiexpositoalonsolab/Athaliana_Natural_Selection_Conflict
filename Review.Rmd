@@ -765,10 +765,14 @@ S13 `mli` gradients (right; identical to `S28_regenerated_mli.csv`):
 
 ## Caveats specific to our numbers
 
-1. **Standardisation.** Hansen & Houle's canonical $e$ is *mean-standardised*
-   (interpretable as % change per generation per unit selection). Ours is
-   *variance-standardised* (SD scale), because δ¹³C has a negative mean on an
-   arbitrary reference scale — mean-scaling it is meaningless. Consequence: our
+1. **Standardisation.** Hansen & Houle's canonical $e$ is *mean-standardised* —
+   they divide by the trait mean ($I_A = V_A/\bar z^2$), so $e$ reads as %
+   change per generation per unit selection. Our traits are z-scored
+   (mean-centred *and* SD-scaled); the centring is immaterial here, since
+   variances and covariances are shift-invariant, so effectively our $G$ is
+   *variance-standardised* (SD scale) — chosen because δ¹³C has a negative mean
+   on an arbitrary reference scale, making mean-scaling meaningless.
+   Consequence: our
    $e$ values are comparable *within* this analysis (across the three fitness
    measures, against the eigenvalue yardstick) but not directly against the
    published distribution of mean-scaled evolvabilities in the Hansen & Houle
@@ -792,18 +796,6 @@ S13 `mli` gradients (right; identical to `S28_regenerated_mli.csv`):
 5. **Constancy of $G$.** $\Delta\bar z = G\beta$ is a one-generation prediction.
    Over many generations selection itself erodes and rotates $G$, so "constraint"
    here means *bias in the immediate response*, not a permanent wall.
-
-## Cheat sheet
-
-| Symbol | Name | Formula ($|\beta|=1$) | Big means | Small means |
-|---|---|---|---|---|
-| $e(\beta)$ | evolvability | $\beta^\top G\beta$ | variance available where selection points | selection points into a depleted direction |
-| $r(\beta)$ | respondability | $|G\beta|$ | population will move a lot (somewhere) | little response in any direction |
-| $\theta$ | deflection angle | $\angle(\beta, G\beta)$ | response dragged off-target by covariances | response goes where selection points |
-| $\cos\theta$ | alignment | $e/r$ (identity!) | — | — |
-| $c(\beta)$ | conditional evolvability | $(\beta^\top G^{-1}\beta)^{-1}$ | direction can respond even with the rest of the phenotype pinned | variance is mortgaged to other traits |
-| $a(\beta)$ | autonomy | $c/e$ | direction is quasi-independent | direction is deeply integrated |
-| $\bar e$ | average evolvability | $\operatorname{tr}(G)/n$ | (yardstick: $e$ of a random direction) | |
 
 **References.** Lande 1979 ([doi:10.1111/j.1558-5646.1979.tb04678.x](https://doi.org/10.1111/j.1558-5646.1979.tb04678.x));
 Hansen & Houle 2008, *J. Evol. Biol.* ([doi:10.1111/j.1420-9101.2008.01573.x](https://doi.org/10.1111/j.1420-9101.2008.01573.x));

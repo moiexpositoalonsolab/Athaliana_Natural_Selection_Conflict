@@ -1,12 +1,18 @@
 ---
 title: "Ruffley & Lutz et al. — statistics computed for the NEE revision"
-subtitle: "Flowering time × WUE (δ¹³C): correlations, slopes, covariances"
+subtitle: "Flowering time × WUE (δ¹³C): correlations, slopes, covariances — plus the
+  Table S28 G-matrix constraint recompute"
 date: "`r Sys.Date()`"
 output:
+  pdf_document:
+    toc: true
+    latex_engine: xelatex
   html_document:
     toc: true
     toc_float: true
     code_folding: show
+mainfont: Times New Roman
+monofont: Menlo
 ---
 
 ```{r setup, include=FALSE}
@@ -19,6 +25,13 @@ set.seed(1)
 Everything below is recomputed from the deposited data. Written to answer
 Reviewer 2 comment 1 ("no p-value or r² values are listed") and the related
 Reviewer 1 points on Fig. 3B/3C.
+
+The final section (*Table S28 — evolvability, respondability, and multivariate
+constraint*) was merged in on 2026-08-12 from
+`stats-recompute/TableS28_evolvability_explainer.Rmd` (Moi + Claude, 2026-08-11/12):
+it documents the G-matrix construction bug behind Tables S28/S29 and the
+recomputed constraint statistics. The regeneration pipeline for the supplement
+lives in `regenerated-tables/regenerate_S21_S28_S29.R`.
 
 # Source data
 
@@ -101,38 +114,6 @@ natural accessions, so slopes are comparable in kind but not identical quantitie
 
 `20 progenitors + Col-0` reproduces the `β = 10.44 ± 16.9` reported in the manuscript,
 confirming the Fig. 3B wild-type line includes Col-0.
-
-# Visualisation
-
-```{r fig3b, fig.height=4.5}
-plot(WC$deltaC_mean_mean, WC$dag_mean, pch = 19, col = "#4E9A6A",
-     xlim = range(d$deltaC_mean_mean), ylim = range(d$dag_mean),
-     xlab = expression(delta^13*C~"(per mil)"), ylab = "Flowering time (days, 21 C)",
-     main = "Fig. 3B recomputed, within-genotype fits")
-points(E$deltaC_mean_mean, E$dag_mean, pch = 19, col = "#D7473A")
-abline(lm(dag_mean ~ deltaC_mean_mean, data = WC), col = "#4E9A6A", lwd = 2)
-abline(lm(dag_mean ~ deltaC_mean_mean, data = E),  col = "#D7473A", lwd = 2)
-legend("topleft", bty = "n", pch = 19, col = c("#4E9A6A", "#D7473A"),
-       legend = c(sprintf("wild type + Col-0: r = %.2f, p = %.2f",
-                          cor(WC$deltaC_mean_mean, WC$dag_mean),
-                          cor.test(WC$deltaC_mean_mean, WC$dag_mean)$p.value),
-                  sprintf("edited (flc): r = %.2f, p = %.3f",
-                          cor(E$deltaC_mean_mean, E$dag_mean),
-                          cor.test(E$deltaC_mean_mean, E$dag_mean)$p.value)))
-```
-
-```{r background}
-plot(at16$Delta_13C, at16$FT16, pch = 19, cex = .45, col = "grey55",
-     xlab = expression(delta^13*C~"(per mil)"), ylab = "FT16 (days)",
-     main = expression("Natural accessions, measured "*delta^13*C*" (n = 248)"))
-abline(lm(FT16 ~ Delta_13C, data = at16), col = "black", lwd = 2)
-legend("topleft", bty = "n",
-       legend = sprintf("r = %.2f, p = %.1e", cor(at16$Delta_13C, at16$FT16),
-                        cor.test(at16$Delta_13C, at16$FT16)$p.value))
-```
-
-The natural δ¹³C range (−38.7 to −30.8‰) barely overlaps the chamber range
-(−31.4 to −29.4‰); the two cannot be overlaid on a raw axis.
 
 # Formal tests
 
@@ -338,7 +319,7 @@ individually significant fitness association in the edited background.
 lines, unlike 13.9–35.8 d in Uli's δ¹³C panel. The two experiments are not the same set of
 lines, so the 32-fold variance collapse reported above applies to Uli's panel only.
 
-# Summary
+# Summary of the Fig. 3B/3C tests
 
 | Claim | Test | Result |
 |---|---|---|
@@ -350,3 +331,515 @@ lines, so the 32-fold variance collapse reported above applies to Uli's panel on
 
 The constraint is relaxed because flowering-time variance collapses, not because the
 genetic correlation between the traits changes.
+
+
+# Table S28 — evolvability, respondability, and multivariate constraint
+
+*Merged from `stats-recompute/TableS28_evolvability_explainer.Rmd` (2026-08-11,
+updated 2026-08-12) when that folder was dissolved into
+`figures-supp/FigS2-remake/` and this document. The Hansen & Houle framework
+behind Table S28 — a walkthrough — plus the provenance and rebuild of the G
+matrix behind it.*
+
+
+```{r s28-palette}
+# palette (colorblind-safe, validated)
+col_beta <- "#2a78d6"   # selection gradient (blue)
+col_dz   <- "#eb6834"   # predicted response (orange)
+col_aux  <- "#1baf7a"   # third series (aqua)
+col_ell  <- "#898781"   # G ellipse / muted ink
+col_ink  <- "#0b0b0b"
+```
+
+## The setup: one equation, four numbers
+
+Everything in Table S28 is geometry applied to the multivariate breeder's equation
+(Lande 1979):
+
+$$\Delta \bar{z} \;=\; G\,\beta$$
+
+- $\beta$ — the **selection gradient**: the direction (in 12-trait space) in which
+  selection pushes the phenotype. From our multivariate selection analysis
+  (one $\beta$ per fitness measure: survival, fecundity, composite fitness).
+- $G$ — the **additive genetic variance–covariance matrix** of the same 12 traits.
+- $\Delta \bar{z}$ — the **predicted response**: where the population mean actually
+  moves in one generation.
+
+The key point of Hansen & Houle (2008): selection *proposes* a direction, but $G$
+*disposes*. $G$ acts on $\beta$ like a lens — it stretches the response along
+directions rich in genetic variance and shrinks it along depleted ones, so
+$\Delta \bar z$ generally points somewhere *between* $\beta$ and $g_{max}$ (the
+leading eigenvector of $G$).
+
+For a **unit-length** $\beta$ (all formulas below assume $|\beta| = 1$), the
+framework defines:
+
+| Quantity | Formula | Meaning |
+|---|---|---|
+| **Evolvability** | $e(\beta) = \beta^\top G \beta$ | additive genetic variance available *in the direction selection favours* |
+| **Respondability** | $r(\beta) = |G\beta|$ | how far the population moves, in any direction |
+| **Angle** | $\theta = \angle(\beta, G\beta)$ | how far the response is rotated away from where selection points |
+| **Conditional evolvability** | $c(\beta) = \left(\beta^\top G^{-1} \beta\right)^{-1}$ | variance along $\beta$ when *all orthogonal directions are held constant* by stabilising selection |
+| **Autonomy** | $a(\beta) = c(\beta)/e(\beta)$ | fraction of the variance along $\beta$ that is free of the rest of the phenotype |
+
+Table S28 reports the first three (plus the cosine of the angle). Conditional
+evolvability and autonomy are the rest of the framework, worth knowing.
+
+### The identity that ties them together
+
+$$\cos\theta \;=\; \frac{\beta \cdot G\beta}{|\beta|\,|G\beta|} \;=\; \frac{\beta^\top G \beta}{|G\beta|} \;=\; \frac{e(\beta)}{r(\beta)}$$
+
+So the cosine alignment is **not an independent third line of evidence** — it is
+exactly evolvability over respondability. Equivalently, the projection of the
+response onto the selection direction has length $r\cos\theta = e$. That gives the
+cleanest one-sentence intuition:
+
+> **Respondability is how much the population moves; evolvability is how much of
+> that movement is in the direction selection actually pushes. Everything else is
+> dragged sideways by genetic covariances.**
+
+Check it against Table S28:
+
+```{r identity-check}
+S28 <- data.frame(
+  fitness        = c("Survival", "Composite fitness", "Fecundity (seeds)"),
+  evolvability   = c(0.29113, 0.28881, 0.21507),
+  respondability = c(0.41160, 0.41324, 0.60079),
+  angle_deg      = c(44.985, 45.663, 69.024),
+  cos_align      = c(0.70729, 0.69888, 0.35798)
+)
+S28$e_over_r        <- with(S28, evolvability / respondability)
+S28$angle_from_cos  <- acos(S28$cos_align) * 180 / pi
+knitr::kable(S28, digits = 3,
+  caption = "Table S28 values, plus the internal identity: cos θ = e/r, θ = acos(cos θ).")
+```
+
+The last two columns reproduce the reported cosine and angle exactly — three
+numbers per row, two degrees of freedom. (Internal consistency is necessary but
+not sufficient: as shown below, the $G$ behind these published values was not a
+valid covariance matrix.)
+
+## Geometric intuition in two traits
+
+A 2-trait toy makes the whole framework visible. The grey ellipse is the 1-SD
+contour of $G$; blue is $\beta$ (unit length); orange is $\Delta\bar z = G\beta$.
+
+```{r toy-figure, fig.width=9, fig.height=3.8}
+draw_case <- function(G, beta, main) {
+  beta <- beta / sqrt(sum(beta^2))
+  dz   <- as.vector(G %*% beta)
+  e    <- as.numeric(t(beta) %*% G %*% beta)
+  r    <- sqrt(sum(dz^2))
+  th   <- acos(sum(beta * dz) / r) * 180 / pi
+  # 1-SD ellipse of N(0, G)
+  E   <- eigen(G)
+  tt  <- seq(0, 2 * pi, length.out = 200)
+  ell <- E$vectors %*% diag(sqrt(pmax(E$values, 0))) %*% rbind(cos(tt), sin(tt))
+  lim <- max(abs(ell), abs(dz), 1) * 1.15
+  plot(NA, xlim = c(-lim, lim), ylim = c(-lim, lim), asp = 1,
+       axes = FALSE, xlab = "", ylab = "", main = main, font.main = 1, cex.main = 0.95)
+  abline(h = 0, v = 0, col = "#e5e4e0")
+  lines(ell[1, ], ell[2, ], col = col_ell, lwd = 2)
+  # projection of dz onto beta (dashed): its length IS e(beta)
+  proj <- sum(dz * beta) * beta
+  segments(dz[1], dz[2], proj[1], proj[2], lty = 3, col = col_ell)
+  arrows(0, 0, beta[1], beta[2], length = 0.08, lwd = 2.5, col = col_beta)
+  arrows(0, 0, dz[1],  dz[2],  length = 0.08, lwd = 2.5, col = col_dz)
+  legend("topleft", bty = "n", cex = 0.8, text.col = "#52514e",
+         legend = c(sprintf("e = %.2f", e), sprintf("r = %.2f", r),
+                    sprintf("θ = %.0f°", th)))
+}
+
+Gc <- rbind(c(1, 0.8), c(0.8, 1))   # two traits, r_g = 0.8
+op <- par(mfrow = c(1, 3), mar = c(1, 1, 3, 1))
+draw_case(Gc, c(1, 1),  "A. β along g_max:\nevolvable AND aligned")
+draw_case(Gc, c(1, 0),  "B. β on one trait:\nresponse deflected toward g_max")
+draw_case(Gc, c(1, -1), "C. β along g_min:\naligned but barely evolvable")
+par(op)
+```
+
+The three panels are the three qualitatively different fates of a selection
+gradient (blue = $\beta$, orange = $\Delta\bar z$, dotted = projection of the
+response back onto $\beta$, whose length is $e$):
+
+- **A — evolvable and aligned.** $\beta$ points along $g_{max}$. The response is
+  large and exactly where selection wants it: $e = r$, $\theta = 0$.
+- **B — the deflection case (this is our survival/fitness situation).** Selection
+  acts on one trait only, but the genetic correlation drags the correlated trait
+  along: the response rotates toward $g_{max}$. Note $e < r$: the population
+  moves further than the variance along $\beta$ alone would allow — but partly in
+  a direction nobody asked for. **With $r_g = 0.8$ between just two traits, the
+  deflection is already 39°.** Our fecundity case (69°) is this phenomenon
+  compounded across 12 dimensions.
+- **C — aligned but not evolvable.** $\beta$ points along $g_{min}$ — antagonistic
+  to the correlation (e.g., selection to *increase* one trait while *decreasing*
+  a positively correlated one). Because $g_{min}$ is an eigenvector, there is no
+  deflection at all ($\theta = 0$) — but $e$ has collapsed to 0.2. **The angle
+  alone can therefore look reassuring while evolution is nearly stalled.** You
+  need $e$ *and* $\theta$ together, which is why S28 reports both.
+
+## So *when* is something evolvable, and when is it not?
+
+This is the conceptual payoff of the framework. "Evolvable" is not a property of
+a trait — it is a property of a **direction** in trait space.
+
+**1. Univariate heritability is almost never the binding constraint.** Every one
+of our 12 traits has substantial genetic variance on its own (the diagonal of $G$
+— see below). Judged trait-by-trait, everything is evolvable. That criterion is
+too weak.
+
+**2. What matters is variance along $\beta$, and it is bounded by the
+eigenvalues:** $\lambda_{min} \le e(\beta) \le \lambda_{max}$. If selection
+happens to point along a direction where $G$ is thin — a *nearly-null subspace* —
+evolvability can approach zero even though every single trait is heritable.
+Directions of low variance arise precisely when selection is **antagonistic to
+the correlation structure** (panel C): wanting more of one thing and less of a
+genetically coupled other. That is the geometry of evolutionary conflict.
+
+**3. The expected evolvability of a random direction is the mean eigenvalue**,
+$\bar e = \operatorname{tr}(G)/n$. This gives a natural yardstick: is the
+direction selection actually favours richer or poorer in variance than a random
+direction would be? (We compute this for our $G$ below — the answer is *poorer*.)
+
+**4. Conditional evolvability can be much smaller than evolvability.** $e(\beta)$
+assumes the rest of the phenotype is free to drag along. If the other directions
+are under stabilising selection (usually true), the usable variance is
+$c(\beta) \le e(\beta)$, sometimes dramatically so when the focal direction is
+strongly integrated with the rest. A trait can look evolvable in isolation and be
+nearly frozen in context.
+
+**5. "Heritability is not evolvability" (Hansen, Pélabon & Houle 2011).**
+$h^2 = V_A/V_P$ measures accuracy of parent–offspring resemblance, not capacity
+to change: a trait can have high $h^2$ and trivial usable variance, and vice
+versa, because $V_P$ is in the denominator. Hansen & Houle therefore work with
+**mean-standardised** variance ($I_A = V_A/\bar z^2$, "percent change per unit
+selection"). Keep this in mind when reading our numbers — see the
+standardisation caveat at the end.
+
+**In one line: a phenotype is evolvable in the direction of selection when
+$e(\beta)$ is a healthy fraction of $\bar e$, and unconstrained when additionally
+$\theta$ is small and $c(\beta) \approx e(\beta)$. It is constrained when
+selection points into a variance-poor, strongly integrated direction — regardless
+of how heritable every individual trait is.**
+
+## The real thing: our 12-trait G matrix
+
+Where the deposited matrix (`data/Gmatrix_imp_multivar_corr_matrix.rda`, behind
+published Tables S28/S29) came from: the **diagonal** is each trait's univariate
+GEMMA LMM PVE (Table S16); each **off-diagonal** is the genetic covariance
+$V_g[2,1]$ from that trait pair's bivariate mvLMM, pasted in from the 66 pair
+logs (all 66 verified below). Every entry is a legitimate estimate — the matrix
+is *approximately* right — but the assembly is not exactly a covariance matrix:
+each pair run implies its own per-trait variances, and those were discarded in
+favour of the univariate PVE from a different model. The symptom of the mixed
+scales sits at the bottom of published Table S29, **two negative eigenvalues**,
+impossible for a true covariance matrix — even though nearly every pairwise
+Cauchy–Schwarz bound $|G_{ij}| \le \sqrt{G_{ii}G_{jj}}$ is individually
+satisfied. A matrix can pass almost every pairwise sanity check and still be
+impossible as a whole.
+
+```{r load-G}
+G <- readRDS("data/Gmatrix_imp_multivar_corr_matrix.rda")   # deposited; RDS despite .rda
+short <- c("FT16", "Dormancy", "RootGR", "RootAngle", "Delta13C", "StomDens",
+           "StomIdx", "VernGrowth", "Germ10C", "GrowthRate", "RGR", "ABA")
+rownames(G) <- colnames(G) <- short
+round(eigen(G, symmetric = TRUE)$values, 3)   # reproduces Table S29, negatives included
+```
+
+
+### The rebuild: pairwise genetic correlations on a PVE diagonal
+
+**Decision (Moi, 2026-08-12):** treat the univariate PVE as the better truth for
+each trait's genetic variance (the univariate GEMMA runs have the larger
+per-trait $n$); keep from each pairwise mvLMM only the scale-free genetic
+correlation $r_g = V_{g,12}/\sqrt{V_{g,11}\,V_{g,22}}$; and recompute every
+covariance from those two ingredients, $G_{ij} = r_{g,ij}\sqrt{PVE_i\,PVE_j}$:
+
+$$G \;=\; D_{PVE}^{1/2}\;\mathrm{nearPD}(R_g)\;D_{PVE}^{1/2}$$
+
+This is the deposited construction's own sourcing (univariate diagonal, mvLMM
+off-diagonals) done consistently. The `nearPD` projection is needed because 66
+independently estimated pairwise correlations are not jointly PSD (raw $R_g$
+eigenvalues run to −0.31; the projection moves no correlation by more than
+0.11). `regenerated-tables/regenerate_S21_S28_S29.R` regenerated the supplement
+with this $G$; the chunk below rebuilds it live, re-verifying provenance (every
+deposited off-diagonal equals its log's $V_g[2,1]$) and the match to the
+regenerated file.
+
+```{r final-G}
+G_dep  <- readRDS("data/Gmatrix_imp_multivar_corr_matrix.rda")
+traits <- rownames(G_dep)                    # full trait names, deposited order
+logs <- list.files("multivarGWAS/all_impmGWAS_logoutput", pattern = "log.txt$",
+                   full.names = TRUE)
+stopifnot(length(logs) == 66)
+Rg <- matrix(NA_real_, 12, 12, dimnames = list(traits, traits)); diag(Rg) <- 1
+for (f in logs) {
+  base <- sub("^imp_mGWAS_", "", sub("\\.log\\.txt$", "", basename(f)))
+  t1  <- traits[startsWith(base, paste0(traits, "_"))][1]
+  t2  <- substring(base, nchar(t1) + 2)
+  ll  <- readLines(f, warn = FALSE)
+  i   <- grep("REMLE estimate for Vg", ll)[1]
+  v11 <- as.numeric(strsplit(trimws(ll[i + 1]), "\\s+")[[1]][1])
+  v2  <- as.numeric(strsplit(trimws(ll[i + 2]), "\\s+")[[1]])
+  stopifnot(abs(G_dep[t1, t2] - v2[1]) < 1e-6)   # provenance: log == deposited
+  Rg[t1, t2] <- Rg[t2, t1] <- v2[1] / sqrt(v11 * v2[2])
+}
+Rg_pd   <- as.matrix(Matrix::nearPD(Rg, corr = TRUE)$mat)
+Dp      <- diag(sqrt(diag(G)))               # deposited diagonal = univariate PVE
+G_final <- Dp %*% Rg_pd %*% Dp
+dimnames(G_final) <- list(short, short)
+
+# byte-identical to the regenerated supplement's G
+stopifnot(max(abs(G_final - readRDS("regenerated-tables/G_regenerated.rda"))) < 1e-12)
+ev_final <- eigen(G_final, symmetric = TRUE)
+round(ev_final$values, 4)
+```
+
+Constraint geometry with the final $G$ and the deposited Table S13 selection
+gradients (Madrid low-water environment, `mli`):
+
+```{r final-angles}
+s13 <- readRDS("data/multivariate_SelectionResults_targettraits_1122122.rda")  # S13 betas
+map <- c(ABA = "ABA", Delta13C = "Delta13C", Dormancy = "Dormancy",
+         FloweringTime = "FT16", GerminationPerc = "Germ10C",
+         GrowthRate = "GrowthRate", RGR = "RGR", RootRGR = "RootGR",
+         RootHorizIndex = "RootAngle", StomataDensity = "StomDens",
+         StomataSize = "StomIdx", Vernalization = "VernGrowth")
+get_beta <- function(fit, env = "mli") {
+  sub <- s13[s13$env == env & s13$fitness == fit, ]
+  b <- setNames(sub$mean.x, map[sub$trait])[short]   # mean.x = the beta column
+  b / sqrt(sum(b^2))
+}
+geom <- function(Gm, b) {
+  dz <- as.vector(Gm %*% b)
+  e  <- sum(b * dz); r <- sqrt(sum(dz^2))
+  c(e = e, r = r, angle = acos(e / r) * 180 / pi)
+}
+fits  <- c(Survival = "rSurvival_fruit", Fitness = "rFitness", Fecundity = "rSeeds")
+betas <- lapply(fits, get_beta)
+knitr::kable(round(t(sapply(betas, function(b) geom(G_final, b))), 3), caption =
+  "Final G, deposited S13 mli gradients — matches regenerated-tables/S28_regenerated_mli.csv.")
+```
+
+**Survival 54.3°, composite fitness 50.9°, fecundity 65.9°** (published S28:
+45.0°, 45.7°, 69.0°) — the constraint story survives the rebuild, and these
+values reproduce the regenerated Table S28 exactly. Two flags: (1) `nearPD`
+lands *on* the PSD boundary, so the two smallest eigenvalues of the final $G$
+are exactly zero (rank 10 of 12) — harmless for $e$, $r$, $\theta$, fatal for
+$G^{-1}$ (see the conditional section); (2) the true pairwise correlations are
+larger than the deposited covariances-read-as-correlations suggested (median
+$|r_g|$ 0.36, a quarter of pairs above 0.55, max 0.93).
+
+### Evolvability along every single-trait axis vs. along the eigenvectors
+
+Setting $\beta = (0, \dots, 1, \dots, 0)$ makes $e(\beta) = G_{ii}$: the diagonal
+of a variance-standardised $G$ is each trait's own standardised additive variance
+— the heritability-scale values, identical in the deposited and final versions
+(the diagonal was never the problem). Compare those to the eigenvalue range of
+the final $G$:
+
+```{r trait-axes, fig.height=4.2}
+e_trait <- diag(G_final)
+op <- par(mar = c(4, 7, 1, 1))
+bp <- barplot(sort(e_trait), horiz = TRUE, las = 1, col = col_beta, border = NA,
+              xlab = "e(β) along each single-trait axis", cex.names = 0.8,
+              xlim = c(0, max(ev_final$values) * 1.05))
+abline(v = mean(ev_final$values), col = col_ink, lty = 2)
+abline(v = max(ev_final$values),  col = col_aux, lty = 2)
+text(mean(ev_final$values), max(bp), "mean λ", pos = 4, cex = 0.75, col = col_ink)
+text(max(ev_final$values),  max(bp), "λ_max (g1)", pos = 2, cex = 0.75, col = col_aux)
+par(op)
+```
+
+Five of the twelve trait axes clear the mean eigenvalue (the $h^2 \approx$
+0.82–0.94 block: root growth, flowering time, dormancy, growth rate,
+germination); the stomatal traits sit near 0.2. But even the lowest trait axis
+carries an order of magnitude more variance than the bottom eigendirections of
+$G$ ($\lambda_{10} = 0.018$, $\lambda_{11} = \lambda_{12} \approx 0$) — judged
+univariately, every trait is evolvable (point 1 above). The interesting question
+is what happens along the directions selection actually favours.
+
+### Where do the selection directions sit?
+
+We sample thousands of random unit directions in the 12-dimensional trait space,
+compute $e(\beta)$ for each (final $G$), and place the three selection
+directions in that distribution.
+
+```{r random-directions, fig.height=4}
+set.seed(1)
+n <- 20000
+X <- matrix(rnorm(n * 12), n, 12)
+B <- X / sqrt(rowSums(X^2))                # random unit vectors
+e_rand <- rowSums((B %*% G_final) * B)     # beta' G beta, row-wise
+
+obs <- sapply(betas, function(b) geom(G_final, b)["e"])
+names(obs) <- names(fits)
+
+op <- par(mar = c(4, 4, 1, 1))
+hist(e_rand, breaks = 80, col = "#cde2fb", border = "white",
+     main = "", xlab = "e(β) over random directions", ylab = "directions")
+abline(v = mean(ev_final$values), col = col_ink, lty = 2)
+abline(v = obs, col = col_dz, lwd = 2)
+text(mean(ev_final$values), par("usr")[4] * 0.95, "mean λ", pos = 4, cex = 0.8)
+text(min(obs), par("usr")[4] * 0.75, "fitness", pos = 2, cex = 0.8, col = col_dz)
+text(max(obs), par("usr")[4] * 0.55, "survival, fecundity", pos = 4, cex = 0.8, col = col_dz)
+par(op)
+
+round(c(mean_lambda = mean(ev_final$values),
+        sapply(obs, function(v) mean(e_rand < v))), 3)
+```
+
+All three selection directions fall **below the mean** of the evolvability
+distribution — the composite-fitness gradient down in the bottom 3% of random
+bearings, survival and fecundity in the bottom sixth to fifth. Selection favours
+directions that are variance-poor relative to a random direction through this
+trait space. That is multivariate constraint stated as a percentile rather than
+an angle — a milder version of the same message the deflection angles carry.
+(Note the two measures disagree about *which* direction is worst off: fecundity
+has the largest deflection angle, but composite fitness sits in the thinnest
+part of the evolvability distribution. An angle measures where the response
+*goes*; a percentile measures how much variance the direction *has*.)
+
+### Why is fecundity the worst-aligned direction?
+
+Not because fecundity itself is "less heritable" — $G$ is the same matrix for
+all three rows; only $\beta$ changes. The mechanism is *where* each gradient
+puts its weight:
+
+```{r mechanism}
+t(sapply(betas, function(b) {
+  proj <- as.vector(t(ev_final$vectors) %*% b)^2
+  c(weighted_h2_along_beta  = sum(b^2 * diag(G_final)),
+    pct_on_4_smallest_eigdirs = round(100 * sum(proj[9:12])))
+}))
+```
+
+The survival gradient loads mostly on highly heritable traits (growth rate,
+flowering time; weighted $h^2 \approx 0.74$). The fecundity gradient puts 59% of
+its squared weight on vernalization growth ($h^2 = 0.33$) and ~64% of it on the
+four *smallest* eigendirections of $G$, versus ~37% for survival. **"Fecundity
+selection acts on traits — and directions — with less genetic variance"** is the
+correct summary; "fecundity is less heritable" is not even well-formed here.
+
+### Conditional evolvability and autonomy (the part S28 doesn't show)
+
+$c(\beta)$ needs $G^{-1}$ — and here the final $G$ bites back. `nearPD`
+projected the raw $R_g$ *onto the boundary* of the PSD cone, so the final $G$
+has two eigenvalues that are exactly zero: it is **singular**, rank 10 in 12
+dimensions. The projected matrix asserts two trait combinations with literally
+zero genetic variance; every single-trait axis overlaps that null space, so
+$c(\beta) \approx 0$ for every trait. Bend the zero eigenvalues up with a floor
+before inverting, and the answer tracks the floor, not the data:
+
+```{r conditional}
+floors <- c(1e-4, 1e-2, 1e-1)
+aut <- sapply(floors, function(fl) {
+  v  <- pmax(ev_final$values, fl)                  # eigenvalue floor
+  Gi <- ev_final$vectors %*% diag(1 / v) %*% t(ev_final$vectors)
+  (1 / diag(Gi)) / diag(G_final)                   # autonomy per trait axis
+})
+colnames(aut) <- paste0("floor_", floors)
+round(aut, 3)
+```
+
+Median autonomy 0.001, 0.10, or 0.37 depending on an arbitrary regularisation
+constant: **conditional evolvability and autonomy are not estimable from this
+$G$.** A joint, rather than pairwise, re-estimation of $G$ would be needed
+before any conditional claim can be made.
+
+Two fragility lessons, now demonstrated on our own final matrix:
+
+- $c(\beta)$ is dominated by the **smallest** eigenvalues of $G$ (via $G^{-1}$),
+  which are always the worst-estimated — here they are not estimated at all but
+  *manufactured* by the nearPD projection. Conditional measures amplify matrix
+  errors that ordinary evolvability barely notices ($e$ touches only the
+  numerator, never $G^{-1}$); $e$, $r$, and $\theta$ are untouched by any of
+  this.
+- Corollary: **check PSD — and distance from the PSD boundary — before
+  interpreting anything built on $G^{-1}$**, and be suspicious of any
+  "near-null subspace" claim until the matrix construction has been audited.
+  Our $G$'s null space is an artifact of pairwise assembly plus projection, not
+  evidence of an absolute evolutionary constraint.
+
+## Reading the constraint results with all of this in hand
+
+Published Table S28 (left) against the regenerated values — final $G$, deposited
+S13 `mli` gradients (right; identical to `S28_regenerated_mli.csv`):
+
+| Fitness measure | $e$ | $r$ | $\theta$ | | $e$ | $r$ | $\theta$ |
+|---|---|---|---|---|---|---|---|
+| Survival | 0.291 | 0.412 | 45.0° | | 0.298 | 0.510 | 54.3° |
+| Composite fitness | 0.289 | 0.413 | 45.7° | | 0.178 | 0.283 | 50.9° |
+| Fecundity | 0.215 | 0.601 | 69.0° | | 0.325 | 0.797 | 65.9° |
+
+- **Survival / composite fitness** are panel B of the toy figure: usable variance
+  along $\beta$, response deflected 51–54°, so ~58–63% of the movement is where
+  selection points ($\cos\theta$ = 0.58, 0.63). The published ~45° slightly
+  *understated* these deflections; the qualitative reading — real, moderate
+  constraint — is unchanged.
+- **Fecundity** is panel B sliding toward panel C, and the gap to the other two
+  survives the rebuild: 65.9° (published: 69.0°), still by far the worst-aligned.
+  Only ~41% of the response is along the selection direction, yet fecundity has
+  the *largest* response vector ($r$ = 0.80) — the population moves the most
+  while accomplishing the least. A big $r$ with a modest $e$ is not power, it is
+  leakage: $G$ takes the fecundity gradient and spends much of it on correlated
+  side-effects.
+- The constraint is strongest for exactly the fitness component that opposes
+  survival in our selection analyses — the geometry of $G$ is entangled with the
+  survival–fecundity conflict the paper is about, via the mechanism shown above:
+  the fecundity gradient puts ~64% of its squared weight on the four
+  variance-poorest eigendirections, versus ~37% for survival (panel C logic).
+- And the punchline for intuition: the median pairwise $|r_g|$ is 0.36, with a
+  quarter of pairs above 0.55 — no single pair, on its own, explains a 51–66°
+  deflection. **Constraint is a property of the whole matrix, not of any pair**
+  — a dozen moderate-to-strong correlations compound. Judging constraint from a
+  correlation table understates it. (And beware the reverse error the deposited
+  file invited: its off-diagonals *looked* like mild correlations but were
+  covariances — the true $r_g$ are larger.)
+
+## Caveats specific to our numbers
+
+1. **Standardisation.** Hansen & Houle's canonical $e$ is *mean-standardised*
+   (interpretable as % change per generation per unit selection). Ours is
+   *variance-standardised* (SD scale), because δ¹³C has a negative mean on an
+   arbitrary reference scale — mean-scaling it is meaningless. Consequence: our
+   $e$ values are comparable *within* this analysis (across the three fitness
+   measures, against the eigenvalue yardstick) but not directly against the
+   published distribution of mean-scaled evolvabilities in the Hansen & Houle
+   compilations.
+2. **The deposited $G$ is not a valid covariance matrix; published S28/S29/S21
+   rest on it.** Diagonal (univariate PVE) and off-diagonals (raw pairwise mvLMM
+   covariances) come from different models — the two negative eigenvalues are
+   the symptom. The supplement has been regenerated with the final
+   $G = D_{PVE}^{1/2}\,\mathrm{nearPD}(R_g)\,D_{PVE}^{1/2}$
+   (`regenerated-tables/`), and this document uses that same $G$ throughout.
+3. **Published S28 is not exactly reproducible from deposited files** (its
+   original script was never located), but the regenerated S28 supersedes it and
+   this document reproduces the regenerated values exactly. Regenerated S21
+   remains provisional: the repo's phenotype CSV is a later export than the one
+   behind the published betas ($r \approx 0.89$, see the note in
+   `regenerate_S21_S28_S29.R`).
+4. **No uncertainty.** All geometric quantities here are point estimates —
+   eigenvalues, angles, and especially conditional measures deserve confidence
+   intervals (e.g., by resampling the pairwise $r_g$ and $h^2$ estimates), which
+   do not exist yet.
+5. **Constancy of $G$.** $\Delta\bar z = G\beta$ is a one-generation prediction.
+   Over many generations selection itself erodes and rotates $G$, so "constraint"
+   here means *bias in the immediate response*, not a permanent wall.
+
+## Cheat sheet
+
+| Symbol | Name | Formula ($|\beta|=1$) | Big means | Small means |
+|---|---|---|---|---|
+| $e(\beta)$ | evolvability | $\beta^\top G\beta$ | variance available where selection points | selection points into a depleted direction |
+| $r(\beta)$ | respondability | $|G\beta|$ | population will move a lot (somewhere) | little response in any direction |
+| $\theta$ | deflection angle | $\angle(\beta, G\beta)$ | response dragged off-target by covariances | response goes where selection points |
+| $\cos\theta$ | alignment | $e/r$ (identity!) | — | — |
+| $c(\beta)$ | conditional evolvability | $(\beta^\top G^{-1}\beta)^{-1}$ | direction can respond even with the rest of the phenotype pinned | variance is mortgaged to other traits |
+| $a(\beta)$ | autonomy | $c/e$ | direction is quasi-independent | direction is deeply integrated |
+| $\bar e$ | average evolvability | $\operatorname{tr}(G)/n$ | (yardstick: $e$ of a random direction) | |
+
+**References.** Lande 1979 ([doi:10.1111/j.1558-5646.1979.tb04678.x](https://doi.org/10.1111/j.1558-5646.1979.tb04678.x));
+Hansen & Houle 2008, *J. Evol. Biol.* ([doi:10.1111/j.1420-9101.2008.01573.x](https://doi.org/10.1111/j.1420-9101.2008.01573.x));
+Hansen, Pélabon & Houle 2011, "Heritability is not evolvability" ([doi:10.1007/s11692-011-9127-6](https://doi.org/10.1007/s11692-011-9127-6));
+Agrawal & Stinchcombe 2009 on constraint from $G$ ([doi:10.1098/rspb.2008.1855](https://doi.org/10.1098/rspb.2008.1855)).

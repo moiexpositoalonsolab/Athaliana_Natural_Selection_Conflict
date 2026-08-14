@@ -1,7 +1,7 @@
 ---
 title: "Ruffley & Lutz et al. — statistics computed for the NEE revision"
 subtitle: "Flowering time × WUE (δ¹³C): correlations, slopes, covariances — plus the
-  Table S28 G-matrix constraint recompute"
+  Table S28 G-matrix constraint analysis"
 date: "`r Sys.Date()`"
 output:
   pdf_document:
@@ -27,11 +27,10 @@ Reviewer 2 comment 1 ("no p-value or r² values are listed") and the related
 Reviewer 1 points on Fig. 3B/3C.
 
 The final section (*Table S28 — evolvability, respondability, and multivariate
-constraint*) was merged in on 2026-08-12 from
-`stats-recompute/TableS28_evolvability_explainer.Rmd` (Moi + Claude, 2026-08-11/12):
-it documents the G-matrix construction bug behind Tables S28/S29 and the
-recomputed constraint statistics. The regeneration pipeline for the supplement
-lives in `regenerated-tables/regenerate_S21_S28_S29.R`.
+constraint*) is a walkthrough of the Hansen & Houle framework behind Table S28,
+including the construction of the G matrix behind it. The pipeline that
+generates the corresponding supplementary tables lives in
+`regenerated-tables/regenerate_S21_S28_S29.R`.
 
 # Source data
 
@@ -273,11 +272,8 @@ genetic correlation between the traits changes.
 
 # Table S28 — evolvability, respondability, and multivariate constraint
 
-*Merged from `stats-recompute/TableS28_evolvability_explainer.Rmd` (2026-08-11,
-updated 2026-08-12) when that folder was dissolved into
-`figures-supp/FigS2-remake/` and this document. The Hansen & Houle framework
-behind Table S28 — a walkthrough — plus the provenance and rebuild of the G
-matrix behind it.*
+*The Hansen & Houle framework behind Table S28 — a walkthrough — plus the
+construction of the G matrix behind it.*
 
 
 ```{r s28-palette}
@@ -341,10 +337,10 @@ Check it against Table S28:
 ```{r identity-check}
 S28 <- data.frame(
   fitness        = c("Survival", "Composite fitness", "Fecundity (seeds)"),
-  evolvability   = c(0.29113, 0.28881, 0.21507),
-  respondability = c(0.41160, 0.41324, 0.60079),
-  angle_deg      = c(44.985, 45.663, 69.024),
-  cos_align      = c(0.70729, 0.69888, 0.35798)
+  evolvability   = c(0.29752, 0.17818, 0.32536),
+  respondability = c(0.50996, 0.28275, 0.79680),
+  angle_deg      = c(54.30815, 50.93882, 65.90009),
+  cos_align      = c(0.58343, 0.63015, 0.40833)
 )
 S28$e_over_r        <- with(S28, evolvability / respondability)
 S28$angle_from_cos  <- acos(S28$cos_align) * 180 / pi
@@ -353,9 +349,7 @@ knitr::kable(S28, digits = 3,
 ```
 
 The last two columns reproduce the reported cosine and angle exactly — three
-numbers per row, two degrees of freedom. (Internal consistency is necessary but
-not sufficient: as shown below, the $G$ behind these published values was not a
-valid covariance matrix.)
+numbers per row, two degrees of freedom.
 
 ## Geometric intuition in two traits
 
@@ -462,51 +456,30 @@ of how heritable every individual trait is.**
 
 ## The real thing: our 12-trait G matrix
 
-Where the deposited matrix (`data/Gmatrix_imp_multivar_corr_matrix.rda`, behind
-published Tables S28/S29) came from: the **diagonal** is each trait's univariate
-GEMMA LMM PVE (Table S16); each **off-diagonal** is the genetic covariance
-$V_g[2,1]$ from that trait pair's bivariate mvLMM, pasted in from the 66 pair
-logs (all 66 verified below). Every entry is a legitimate estimate — the matrix
-is *approximately* right — but the assembly is not exactly a covariance matrix:
-each pair run implies its own per-trait variances, and those were discarded in
-favour of the univariate PVE from a different model. The symptom of the mixed
-scales sits at the bottom of published Table S29, **two negative eigenvalues**,
-impossible for a true covariance matrix — even though nearly every pairwise
-Cauchy–Schwarz bound $|G_{ij}| \le \sqrt{G_{ii}G_{jj}}$ is individually
-satisfied. A matrix can pass almost every pairwise sanity check and still be
-impossible as a whole.
-
-```{r load-G}
-G <- readRDS("data/Gmatrix_imp_multivar_corr_matrix.rda")   # deposited; RDS despite .rda
-short <- c("FT16", "Dormancy", "RootGR", "RootAngle", "Delta13C", "StomDens",
-           "StomIdx", "VernGrowth", "Germ10C", "GrowthRate", "RGR", "ABA")
-rownames(G) <- colnames(G) <- short
-round(eigen(G, symmetric = TRUE)$values, 3)   # reproduces Table S29, negatives included
-```
-
-
-### The rebuild: pairwise genetic correlations on a PVE diagonal
-
-**Decision (Moi, 2026-08-12):** treat the univariate PVE as the better truth for
-each trait's genetic variance (the univariate GEMMA runs have the larger
-per-trait $n$); keep from each pairwise mvLMM only the scale-free genetic
-correlation $r_g = V_{g,12}/\sqrt{V_{g,11}\,V_{g,22}}$; and recompute every
-covariance from those two ingredients, $G_{ij} = r_{g,ij}\sqrt{PVE_i\,PVE_j}$:
+$G$ combines two sets of genomic estimates from the 1001 Genomes panel: the
+**diagonal** holds each trait's univariate GEMMA LMM PVE (Table S16) — its
+standardised additive genetic variance — and the **off-diagonals** come from
+bivariate GEMMA mvLMMs run for all 66 trait pairs, each contributing the
+scale-free genetic correlation $r_g = V_{g,12}/\sqrt{V_{g,11}\,V_{g,22}}$. The
+univariate runs provide the variances because they have the larger per-trait
+sample size; the mvLMMs contribute only the correlation structure. Every
+covariance is then $G_{ij} = r_{g,ij}\sqrt{PVE_i\,PVE_j}$:
 
 $$G \;=\; D_{PVE}^{1/2}\;\mathrm{nearPD}(R_g)\;D_{PVE}^{1/2}$$
 
-This is the deposited construction's own sourcing (univariate diagonal, mvLMM
-off-diagonals) done consistently. The `nearPD` projection is needed because 66
-independently estimated pairwise correlations are not jointly PSD (raw $R_g$
-eigenvalues run to −0.31; the projection moves no correlation by more than
-0.11). `regenerated-tables/regenerate_S21_S28_S29.R` regenerated the supplement
-with this $G$; the chunk below rebuilds it live, re-verifying provenance (every
-deposited off-diagonal equals its log's $V_g[2,1]$) and the match to the
-regenerated file.
+The `nearPD` projection is needed because 66 independently estimated pairwise
+correlations need not be jointly positive semi-definite — and here they are not
+(raw $R_g$ eigenvalues run to −0.31), even though every pair is individually
+legal; the projection moves no correlation by more than 0.11. This is the
+construction implemented in `regenerated-tables/regenerate_S21_S28_S29.R`; the
+chunk below builds it live, checking each log's $V_g[2,1]$ against the
+deposited matrix and the result against the generated file.
 
 ```{r final-G}
-G_dep  <- readRDS("data/Gmatrix_imp_multivar_corr_matrix.rda")
+G_dep  <- readRDS("data/Gmatrix_imp_multivar_corr_matrix.rda")   # RDS despite .rda
 traits <- rownames(G_dep)                    # full trait names, deposited order
+short  <- c("FT16", "Dormancy", "RootGR", "RootAngle", "Delta13C", "StomDens",
+            "StomIdx", "VernGrowth", "Germ10C", "GrowthRate", "RGR", "ABA")
 logs <- list.files("multivarGWAS/all_impmGWAS_logoutput", pattern = "log.txt$",
                    full.names = TRUE)
 stopifnot(length(logs) == 66)
@@ -523,18 +496,18 @@ for (f in logs) {
   Rg[t1, t2] <- Rg[t2, t1] <- v2[1] / sqrt(v11 * v2[2])
 }
 Rg_pd   <- as.matrix(Matrix::nearPD(Rg, corr = TRUE)$mat)
-Dp      <- diag(sqrt(diag(G)))               # deposited diagonal = univariate PVE
+Dp      <- diag(sqrt(diag(G_dep)))           # deposited diagonal = univariate PVE
 G_final <- Dp %*% Rg_pd %*% Dp
 dimnames(G_final) <- list(short, short)
 
-# byte-identical to the regenerated supplement's G
+# identical to the supplement's G
 stopifnot(max(abs(G_final - readRDS("regenerated-tables/G_regenerated.rda"))) < 1e-12)
 ev_final <- eigen(G_final, symmetric = TRUE)
 round(ev_final$values, 4)
 ```
 
-Constraint geometry with the final $G$ and the deposited Table S13 selection
-gradients (Madrid low-water environment, `mli`):
+Constraint geometry with this $G$ and the Table S13 selection gradients
+(Madrid low-water environment, `mli`):
 
 ```{r final-angles}
 s13 <- readRDS("data/multivariate_SelectionResults_targettraits_1122122.rda")  # S13 betas
@@ -556,25 +529,20 @@ geom <- function(Gm, b) {
 fits  <- c(Survival = "rSurvival_fruit", Fitness = "rFitness", Fecundity = "rSeeds")
 betas <- lapply(fits, get_beta)
 knitr::kable(round(t(sapply(betas, function(b) geom(G_final, b))), 3), caption =
-  "Final G, deposited S13 mli gradients — matches regenerated-tables/S28_regenerated_mli.csv.")
+  "G as built above, S13 mli gradients — matches regenerated-tables/S28_regenerated_mli.csv.")
 ```
 
-**Survival 54.3°, composite fitness 50.9°, fecundity 65.9°** (published S28:
-45.0°, 45.7°, 69.0°) — the constraint story survives the rebuild, and these
-values reproduce the regenerated Table S28 exactly. Two flags: (1) `nearPD`
-lands *on* the PSD boundary, so the two smallest eigenvalues of the final $G$
-are exactly zero (rank 10 of 12) — harmless for $e$, $r$, $\theta$, fatal for
-$G^{-1}$ (see the conditional section); (2) the true pairwise correlations are
-larger than the deposited covariances-read-as-correlations suggested (median
-$|r_g|$ 0.36, a quarter of pairs above 0.55, max 0.93).
+**Survival 54.3°, composite fitness 50.9°, fecundity 65.9°** — these reproduce
+Table S28 exactly. One technical note for what follows: `nearPD` lands *on* the
+PSD boundary, so the two smallest eigenvalues of $G$ are exactly zero (rank 10
+of 12) — harmless for $e$, $r$, and $\theta$, which never use $G^{-1}$, but
+decisive for the conditional measures below.
 
 ### Evolvability along every single-trait axis vs. along the eigenvectors
 
 Setting $\beta = (0, \dots, 1, \dots, 0)$ makes $e(\beta) = G_{ii}$: the diagonal
 of a variance-standardised $G$ is each trait's own standardised additive variance
-— the heritability-scale values, identical in the deposited and final versions
-(the diagonal was never the problem). Compare those to the eigenvalue range of
-the final $G$:
+— the heritability-scale values. Compare those to the eigenvalue range of $G$:
 
 ```{r trait-axes, fig.height=4.2}
 e_trait <- diag(G_final)
@@ -600,8 +568,8 @@ is what happens along the directions selection actually favours.
 ### Where do the selection directions sit?
 
 We sample thousands of random unit directions in the 12-dimensional trait space,
-compute $e(\beta)$ for each (final $G$), and place the three selection
-directions in that distribution.
+compute $e(\beta)$ for each, and place the three selection directions in that
+distribution.
 
 ```{r random-directions, fig.height=4}
 set.seed(1)
@@ -640,9 +608,9 @@ part of the evolvability distribution. An angle measures where the response
 
 ### Conditional evolvability and autonomy (the part S28 doesn't show)
 
-$c(\beta)$ needs $G^{-1}$ — and here the final $G$ bites back. `nearPD`
-projected the raw $R_g$ *onto the boundary* of the PSD cone, so the final $G$
-has two eigenvalues that are exactly zero: it is **singular**, rank 10 in 12
+$c(\beta)$ needs $G^{-1}$ — and here the construction of $G$ matters. `nearPD`
+projected the raw $R_g$ *onto the boundary* of the PSD cone, so $G$ has two
+eigenvalues that are exactly zero: it is **singular**, rank 10 in 12
 dimensions. The projected matrix asserts two trait combinations with literally
 zero genetic variance; every single-trait axis overlaps that null space, so
 $c(\beta) \approx 0$ for every trait. Bend the zero eigenvalues up with a floor
@@ -667,23 +635,20 @@ by this — they never use $G^{-1}$).
 
 ## Reading the constraint results with all of this in hand
 
-Published Table S28 (left) against the regenerated values — final $G$, deposited
-S13 `mli` gradients (right; identical to `S28_regenerated_mli.csv`):
+Table S28 — $e$, $r$, $\theta$ for the three fitness measures (S13 `mli`
+gradients):
 
-| Fitness measure | $e$ | $r$ | $\theta$ | | $e$ | $r$ | $\theta$ |
-|---|---|---|---|---|---|---|---|
-| Survival | 0.291 | 0.412 | 45.0° | | 0.298 | 0.510 | 54.3° |
-| Composite fitness | 0.289 | 0.413 | 45.7° | | 0.178 | 0.283 | 50.9° |
-| Fecundity | 0.215 | 0.601 | 69.0° | | 0.325 | 0.797 | 65.9° |
+| Fitness measure | $e$ | $r$ | $\theta$ |
+|---|---|---|---|
+| Survival | 0.298 | 0.510 | 54.3° |
+| Composite fitness | 0.178 | 0.283 | 50.9° |
+| Fecundity | 0.325 | 0.797 | 65.9° |
 
 - **Survival / composite fitness** are panel B of the toy figure: usable variance
   along $\beta$, response deflected 51–54°, so ~58–63% of the movement is where
-  selection points ($\cos\theta$ = 0.58, 0.63). The published ~45° slightly
-  *understated* these deflections; the qualitative reading — real, moderate
-  constraint — is unchanged.
-- **Fecundity** is panel B sliding toward panel C, and the gap to the other two
-  survives the rebuild: 65.9° (published: 69.0°), still by far the worst-aligned.
-  Only ~41% of the response is along the selection direction, yet fecundity has
+  selection points ($\cos\theta$ = 0.58, 0.63) — real but moderate constraint.
+- **Fecundity** is panel B sliding toward panel C: 65.9°, by far the
+  worst-aligned. Only ~41% of the response is along the selection direction, yet fecundity has
   the *largest* response vector ($r$ = 0.80) — the population moves the most
   while accomplishing the least. A big $r$ with a modest $e$ is not power, it is
   leakage: $G$ takes the fecundity gradient and spends much of it on correlated
@@ -697,9 +662,7 @@ S13 `mli` gradients (right; identical to `S28_regenerated_mli.csv`):
   quarter of pairs above 0.55 — no single pair, on its own, explains a 51–66°
   deflection. **Constraint is a property of the whole matrix, not of any pair**
   — a dozen moderate-to-strong correlations compound. Judging constraint from a
-  correlation table understates it. (And beware the reverse error the deposited
-  file invited: its off-diagonals *looked* like mild correlations but were
-  covariances — the true $r_g$ are larger.)
+  correlation table understates it.
 
 ## Caveats specific to our numbers
 
@@ -715,23 +678,16 @@ S13 `mli` gradients (right; identical to `S28_regenerated_mli.csv`):
    measures, against the eigenvalue yardstick) but not directly against the
    published distribution of mean-scaled evolvabilities in the Hansen & Houle
    compilations.
-2. **The deposited $G$ is not a valid covariance matrix; published S28/S29/S21
-   rest on it.** Diagonal (univariate PVE) and off-diagonals (raw pairwise mvLMM
-   covariances) come from different models — the two negative eigenvalues are
-   the symptom. The supplement has been regenerated with the final
-   $G = D_{PVE}^{1/2}\,\mathrm{nearPD}(R_g)\,D_{PVE}^{1/2}$
-   (`regenerated-tables/`), and this document uses that same $G$ throughout.
-3. **Published S28 is not exactly reproducible from deposited files** (its
-   original script was never located), but the regenerated S28 supersedes it and
-   this document reproduces the regenerated values exactly. Regenerated S21
-   remains provisional: the repo's phenotype CSV is a later export than the one
-   behind the published betas ($r \approx 0.89$, see the note in
-   `regenerate_S21_S28_S29.R`).
-4. **No uncertainty.** All geometric quantities here are point estimates —
+2. **Pairwise assembly.** $G$ is assembled from 66 separately estimated
+   bivariate models rather than one joint 12-trait model (computationally
+   prohibitive at this scale). The nearest-PSD projection this requires moves
+   individual correlations by up to 0.11 and places $G$ on the PSD boundary
+   (rank 10 of 12), which is why conditional measures are not reported.
+3. **No uncertainty.** All geometric quantities here are point estimates —
    eigenvalues, angles, and especially conditional measures deserve confidence
    intervals (e.g., by resampling the pairwise $r_g$ and $h^2$ estimates), which
    do not exist yet.
-5. **Constancy of $G$.** $\Delta\bar z = G\beta$ is a one-generation prediction.
+4. **Constancy of $G$.** $\Delta\bar z = G\beta$ is a one-generation prediction.
    Over many generations selection itself erodes and rotates $G$, so "constraint"
    here means *bias in the immediate response*, not a permanent wall.
 

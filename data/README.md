@@ -16,6 +16,20 @@ provided for readability; the `.rda` files are the ones the code uses.
 | `imputed_mutant_dC13.rda/.csv` | δ¹³C for FLC mutant/wt lines (306 × 5), CRISPR experiment. |
 | `flc_droughtexp_data.rda/.csv` | FLC drought experiment data (47 × 5). |
 
+## Uli Lutz line lists (added 2026-08-12, from Downloads / email; keep for posterity)
+
+| File | Contents |
+|---|---|
+| `dLFC_T3_Cas9_transgene_homoz_UlrichLutz_01112019.xlsx` | Uli's Nov 2019 T3 list: 214 homozygous-Cas9 T3 *flc* lines across **80 accessions** — the full transformation effort, of which the paper's 62-accession panel is the sequenced subset. Sheet `ID_verification` holds the 2019 SNPmatch check of parent stocks (~20 label mismatches, e.g. 6680→6990, 7307→7316, 9536→9736, 9705→7186, 9928→9908). |
+| `dFLC_list_lines_ulutz_042021.xlsx` | Uli's Apr 2021 curated list: 113 lines / 63 accessions with corrected accession names = the paper's 112-line panel (`lines_info_annot.csv`) plus ID9897-03-R04 (class 4, dropped). |
+
+Why they matter: the growth-chamber drought experiment (Fig. 3C/D; sown Oct 2020,
+`field_prep_year1/crispr/growth chamber/wrangled_data_crispr.csv`) uses **pre-correction**
+accession labels. Its 47 *flc* entries = 36 panel accessions (5 of them under old names:
+6680, 7307, 9536, 9705, 9928) + 9897 + 10 unsequenced T3 accessions (6040, 6177, 7008,
+7130, 7353, 7416, 9525, 9706, 9826, 9935). Verify genotype-keyed joins (imputed δ¹³C,
+Fig. 3D GWA) used corrected ids.
+
 ## Phenotype matrices (pre-existing)
 
 `atlas1001_phenotype_matrix_imputed_withID.csv`, `atlas1001_phenotypes_matrix_MR.csv`,

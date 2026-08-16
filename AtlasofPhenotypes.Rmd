@@ -9189,7 +9189,7 @@ if(RERUN){
     geom_point(aes(x=Delta_13C, y=mean_dC13_ko)) +
     xlab("dC13 Dittberner raw") + ylab("dC13 flc mut") +
     geom_smooth(method="lm", aes(x=Delta_13C, y=mean_dC13_ko), col="black")+
-    geom_text(x=-35, y=-29.5, label="r2 = 0.89, p < 0.007")
+    geom_text(x=-35, y=-29.5, label="r = 0.89, p < 0.007")  ## 0.89 is Pearson r from cor.test below (was mislabeled r2); see figures-supp/FigS26-remake
   ditRaw_Uli_dC13_mut_corplot
   cor.test(dittb_raw_Uli_mut$Delta_13C, dittb_raw_Uli_mut$mean_dC13_ko)
 
@@ -9215,7 +9215,7 @@ if(RERUN){
     geom_point(aes(x=Delta_13C, y=mean_dC13_ko)) +
     xlab("dC13 Dittberner imputed") + ylab("dC13 flc mutant") +
     geom_smooth(method="lm", aes(x=Delta_13C, y=mean_dC13_ko), col="black")+
-    geom_text(x=-35, y=-29.5, label="r2 = 0.71, p < 1.5e-5")
+    geom_text(x=-35, y=-29.5, label="r = 0.71, p < 2.5e-5")  ## 0.71 is Pearson r (was mislabeled r2); p recomputed 2026-08-12 = 2.4e-5 with current data (old 1.5e-5 not reproducible)
   dittb_imp_Uli_mut_corplot
   cor.test(dittb_imp_Uli_mut$Delta_13C, dittb_imp_Uli_mut$mean_dC13_ko)
 

@@ -21,3 +21,6 @@ multivarGWAS/*/output/*.assoc.txt
 
 # Rplots.pdf is a stray artifact of running R scripts non-interactively
 Rplots.pdf
+
+# Claude Code local dir (worktrees, settings)
+.claude/
